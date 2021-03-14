@@ -1,0 +1,281 @@
+/*navbar*/
+ul {
+margin: 0;
+padding: 0;
+list-style-type: none;
+overflow: hidden;
+}
+
+.navigation {
+  display: flex;
+}
+
+.sideBar li a {
+  color: black;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+
+
+.drawer {
+  height: 50%;
+  width: 1000rem;
+  display: none;
+}
+
+.drawerList {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.sideBar {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.reviews {
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.reviews1 {
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  background-color: #FBF5DC !important
+}
+
+html {
+   height: 100%;
+   box-sizing: inherit;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #efefef;
+  text-align: center;
+}
+
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 1.8rem 1rem;
+text-decoration: none;
+}
+
+li img{
+  width: 20rem;
+}
+
+li a:hover {
+color: gray;
+text-decoration: none;
+}
+
+.welcomeTitle{
+  font-Size: 2rem;
+  text-align: center;
+}
+
+.reviewsTitle{
+  font-Size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* SIGNUP /SIGNIN PAGE */
+.form-container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.errorBox{
+  font-size: 1.5rem;
+  margin-top: 2%;
+  font-weight: bold;
+}
+
+/*card*/
+
+.footer {
+  color: white;
+  background: #000000;
+  height: 3rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.home-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: center;
+}
+
+.container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.card{
+  max-height: 100%;
+  max-Width: 30rem;
+  text-decoration: none;
+  color: black;
+}
+
+.loading1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/*details*/
+.details-container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.detailsCol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.default{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Lobster', cursive;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.description{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  font-size: 1.5rem
+}
+
+
+.recipeName{
+  font-family: 'Lobster', cursive;
+  font-size: 2.5rem;
+}
+
+.recipeTitle {
+  font-family: 'Lobster', cursive;
+}
+
+.instructions {
+  margin-top: .5rem;
+  font-size: 1.05rem;
+}
+
+.instruction-container li{
+  list-style-type: square;
+}
+
+.instruction-container {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*Admin page*/
+
+.adminPageTitle {
+  font-family: 'Lobster', cursive;
+  font-size: 2rem;
+}
+
+.adminLinks{
+  color: red;
+  text-decoration: none;
+}
+
+.adminLinks:hover{
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.searchBar {
+  background: white;
+  width: 20rem;
+  border-radius: 1rem;
+}
+
+.detailsCol1 {
+  width: 25rem;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+}
+
+
+@media only screen and (min-width: 1020px) {
+.appbar{
+   display: none;
+ }
+}
+
+@media only screen and (max-width: 595px){
+  .reviews1 {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .addButtons {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+.appbar1{
+   display: none;
+ }
+}
