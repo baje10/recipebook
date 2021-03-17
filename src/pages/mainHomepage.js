@@ -23,7 +23,7 @@ const MainHome = () => {
 
   return (
     <>
-       {
+       {/*
          //this welcome paragraph is for new signed up members only
           userInfo ? (
             <Collapse in = {open}>
@@ -50,7 +50,7 @@ const MainHome = () => {
           ) : (
             null
           )
-      }
+      */}
       <CategsHome/>
       <Home/>
       <NewRecipes/>
