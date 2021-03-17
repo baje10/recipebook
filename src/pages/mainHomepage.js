@@ -23,34 +23,6 @@ const MainHome = () => {
 
   return (
     <>
-       {/*
-         //this welcome paragraph is for new signed up members only
-          userInfo ? (
-            <Collapse in = {open}>
-              <Alert
-                style={{marginTop: '.5rem'}}
-                severity="info"
-                action={
-                  <IconButton
-                    aria-label="close"
-                    color="inherit"
-                    size="small"
-                    onClick={() => {
-                      setOpen(false);
-                    }}
-                  >
-                    <CloseIcon fontSize="inherit" />
-                  </IconButton>
-                }
-             >
-               <AlertTitle>Welcome to Recipebook {userInfo.name}</AlertTitle>
-               you can start choosing a recipe and start cooking!
-             </Alert>
-           </Collapse>
-          ) : (
-            null
-          )
-      */}
       <CategsHome/>
       <Home/>
       <NewRecipes/>
