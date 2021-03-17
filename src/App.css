@@ -59,7 +59,7 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
-  background-color: #FBF5DC !important
+  background-color: #FEFFE4 !important
 }
 
 html {
@@ -276,6 +276,9 @@ text-decoration: none;
 
 @media only screen and (max-width: 1020px) {
 .appbar1{
+   display: none;
+ }
+ .carousel{
    display: none;
  }
 }

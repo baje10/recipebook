@@ -1,13 +1,21 @@
 import axios from 'axios';
 import * as types from '../types';
 
-export const addCategory = (name) => async (dispatch, getState) => {
+export const addCategory = (payload) => async (dispatch, getState) => {
   try {
-    dispatch({ type: types.CATEGORY_ADD_REQUEST, payload: { name } });
+    dispatch({ type: types.CATEGORY_ADD_REQUEST, payload: { payload } });
     const { userSignin: { user }, } = getState();
-    const { data } = await axios.post('/category/create/' + user._id,  { name }, {
+    const bodyFormData = new FormData();
+
+    Object.keys(payload).map(fld => {
+      bodyFormData.append(fld, payload[fld]);
+      return fld;
+    });
+
+    const { data } = await axios.post('/api/category/create/' + user._id, bodyFormData , {
       headers: {
         Authorization: `Bearer ${user.token}`,
+        'Content-Type': 'multipart/form-data',
       },
     });
     dispatch({ type: types.CATEGORY_ADD_SUCCESS, payload: data });
@@ -21,7 +29,7 @@ export const addCategory = (name) => async (dispatch, getState) => {
 export const listCategories = () => async (dispatch) => {
   try{
     dispatch({type: types.CATEGORY_LIST_REQUEST});
-    const { data } = await axios.get('/category');
+    const { data } = await axios.get('/api/category');
     dispatch({type: types.CATEGORY_LIST_SUCCESS, payload: data});
     return data
   }

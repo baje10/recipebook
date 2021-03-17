@@ -30,10 +30,13 @@ const useStyles = makeStyles({
 });
 
 const breakPoints = [
-  { width: 1, itemsToShow: 1 },
+  { width: 150, itemsToShow: 1 },
+  { width: 250, itemsToShow: 1 },
+  { width: 350, itemsToShow: 1 },
+  { width: 450, itemsToShow: 1 },
   { width: 550, itemsToShow: 2 },
-  { width: 768, itemsToShow: 3 },
-  { width: 1200, itemsToShow: 6 },
+  { width: 768, itemsToShow: 4 },
+  { width: 1000, itemsToShow: 6 },
   //{ width: 1500, itemsToShow: 7 },
 ];
 
@@ -69,7 +72,7 @@ const CategsHome = () => {
   };
 
   return (
-    <>
+    <div className="carousel">
       <center className = 'welcomeTitle'>Browse by categories</center>
       <div className = 'home-container'>
         <Carousel
@@ -85,24 +88,18 @@ const CategsHome = () => {
                   height="120"
                   image={`/category/photo/${c._id}`}
                   title={c.name}
-                />
+                >
+                </CardMedia>
                 <CardContent>
                   <Typography gutterBottom variant="h6">
-                    <Box
-                      component="div"
-                      my={0}
-                      textOverflow="ellipsis"
-                      overflow="hidden"
-                    >
-                      {c.name}
-                    </Box>
+                    {c.name}
                   </Typography>
                 </CardContent>
               </Card>
           ))}
         </Carousel>
       </div>
-    </>
+    </div>
   )
 }
 

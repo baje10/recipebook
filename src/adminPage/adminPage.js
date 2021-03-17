@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    width:'35rem',
+    width:'58rem',
   },
   paper1: {
     backgroundColor: theme.palette.background.paper,
@@ -205,6 +205,19 @@ const AdminPage = () => {
     handleRecipeList(value);
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const payload = { name, photo }
+    dispatch(rbook.category.addCategory(payload)).then((data) => {
+      if (data) {
+        handleCategoryList();
+      }
+    });
+    console.log('CATEGORY LIST', categList);
+    setOpenSnackBar(true);
+    setOpenModalCategory(false);
+  }
+
   const submitHandlerForRecipe = (event) => {
     event.preventDefault();
     const payload = {
@@ -288,18 +301,6 @@ const AdminPage = () => {
     setOpenModalRecipeUpdate(false);
   }
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    dispatch(rbook.category.addCategory(name)).then((data) => {
-      if (data) {
-        handleCategoryList();
-      }
-    });
-    console.log('CATEGORY LIST', categList);
-    setOpenSnackBar(true);
-    setOpenModalCategory(false);
-  }
-
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -365,7 +366,6 @@ const AdminPage = () => {
     setInstruction10(recipe.instruction10);
     setPhoto(recipe.photo);
     setPhoto1(recipe.photo1);
-    console.log('PHOTOOOO', recipe.photo)
   };
 
   const handleCloseModalRecipeUpdate = () => {
@@ -505,6 +505,22 @@ const AdminPage = () => {
                    name = 'name'
                  />
                </FormControl>
+               <div className={classes.root}>
+                 <input
+                   accept="image/*"
+                   className={classes.input}
+                   id="photo"
+                   required
+                   type="file"
+                   name = 'photo'
+                   onChange={(e) => setPhoto(e.target.files[0])}
+                 />
+                 <label className="addButtons" htmlFor="photo">
+                   <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
+                     Upload Category Photo
+                   </Button>
+                 </label>
+               </div>
                <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Category</Button>
                <Button onClick={handleCloseModalCategory} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
              </form>

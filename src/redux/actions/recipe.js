@@ -5,7 +5,7 @@ export const listRecipes = ( sortBy = 'createdAt', order = 'desc', limit = 5  ) 
   try{
     dispatch({type: types.RECIPE_LIST_REQUEST});
     const { data } = await axios.get(
-    '/recipe/sort?sortBy=' + sortBy + '&order=' + order + '&limit=' + limit
+    '/api/recipe/sort?sortBy=' + sortBy + '&order=' + order + '&limit=' + limit
 );
     dispatch({type: types.RECIPE_LIST_SUCCESS, payload: data});
   }
@@ -18,7 +18,7 @@ export const listRateRecipes = ( sortBy = 'finalRating', order = 'desc', limit =
   try{
     dispatch({type: types.RECIPE_LIST_MRATE_REQUEST});
     const { data } = await axios.get(
-    '/recipe/sort?sortBy=' + sortBy + '&order=' + order + '&limit=' + limit
+    '/api/recipe/sort?sortBy=' + sortBy + '&order=' + order + '&limit=' + limit
 );
     dispatch({type: types.RECIPE_LIST_MRATE_SUCCESS, payload: data});
     return data
@@ -32,7 +32,7 @@ export const listAllRecipes = (pageIndex = '', pageSize = '', searchKeyword = ''
   try{
     dispatch({type: types.RECIPE_LIST_ALL_REQUEST});
     const { data } = await axios.get(
-    '/recipe?pageIndex=' + pageIndex + '&pageSize=' + pageSize + '&name=' + searchKeyword + '&category=' + category
+    '/api/recipe?pageIndex=' + pageIndex + '&pageSize=' + pageSize + '&name=' + searchKeyword + '&category=' + category
      );
     dispatch({type: types.RECIPE_LIST_ALL_SUCCESS, payload: data});
     return data
@@ -53,7 +53,7 @@ export const addRecipe = (payload) => async (dispatch, getState) => {
       return fld;
     });
 
-    const { data } = await axios.post(`/recipe/create/${user._id}`,  bodyFormData, {
+    const { data } = await axios.post(`/api/recipe/create/${user._id}`,  bodyFormData, {
       headers: {
         Authorization: `Bearer ${user.token}`,
         'Content-Type': 'multipart/form-data',
@@ -78,7 +78,7 @@ export const updateRecipe = (payload) => async (dispatch, getState) => {
       return fld;
     });
 
-    const { data } = await axios.put(`/recipe/update/${payload.id}/${user._id}`,  bodyFormData, {
+    const { data } = await axios.put(`/api/recipe/update/${payload.id}/${user._id}`,  bodyFormData, {
       headers: {
         Authorization: `Bearer ${user.token}`,
         'Content-Type': 'multipart/form-data',
@@ -98,7 +98,7 @@ export const deleteRecipe = (recipeById) => async (dispatch, getState) => {
       userSignin: { user },
     } = getState();
     dispatch({ type: types.RECIPE_DELETE_REQUEST, payload: recipeById });
-    const { data } = await axios.delete(`/recipe/delete/${recipeById}/${user._id}`, {
+    const { data } = await axios.delete(`/api/recipe/delete/${recipeById}/${user._id}`, {
       headers: {
         Authorization: 'Bearer ' + user.token,
       },
@@ -113,7 +113,7 @@ export const deleteRecipe = (recipeById) => async (dispatch, getState) => {
 export const detailsRecipe = (recipeById) => async (dispatch) => {
   try {
     dispatch({type: types.RECIPE_DETAIL_REQUEST, payload: recipeById});
-    const {data} = await axios.get('/recipe/get/' + recipeById);
+    const {data} = await axios.get('/api/recipe/get/' + recipeById);
     dispatch({type: types.RECIPE_DETAIL_SUCCESS, payload: data});
   }
   catch(error){
@@ -127,7 +127,7 @@ export const saveRecipeReview = (recipeId, review) => async (dispatch, getState)
     dispatch({ type: types.RECIPE_REVIEWS_ADD_REQUEST, payload: review });
     if(user) {
       const { data } = await axios.post(
-        `/recipe/reviews/${recipeId}`, review, {
+        `/api/recipe/reviews/${recipeId}`, review, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -135,7 +135,7 @@ export const saveRecipeReview = (recipeId, review) => async (dispatch, getState)
       dispatch({ type: types.RECIPE_REVIEWS_ADD_SUCCESS, payload: data });
     } else {
       const { data } = await axios.post(
-        `/recipe/reviews/${recipeId}`, review, {
+        `/api/recipe/reviews/${recipeId}`, review, {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
           },

@@ -5,7 +5,7 @@ import * as types from '../types';
 export const register = (name, email, password, password2) => async (dispatch) => {
   dispatch({ type: types.USER_SIGNUP_REQUEST, payload: { name, email, password, password2 } });
   try {
-    const { data } = await axios.post('/auth/signup', { name, email, password, password2 });
+    const { data } = await axios.post('/api/auth/signup', { name, email, password, password2 });
     dispatch({ type: types.USER_SIGNUP_SUCCESS, payload: data });
     localStorage.setItem('token',JSON.stringify(data));
     Cookie.set('userInfo', JSON.stringify(data));
@@ -17,7 +17,7 @@ export const register = (name, email, password, password2) => async (dispatch) =
 export const login = (email, password) => async (dispatch) => {
   dispatch({ type: types.USER_SIGNIN_REQUEST, payload: {email, password} });
   try{
-    const { data } = await axios.post('/auth/signin', {email, password});
+    const { data } = await axios.post('/api/auth/signin', {email, password});
     dispatch({ type: types.USER_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem('jwt',JSON.stringify(data));
     Cookie.set('user', JSON.stringify(data));
