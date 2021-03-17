@@ -181,7 +181,7 @@ const HideAppBar = (props) => {
                        component="img"
                        alt={recipes.name}
                        height="150"
-                       image={`/recipe/photo/${recipes._id}`}
+                       image={`/api/recipe/photo/${recipes._id}`}
                        title={recipes.name}
                      />
                      <CardContent>

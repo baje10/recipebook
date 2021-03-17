@@ -86,7 +86,7 @@ const CategsHome = () => {
                   component="img"
                   alt={c.name}
                   height="120"
-                  image={`/category/photo/${c._id}`}
+                  image={`/api/category/photo/${c._id}`}
                   title={c.name}
                 >
                 </CardMedia>

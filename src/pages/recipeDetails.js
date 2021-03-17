@@ -133,7 +133,7 @@ const showSuccess = () => (
               component="img"
               alt={recipe.name}
               height="100%"
-              image={`/recipe/photo1/${recipe._id}`}
+              image={`/api/recipe/photo1/${recipe._id}`}
               title={recipe.name}
             />
           </Box>
@@ -146,7 +146,7 @@ const showSuccess = () => (
               component="img"
               alt={recipe.name}
               height="700"
-              image={`/recipe/photo/${recipe._id}`}
+              image={`/api/recipe/photo/${recipe._id}`}
               title={recipe.name}
             />
           </Box>

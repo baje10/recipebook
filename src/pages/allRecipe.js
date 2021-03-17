@@ -116,7 +116,7 @@ const AllRecipe = () => {
            component="img"
            alt={recipe.name}
            height="200"
-           image={`/recipe/photo/${recipe._id}`}
+           image={`/api/recipe/photo/${recipe._id}`}
            title={recipe.name}
          />
          <CardContent>
