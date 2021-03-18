@@ -80,7 +80,7 @@ const Home = () => {
                  </Typography>
                </CardContent>
                <CardActions>
-                 <Link to = {`/recipe/get/${recipes._id}`}>
+                 <Link to = {`/detail/${recipes._id}`}>
                    <Button size="small" color="primary">
                      Read more
                    </Button>
