@@ -132,7 +132,7 @@ const showSuccess = () => (
             <CardMedia
               component="img"
               alt={recipe.name}
-              height="100%"
+              height="350"
               image={`/api/recipe/photo1/${recipe._id}`}
               title={recipe.name}
             />
@@ -145,7 +145,7 @@ const showSuccess = () => (
             <CardMedia
               component="img"
               alt={recipe.name}
-              height="700"
+              height="350"
               image={`/api/recipe/photo/${recipe._id}`}
               title={recipe.name}
             />
