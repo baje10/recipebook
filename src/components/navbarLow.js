@@ -195,7 +195,7 @@ const HideAppBar = (props) => {
                          </Box>
                        </Typography>
                        <CardActions>
-                         <a href = {`/recipe/${recipes._id}`}>
+                         <a href = {`/recipe/get/${recipes._id}`}>
                            <Button size="small" color="primary">
                              Read more
                            </Button>

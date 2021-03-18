@@ -38,7 +38,7 @@ const App = () => {
          <PrivateRoute path='/recipes' component={AllRecipe}/>
          <LoggedInRoute path='/signup' component={Signup}/>
          <PrivateRoute path='/about' component={About}/>
-         <PrivateRoute path='/recipe/:id' component={RecipeDetails}/>
+         <PrivateRoute path='/recipe/get/:id' component={RecipeDetails}/>
          <AdminRoute path='/admin' component={AdminPage}/>
          <Route component={Default}/>
       </Switch>

@@ -138,7 +138,7 @@ const AllRecipe = () => {
            </Typography>
          </CardContent>
          <CardActions>
-           <Link to = {`/recipe/${recipe._id}`}>
+           <Link to = {`/recipe/get/${recipe._id}`}>
              <Button size="small" color="primary">
                Read more
              </Button>
