@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 
 //redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { rbook } from '../redux/combineActions';
 
 //navigation
@@ -41,6 +41,7 @@ const breakPoints = [
 ];
 
 const CategsHome = () => {
+  const { loading, error } = useSelector(state => state.listCategories);
 
   document.title='Recipebook | Home';
 
@@ -72,6 +73,7 @@ const CategsHome = () => {
   };
 
   return (
+    loading? null : error? <div>{error}</div> :
     <div className="carousel">
       <center className = 'welcomeTitle'>Browse by categories</center>
       <div className = 'home-container'>
