@@ -114,7 +114,7 @@ const showSuccess = () => (
     loading? <center className='loading1' ><CircularProgress color = 'inherit' /></center> : error? <div>{error}</div> :
     <>
       <center className = 'recipeName'>{recipe.name}</center>
-      <div className="details-container">
+      <div className="details-container"> 
         {recipeReviewSave && showSuccess()}
         {
         recipe.name === undefined ? (
@@ -127,26 +127,22 @@ const showSuccess = () => (
           <Box
             boxShadow={0}
             m={1}
-            p={3}
+            p={1}
           >
-            <CardMedia
-              component="img"
+            <img
               alt={recipe.name}
-              height="600"
-              image={`/api/recipe/photo1/${recipe._id}`}
+              src={`/api/recipe/photo1/${recipe._id}`}
               title={recipe.name}
             />
           </Box>
           <Box
             boxShadow={0}
             m={1}
-            p={3}
+            p={1}
           >
-            <CardMedia
-              component="img"
+            <img
               alt={recipe.name}
-              height="600"
-              image={`/api/recipe/photo/${recipe._id}`}
+              src={`/api/recipe/photo/${recipe._id}`}
               title={recipe.name}
             />
           </Box>

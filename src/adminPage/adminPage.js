@@ -899,7 +899,7 @@ const AdminPage = () => {
                      />
                      <label className="addButtons" htmlFor="photo1">
                        <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
-                         Upload Recipe Details Photo
+                         Upload Details Photo
                        </Button>
                      </label>
                    </div>

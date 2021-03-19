@@ -180,7 +180,12 @@ text-decoration: none;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 45rem;
+}
+
+.detailsCol img {
+  height: 37rem;
+  width: 37rem;
+  object-fit: cover;
 }
 
 .default{
@@ -282,4 +287,28 @@ text-decoration: none;
  .carousel{
    display: none;
  }
+}
+
+
+@media only screen and (min-width: 550px) and (max-width: 1058px) {
+  .details-container {
+    justify-content: flex-start;
+  }
+}
+
+
+@media only screen and (max-width: 805px) {
+  .detailsCol img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+@media only screen and (max-width: 784px) {
+  .detailsCol img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
