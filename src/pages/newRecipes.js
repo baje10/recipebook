@@ -18,9 +18,17 @@ import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
+    maxHeight: "17rem",
+    maxWidth: "8rem",
+    marginLeft: '.7rem',
+    whiteSpace: 'nowrap',
+    marginTop: '1rem'
+  },
+  root1: {
     maxHeight: "35rem",
     maxWidth: "15rem",
     marginTop: '1rem',
@@ -31,6 +39,8 @@ const useStyles = makeStyles({
 
 const NewRecipes = () => {
   const { recipes, loading, error } = useSelector(state => state.recipeList);
+
+  const lowReso = useMediaQuery('(max-width: 519px)');
 
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -51,40 +61,69 @@ const NewRecipes = () => {
         <>
           {
            recipes.map( recipes =>
-            <Card key={recipes.name} className={classes.root}>
-               <CardMedia
-                 component="img"
-                 alt={recipes.name}
-                 height="250"
-                 image={`/api/recipe/photo/${recipes._id}`}
-                 title={recipes.name}
-               />
-               <CardContent>
-                 <Typography gutterBottom variant="h6">
-                   <Box
-                     component="div"
-                     my={2}
-                     textOverflow="ellipsis"
-                     overflow="hidden"
-                   >
-                     {recipes.name}
-                   </Box>
-                 </Typography>
-                 <Typography variant="body2" color="textSecondary" component="p">
-                   <Rating precision={.2} readOnly value={recipes.rating.toFixed(1)}/> <div style = {{fontSize: "1.5rem"}}>{recipes.rating.toFixed(1)}</div>
-                 </Typography>
-                 <Typography variant="body2" color="textSecondary" component="p">
-                   <div style = {{fontSize: "1rem"}}>Number of reviews: {recipes.numReviews}</div>
-                 </Typography>
-               </CardContent>
-               <CardActions>
-                 <Link to = {`/detail/${recipes._id}`}>
-                   <Button size="small" color="primary">
-                     Read more
-                   </Button>
-                 </Link>
-               </CardActions>
-             </Card>
+             <>
+               { lowReso ?
+                 <Card key={recipes.name} className={classes.root}>
+                    <CardMedia
+                      component="img"
+                      alt={recipes.name}
+                      height="150"
+                      image={`/api/recipe/photo/${recipes._id}`}
+                      title={recipes.name}
+                    />
+                    <CardContent>
+                      <Typography>
+                        <Box
+                          component="div"
+                          my={0}
+                          textOverflow="ellipsis"
+                          overflow="hidden"
+                        >
+                          <Link to = {`/detail/${recipes._id}`}>
+                            <li className="recipeLink"><b>{recipes.name}</b></li>
+                          </Link>
+                        </Box>
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                :
+
+                <Card key={recipes.name} className={classes.root1}>
+                  <CardMedia
+                    component="img"
+                    alt={recipes.name}
+                    height="250"
+                    image={`/api/recipe/photo/${recipes._id}`}
+                    title={recipes.name}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h6">
+                      <Box
+                        component="div"
+                        my={2}
+                        textOverflow="ellipsis"
+                        overflow="hidden"
+                      >
+                        {recipes.name}
+                      </Box>
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      <Rating precision={.2} readOnly value={recipes.rating.toFixed(1)}/> <div style = {{fontSize: "1.5rem"}}>{recipes.rating.toFixed(1)}</div>
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      <div style = {{fontSize: "1rem"}}>Number of reviews: {recipes.numReviews}</div>
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Link to = {`/detail/${recipes._id}`}>
+                      <Button size="small" color="primary">
+                        Read more
+                      </Button>
+                    </Link>
+                  </CardActions>
+                </Card>
+               }
+             </>
             )
            }
          </>

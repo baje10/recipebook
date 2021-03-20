@@ -72,7 +72,7 @@ const HideAppBar = () => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <div className='appbar1'>
+      <div  className='appbar1'>
       <HideOnScroll>
         <AppBar  style={{ background: '#000000' }}>
           <Toolbar>

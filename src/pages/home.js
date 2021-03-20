@@ -30,10 +30,10 @@ const useStyles = makeStyles({
   },
   root1: {
     maxHeight: "35rem",
-    maxWidth: "8rem",
+    maxWidth: "15rem",
+    marginTop: '1rem',
     marginLeft: '.7rem',
-    whiteSpace: 'nowrap',
-    marginTop: '1rem'
+    whiteSpace: 'nowrap'
   },
 });
 
@@ -64,7 +64,7 @@ const Home = () => {
           {
            recipes.map( recipes =>
             <>
-             { lowReso &&
+             { lowReso ?
                <Card key={recipes.name} className={classes.root}>
                   <CardMedia
                     component="img"
@@ -87,6 +87,43 @@ const Home = () => {
                       </Box>
                     </Typography>
                   </CardContent>
+                </Card>
+
+                :
+
+                <Card key={recipes.name} className={classes.root1}>
+                  <CardMedia
+                    component="img"
+                    alt={recipes.name}
+                    height="250"
+                    image={`/api/recipe/photo/${recipes._id}`}
+                    title={recipes.name}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h6">
+                      <Box
+                        component="div"
+                        my={2}
+                        textOverflow="ellipsis"
+                        overflow="hidden"
+                      >
+                        {recipes.name}
+                      </Box>
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      <Rating precision={.2} readOnly value={recipes.rating.toFixed(1)}/> <div style = {{fontSize: "1.5rem"}}>{recipes.rating.toFixed(1)}</div>
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      <div style = {{fontSize: "1rem"}}>Number of reviews: {recipes.numReviews}</div>
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Link to = {`/detail/${recipes._id}`}>
+                      <Button size="small" color="primary">
+                        Read more
+                      </Button>
+                    </Link>
+                  </CardActions>
                 </Card>
              }
              </>

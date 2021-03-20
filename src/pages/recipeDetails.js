@@ -114,7 +114,7 @@ const showSuccess = () => (
     loading? <center className='loading1' ><CircularProgress color = 'inherit' /></center> : error? <div>{error}</div> :
     <>
       <center className = 'recipeName'>{recipe.name}</center>
-      <div className="details-container"> 
+      <div className="details-container">
         {recipeReviewSave && showSuccess()}
         {
         recipe.name === undefined ? (

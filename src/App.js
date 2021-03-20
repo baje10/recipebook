@@ -34,6 +34,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <br/>
       { showNavbarLow ? <NavbarLow/> : <Navbar/> }
       <Switch>
          <LoggedInRoute path='/' exact={true} component={Signin}/>
