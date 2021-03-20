@@ -66,25 +66,25 @@ const Home = () => {
             <>
              { lowReso ?
                <Card key={recipes.name} className={classes.root}>
-                  <CardMedia
-                    component="img"
-                    alt={recipes.name}
-                    height="150"
-                    image={`/api/recipe/photo/${recipes._id}`}
-                    title={recipes.name}
-                  />
+                  <Link to = {`/detail/${recipes._id}`}>
+                    <CardMedia
+                      component="img"
+                      alt={recipes.name}
+                      height="150"
+                      image={`/api/recipe/photo/${recipes._id}`}
+                      title={recipes.name}
+                    />
+                  </Link>
                   <CardContent>
                     <Typography>
-                      <Box
-                        component="div"
-                        my={0}
-                        textOverflow="ellipsis"
-                        overflow="hidden"
-                      >
-                        <Link to = {`/detail/${recipes._id}`}>
-                          <li className="recipeLink"><b>{recipes.name}</b></li>
-                        </Link>
-                      </Box>
+                    <Box
+                      component="div"
+                      my={0}
+                      textOverflow="ellipsis"
+                      overflow="hidden"
+                    >
+                      <b>{recipes.name}</b>
+                    </Box>
                     </Typography>
                   </CardContent>
                 </Card>

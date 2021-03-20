@@ -20,13 +20,21 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Pagination from "@material-ui/lab/Pagination";
 import Box from '@material-ui/core/Box';
 import Select from '@material-ui/core/Select';
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    maxHeight: "33rem",
-    maxWidth: "15rem",
+    maxHeight: "17rem",
+    maxWidth: "8rem",
     marginLeft: '.7rem',
-    marginTop: "1rem",
+    whiteSpace: 'nowrap',
+    marginTop: '1rem'
+  },
+  root1: {
+    maxHeight: "35rem",
+    maxWidth: "15rem",
+    marginTop: '1rem',
+    marginLeft: '.7rem',
     whiteSpace: 'nowrap'
   },
   paginator: {
@@ -37,11 +45,13 @@ const useStyles = makeStyles({
 });
 
 const AllRecipe = () => {
+  const lowReso = useMediaQuery('(max-width: 519px)');
+
   const [recipeList, setRecipeList] = useState([]);
   const [pageDetails, setPageDetails] = useState(null);
   const [pageSize] = useState(5);
   const [categList, setCategList] = useState([]);
-  const [category, setCategory] = useState('');
+  const [setCategory] = useState('');
 
   document.title='Recipebook | All Recipes';
 
@@ -109,43 +119,73 @@ const AllRecipe = () => {
   }
 
   const createBanana = (recipe, idx) => {
-    return (
-      <Card style = {{ display: loading && 'none' }} key={idx} className={classes.root}>
-         <CardMedia
-           component="img"
-           alt={recipe.name}
-           height="200"
-           image={`/api/recipe/photo/${recipe._id}`}
-           title={recipe.name}
-         />
-         <CardContent>
-           <Typography gutterBottom variant="h6">
+
+    if ( !lowReso ) {
+      return (
+        <Card style = {{ display: loading && 'none' }} key={idx} className={classes.root1}>
+           <CardMedia
+             component="img"
+             alt={recipe.name}
+             height="200"
+             image={`/api/recipe/photo/${recipe._id}`}
+             title={recipe.name}
+           />
+           <CardContent>
+             <Typography gutterBottom variant="h6">
+               <Box
+                 component="p"
+                 my={2}
+                 textOverflow="ellipsis"
+                 overflow="hidden"
+               >
+                 {recipe.name}
+               </Box>
+             </Typography>
+             <Typography variant="body2" color="textSecondary" component="p">
+               <Rating precision={.2} readOnly value={recipe.rating.toFixed(1)}/> <div style = {{fontSize: "1.5rem"}}>{recipe.rating.toFixed(1)}</div>
+             </Typography>
+             <Typography variant="body2" color="textSecondary" component="p">
+               <div style = {{fontSize: "1rem"}}>Number of reviews: {recipe.numReviews}</div>
+             </Typography>
+           </CardContent>
+           <CardActions>
+             <Link to = {`/detail/${recipe._id}`}>
+               <Button size="small" color="primary">
+                 Read more
+               </Button>
+             </Link>
+           </CardActions>
+         </Card>
+      );
+    } else {
+      return (
+        <Card style = {{ display: loading && 'none' }} key={idx} className={classes.root}>
+           <Link to = {`/detail/${recipe._id}`}>
+             <CardMedia
+               component="img"
+               alt={recipe.name}
+               height="150"
+               image={`/api/recipe/photo/${recipe._id}`}
+               title={recipe.name}
+             />
+           </Link>
+           <CardContent>
+             <Typography>
              <Box
-               component="p"
-               my={2}
+               component="div"
+               my={0}
                textOverflow="ellipsis"
                overflow="hidden"
              >
-               {recipe.name}
+               <b>{recipe.name}</b>
              </Box>
-           </Typography>
-           <Typography variant="body2" color="textSecondary" component="p">
-             <Rating precision={.2} readOnly value={recipe.rating.toFixed(1)}/> <div style = {{fontSize: "1.5rem"}}>{recipe.rating.toFixed(1)}</div>
-           </Typography>
-           <Typography variant="body2" color="textSecondary" component="p">
-             <div style = {{fontSize: "1rem"}}>Number of reviews: {recipe.numReviews}</div>
-           </Typography>
-         </CardContent>
-         <CardActions>
-           <Link to = {`/detail/${recipe._id}`}>
-             <Button size="small" color="primary">
-               Read more
-             </Button>
-           </Link>
-         </CardActions>
-       </Card>
-    );
+             </Typography>
+           </CardContent>
+         </Card>
+      );
+    }
   };
+
 
   return (
     <>
