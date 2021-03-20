@@ -391,7 +391,7 @@ const AdminPage = () => {
       <TableBody style = {{ display: loading || loadingDel && 'none' }} key={idx}>
         <TableCell>{recipe._id}</TableCell>
         <TableCell>{recipe.name}</TableCell>
-        <TableCell>{recipe.finalRating.toFixed(1)}</TableCell>
+        <TableCell>{recipe.rating.toFixed(1)}</TableCell>
         <TableCell>{recipe.recipeBy}</TableCell>
         <TableCell><EditIcon onClick={() => handleOpenModalRecipeUpdate(recipe)} color="primary"/></TableCell>
         <TableCell><DeleteIcon onClick={() => handleDelete(recipe)} color="secondary"/></TableCell>
@@ -546,7 +546,7 @@ const AdminPage = () => {
           {loading && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
           {loadingDel && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
           {error && <div>{error}</div>}
-          <form style = {{ marginTop: '3%', marginBottom: '3%' }} onSubmit={submitHandlerForSearch}>
+          <form style = {{ marginTop: '3%', marginBottom: '3%', display: loading || loadingDel || loadingUpdt && 'none' }} onSubmit={submitHandlerForSearch}>
             <TextField
               placeholder = 'Search for recipes?'
               className = 'searchBar'

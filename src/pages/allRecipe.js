@@ -33,7 +33,6 @@ const useStyles = makeStyles({
     justifyContent: "center",
     padding: "10px",
     marginTop:'1%',
-    backgroundColor: "#FEFFE4",
   }
 });
 

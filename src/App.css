@@ -16,6 +16,17 @@ overflow: hidden;
   padding: 1rem;
 }
 
+.recipeLink {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
+
+.recipeLink:hover {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
 
 
 .drawer {
@@ -59,7 +70,6 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
-  background-color: #FEFFE4 !important
 }
 
 html {
@@ -260,12 +270,14 @@ text-decoration: none;
   margin-top: 1.5rem;
 }
 
+/*
 
 @media only screen and (min-width: 1020px) {
 .appbar{
    display: none;
  }
 }
+*/
 
 @media only screen and (max-width: 595px){
   .reviews1 {
@@ -280,12 +292,21 @@ text-decoration: none;
   }
 }
 
+.appbar1 {
+  margin-bottom: 3rem;
+}
+
+.appbar {
+  margin-bottom: 3rem;
+}
+
+/*
 @media only screen and (max-width: 1020px) {
 .appbar1{
    display: none;
  }
 }
-
+*/
 
 @media only screen and (min-width: 550px) and (max-width: 1058px) {
   .details-container {

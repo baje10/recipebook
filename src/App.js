@@ -26,12 +26,15 @@ import PrivateRoute from './routes/privateRoute';
 import AdminRoute from './routes/adminRoute';
 import LoggedInRoute from './routes/loggedInRoute';
 
+//material-ui
+import { useMediaQuery } from '@material-ui/core';
+
 const App = () => {
+  const showNavbarLow = useMediaQuery('(max-width: 1020px)');
 
   return (
     <BrowserRouter>
-      <Navbar/>
-      <NavbarLow/>
+      { showNavbarLow ? <NavbarLow/> : <Navbar/> }
       <Switch>
          <LoggedInRoute path='/' exact={true} component={Signin}/>
          <PrivateRoute path='/home' component={MainHome}/>
