@@ -105,6 +105,7 @@ text-decoration: none;
 
 .welcomeTitle{
   font-Size: 2rem;
+  margin-top: 2rem;
   text-align: center;
 }
 
@@ -217,7 +218,8 @@ text-decoration: none;
 
 .recipeName{
   font-family: 'Lobster', cursive;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  margin-top: 1.5rem;
 }
 
 .recipeTitle {
@@ -293,11 +295,11 @@ text-decoration: none;
 }
 
 .appbar1 {
-  
+
 }
 
 .appbar {
-  
+
 }
 
 /*

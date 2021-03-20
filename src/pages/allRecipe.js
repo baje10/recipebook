@@ -51,7 +51,7 @@ const AllRecipe = () => {
   const [pageDetails, setPageDetails] = useState(null);
   const [pageSize] = useState(5);
   const [categList, setCategList] = useState([]);
-  const [setCategory] = useState('');
+  const [category, setCategory] = useState('');
 
   document.title='Recipebook | All Recipes';
 
