@@ -1,7 +1,7 @@
 {
   "name": "recipebook",
   "proxy": "https://phrecipebook.org/api",
-  "homepage": "https://phrecipebook.org/"
+  "homepage": "https://phrecipebook.org/",
   "version": "0.1.0",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
