@@ -27,12 +27,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ClearIcon from '@material-ui/icons/Clear';
 import ListItem from '@material-ui/core/ListItem';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   list: {
@@ -42,10 +40,11 @@ const useStyles = makeStyles({
     width: 'auto',
   },
   root: {
-    maxHeight: "15rem",
-    maxWidth: "10rem",
+    maxHeight: "17rem",
+    maxWidth: "8rem",
+    marginLeft: '.7rem',
     whiteSpace: 'nowrap',
-    marginTop: ".5rem"
+    marginTop: '1rem'
   },
 });
 
@@ -176,33 +175,29 @@ const HideAppBar = (props) => {
               <>
                 {
                  recipeRateList.map( recipes =>
-                  <Card key={recipes.name} className={classes.root}>
-                     <CardMedia
-                       component="img"
-                       alt={recipes.name}
-                       height="150"
-                       image={`/api/recipe/photo/${recipes._id}`}
-                       title={recipes.name}
-                     />
-                     <CardContent>
-                       <Typography gutterBottom variant="h6">
-                         <Box
-                           component="div"
-                           textOverflow="ellipsis"
-                           overflow="hidden"
-                         >
-                           {recipes.name}
-                         </Box>
-                       </Typography>
-                       <CardActions>
-                         <a href = {`/detail/${recipes._id}`}>
-                           <Button size="small" color="primary">
-                             Read more
-                           </Button>
-                         </a>
-                       </CardActions>
-                     </CardContent>
-                   </Card>
+                   <Card style = {{ display: loading && 'none' }} key={recipes.name} className={classes.root}>
+                      <Link to = {`/detail/${recipes._id}`}>
+                        <CardMedia
+                          component="img"
+                          alt={recipes.name}
+                          height="150"
+                          image={`/api/recipe/photo/${recipes._id}`}
+                          title={recipes.name}
+                        />
+                      </Link>
+                      <CardContent>
+                        <Typography>
+                        <Box
+                          component="div"
+                          my={0}
+                          textOverflow="ellipsis"
+                          overflow="hidden"
+                        >
+                          <b>{recipes.name}</b>
+                        </Box>
+                        </Typography>
+                      </CardContent>
+                    </Card>
                   )
                  }
                </>
