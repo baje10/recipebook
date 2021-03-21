@@ -33,10 +33,10 @@ const breakPoints = [
   { width: 150, itemsToShow: 1 },
   { width: 250, itemsToShow: 1 },
   { width: 350, itemsToShow: 1 },
-  { width: 450, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2 },
-  { width: 768, itemsToShow: 4 },
-  { width: 1000, itemsToShow: 6 },
+  { width: 450, itemsToShow: 2 },
+  { width: 550, itemsToShow: 3 },
+  { width: 812, itemsToShow: 4 },
+  { width: 1000, itemsToShow: 5 },
   //{ width: 1500, itemsToShow: 7 },
 ];
 
