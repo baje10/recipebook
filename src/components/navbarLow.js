@@ -176,7 +176,7 @@ const HideAppBar = (props) => {
                 {
                  recipeRateList.map( recipes =>
                    <Card style = {{ display: loading && 'none' }} key={recipes.name} className={classes.root}>
-                      <Link to = {`/detail/${recipes._id}`}>
+                      <a href = {`/detail/${recipes._id}`}>
                         <CardMedia
                           component="img"
                           alt={recipes.name}
@@ -184,7 +184,7 @@ const HideAppBar = (props) => {
                           image={`/api/recipe/photo/${recipes._id}`}
                           title={recipes.name}
                         />
-                      </Link>
+                      </a>
                       <CardContent>
                         <Typography>
                         <Box

@@ -316,7 +316,7 @@ text-decoration: none;
   }
 }
 
-
+/*
 @media only screen and (max-width: 805px) {
   .detailsCol img {
     height: 100%;
@@ -324,8 +324,8 @@ text-decoration: none;
     object-fit: cover;
   }
 }
-
-@media only screen and (max-width: 784px) {
+*/
+@media only screen and (max-width: 573px) {
   .detailsCol img {
     height: 100%;
     width: 100%;

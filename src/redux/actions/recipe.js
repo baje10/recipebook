@@ -28,11 +28,11 @@ export const listRateRecipes = ( sortBy = 'finalRating', order = 'desc', limit =
   }
 }
 
-export const listAllRecipes = (pageIndex = '', pageSize = '', searchKeyword = '', category='') => async (dispatch) => {
+export const listAllRecipes = (pageIndex = 1, pageSize = 5, search= '', category='') => async (dispatch) => {
   try{
     dispatch({type: types.RECIPE_LIST_ALL_REQUEST});
     const { data } = await axios.get(
-    '/api/recipe?pageIndex=' + pageIndex + '&pageSize=' + pageSize + '&name=' + searchKeyword + '&category=' + category
+    '/api/recipe?pageIndex=' + pageIndex + '&pageSize=' + pageSize + '&name=' + search + '&category=' + category
      );
     dispatch({type: types.RECIPE_LIST_ALL_SUCCESS, payload: data});
     return data
