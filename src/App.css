@@ -194,9 +194,9 @@ text-decoration: none;
 }
 
 .detailsCol img {
-  height: 37rem;
-  width: 37rem;
-  object-fit: cover;
+  height: auto;
+  width: 50rem;
+  object-fit: scale-down;
 }
 
 .default{
@@ -310,7 +310,7 @@ text-decoration: none;
 }
 */
 
-@media only screen and (min-width: 550px) and (max-width: 1058px) {
+@media only screen and (min-width: 550px) and (max-width: 1247px) {
   .details-container {
     justify-content: flex-start;
   }
@@ -327,7 +327,7 @@ text-decoration: none;
 */
 @media only screen and (max-width: 573px) {
   .detailsCol img {
-    height: 100%;
+    height: auto;
     width: 100%;
     object-fit: cover;
   }
