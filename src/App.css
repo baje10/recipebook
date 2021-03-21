@@ -194,9 +194,9 @@ text-decoration: none;
 }
 
 .detailsCol img {
-  height: auto;
+  height: 40rem;
   width: 50rem;
-  object-fit: scale-down;
+  object-fit: cover;
 }
 
 .default{
