@@ -119,7 +119,6 @@ const AllRecipe = () => {
   }
 
   const createBanana = (recipe, idx) => {
-
     if ( !lowReso ) {
       return (
         <Card style = {{ display: loading && 'none' }} key={idx} className={classes.root1}>

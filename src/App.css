@@ -281,7 +281,7 @@ text-decoration: none;
 }
 */
 
-@media only screen and (max-width: 595px){
+@media only screen and (max-width: 991px){
   .reviews1 {
     display: flex;
     justify-content: center;
