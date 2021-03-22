@@ -21,7 +21,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Select from '@material-ui/core/Select';
 import AddIcon from '@material-ui/icons/Add';
-import ClearIcon from '@material-ui/icons/Clear';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -33,6 +32,8 @@ import Pagination from "@material-ui/lab/Pagination";
 import ListIcon from '@material-ui/icons/List';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import ClearIcon from '@material-ui/icons/Clear';
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -68,19 +69,46 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   table: {
-    minWidth: '100%',
+    width: '28rem',
   },
   paper2: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    width:'65rem',
+    maxWidth:'100%',
     height: "100%",
+    overflow: "scroll"
   },
+  paper2LowReso: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    maxWidth:'25rem',
+    height: "100%",
+    overflow: "scroll"
+  },
+  tableCell: {
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    width: "100px",
+    display: "block",
+    overflow: "hidden"
+  },
+  tableCell1: {
+    //whiteSpace: "nowrap",
+    //textOverflow: "ellipsis",
+    width: "10rem",
+    //display: "block",
+    //overflow: "hidden"
+  }
+
 }));
 
 const AdminPage = () => {
+  const lowReso = useMediaQuery('(max-width: 718px)');
+
   const [openModalCategory, setOpenModalCategory] = useState(false);
   const [openModalRecipe, setOpenModalRecipe] = useState(false);
   const [openModalRecipeList, setOpenModalRecipeList] = useState(false);
@@ -387,16 +415,26 @@ const AdminPage = () => {
   }
 
   const createBanana = (recipe, idx) => {
-    return (
-      <TableBody style = {{ display: loading || loadingDel && 'none' }} key={idx}>
-        <TableCell>{recipe._id}</TableCell>
-        <TableCell>{recipe.name}</TableCell>
-        <TableCell>{recipe.rating.toFixed(1)}</TableCell>
-        <TableCell>{recipe.recipeBy}</TableCell>
-        <TableCell><EditIcon onClick={() => handleOpenModalRecipeUpdate(recipe)} color="primary"/></TableCell>
-        <TableCell><DeleteIcon onClick={() => handleDelete(recipe)} color="secondary"/></TableCell>
-      </TableBody>
-    );
+    if ( lowReso ) {
+      return (
+        <TableBody style = {{ display: loading || loadingDel && 'none'}} key={idx}>
+          <TableCell onClick={() => handleOpenModalRecipeUpdate(recipe)} ><div className={classes.tableCell1}>{recipe.name}</div></TableCell>
+          <TableCell><div className={classes.tableCell1}><DeleteIcon onClick={() => handleDelete(recipe)} color="secondary"/></div></TableCell>
+        </TableBody>
+      );
+    } else {
+      return (
+        <TableBody style = {{ display: loading || loadingDel && 'none'}} key={idx}>
+          <TableCell><div className={classes.tableCell}>{recipe._id}</div></TableCell>
+          <TableCell><div className={classes.tableCell}>{recipe.name}</div></TableCell>
+          <TableCell><div className={classes.tableCell}>{recipe.rating.toFixed(1)}</div></TableCell>
+          <TableCell><div className={classes.tableCell}>{recipe.recipeBy}</div></TableCell>
+          <TableCell><EditIcon onClick={() => handleOpenModalRecipeUpdate(recipe)} color="primary"/></TableCell>
+          <TableCell><DeleteIcon onClick={() => handleDelete(recipe)} color="secondary"/></TableCell>
+        </TableBody>
+      );
+    }
+
   };
 
   const showError = () => (
@@ -541,16 +579,18 @@ const AdminPage = () => {
        }}
     >
       <Fade in={openModalRecipeList}>
-        <div className={classes.paper2}>
+        <div className={ lowReso? classes.paper2LowReso : classes.paper2 }>
           <div>
           {loading && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
           {loadingDel && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
           {error && <div>{error}</div>}
-          <form style = {{ marginTop: '3%', marginBottom: '3%', display: loading || loadingDel || loadingUpdt && 'none' }} onSubmit={submitHandlerForSearch}>
+          <ClearIcon onClick={handleCloseModalRecipeList} />
+          <form style = {{ marginTop: '3%', marginBottom: '3%' }} onSubmit={submitHandlerForSearch}>
             <TextField
               placeholder = 'Search for recipes?'
               className = 'searchBar'
               id="outlined-search"
+              style = {{ display: loadingUpdt && 'none' }}
               type="search"
               variant="outlined"
               name="searchKeyword"
@@ -558,6 +598,21 @@ const AdminPage = () => {
               onChange={(e) => setSearchKeyword(e.target.value)}
             />
           </form>
+          { lowReso ?
+            <TableContainer style = {{ display: loading && 'none' }} component={Paper}>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow style={{ marginTop:"1rem" }} >
+                    <TableCell><div className={classes.tableCell1}>Name</div></TableCell>
+                    <TableCell><div className={classes.tableCell1}>Delete</div></TableCell>
+                  </TableRow>
+                </TableHead>
+                {recipeList.map((recipe, index) => (
+                  createBanana(recipe, index)
+                ))}
+              </Table>
+            </TableContainer>
+          :
           <TableContainer style = {{ display: loading && 'none' }} component={Paper}>
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
@@ -575,6 +630,8 @@ const AdminPage = () => {
               ))}
             </Table>
           </TableContainer>
+          }
+
           <Pagination
             style = {{ display: loading && 'none', marginTop: "1rem" }}
             count={pageDetails && pageDetails.totalPages}
@@ -679,7 +736,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 4 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Ingredient 4 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={ingredients3}
@@ -689,7 +746,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 5 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Ingredient 5 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={ingredients4}
@@ -699,7 +756,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 6 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Ingredient 6 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={ingredients5}
@@ -709,7 +766,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 7 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Ingredient 7 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={ingredients6}
@@ -719,7 +776,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 8 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Ingredient 8 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={ingredients7}
@@ -729,7 +786,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 9 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Ingredient 9 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={ingredients8}
@@ -739,7 +796,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 10 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Ingredient 10 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={ingredients9}
@@ -749,7 +806,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 11 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Ingredient 11 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={ingredients10}
@@ -792,7 +849,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Instruction 4 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Instruction 4 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={instruction3}
@@ -802,7 +859,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Instruction 5 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Instruction 5 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={instruction4}
@@ -812,7 +869,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Instruction 6 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Instruction 6 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={instruction5}
@@ -822,7 +879,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Instruction 7 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Instruction 7 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={instruction6}
@@ -832,7 +889,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Instruction 8 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Instruction 8 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={instruction7}
@@ -842,7 +899,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Instruction 9 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Instruction 9 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={instruction8}
@@ -852,7 +909,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Instruction 10 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Instruction 10 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={instruction9}
@@ -862,7 +919,7 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Instruction 11 (if necesarry)</InputLabel>
+                     <InputLabel color="primary">Instruction 11 (unneed)</InputLabel>
                      <Input
                        type = "text"
                        value={instruction10}
@@ -871,7 +928,7 @@ const AdminPage = () => {
                        name = 'instruction10'
                      />
                    </FormControl>
-                   <div className={classes.root}>
+                   <div style={{marginTop: "1rem"}} className={classes.root}>
                      <input
                        accept="image/*"
                        className={classes.input}
@@ -887,7 +944,7 @@ const AdminPage = () => {
                        </Button>
                      </label>
                    </div>
-                   <div className={classes.root}>
+                   <div style={{marginTop: "1rem"}} className={classes.root}>
                      <input
                        accept="image/*"
                        className={classes.input}
@@ -895,7 +952,7 @@ const AdminPage = () => {
                        required
                        type="file"
                        name = 'photo1'
-                       onChange={(e) => setPhoto1(e.target.files[0])}
+                       onChange={(e) =>  (e.target.files[0])}
                      />
                      <label className="addButtons" htmlFor="photo1">
                        <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
@@ -1001,7 +1058,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 4 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Ingredient 4 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setIngredients3(e.target.value)}
@@ -1010,7 +1067,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 5 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Ingredient 5 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setIngredients4(e.target.value)}
@@ -1019,7 +1076,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 6 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Ingredient 6 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setIngredients5(e.target.value)}
@@ -1028,7 +1085,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 7 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Ingredient 7 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setIngredients6(e.target.value)}
@@ -1037,7 +1094,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 8 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Ingredient 8 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setIngredients7(e.target.value)}
@@ -1046,7 +1103,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 9 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Ingredient 9 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setIngredients8(e.target.value)}
@@ -1055,7 +1112,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 10 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Ingredient 10 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setIngredients9(e.target.value)}
@@ -1064,7 +1121,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 11 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Ingredient 11 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setIngredients10(e.target.value)}
@@ -1103,7 +1160,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Instruction 4 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Instruction 4 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setInstruction3(e.target.value)}
@@ -1112,7 +1169,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Instruction 5 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Instruction 5 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setInstruction4(e.target.value)}
@@ -1121,7 +1178,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Instruction 6 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Instruction 6 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setInstruction5(e.target.value)}
@@ -1130,7 +1187,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Instruction 7 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Instruction 7 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setInstruction6(e.target.value)}
@@ -1139,7 +1196,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Instruction 8 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Instruction 8 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setInstruction7(e.target.value)}
@@ -1148,7 +1205,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Instruction 9 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Instruction 9 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setInstruction8(e.target.value)}
@@ -1157,7 +1214,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Instruction 10 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Instruction 10 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setInstruction9(e.target.value)}
@@ -1166,7 +1223,7 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Instruction 11 (if necesarry)</InputLabel>
+                <InputLabel color="primary">Instruction 11 (unneed)</InputLabel>
                 <Input
                   type = "text"
                   onChange={(e) => setInstruction10(e.target.value)}
@@ -1174,7 +1231,7 @@ const AdminPage = () => {
                   name = 'instruction10'
                 />
               </FormControl>
-              <div className={classes.root}>
+              <div style={{marginTop: "1rem"}} className={classes.root}>
                 <input
                   accept="image/*"
                   required
@@ -1190,7 +1247,7 @@ const AdminPage = () => {
                   </Button>
                 </label>
               </div>
-              <div className={classes.root}>
+              <div style={{marginTop: "1rem"}} className={classes.root}>
                 <input
                 accept="image/*"
                 required
