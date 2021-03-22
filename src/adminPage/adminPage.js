@@ -492,18 +492,18 @@ const AdminPage = () => {
       {!successAdd && errorAdd && showErrorForAddRecipe()}
       {successUpdt && !errorUpdt && showSuccessForUpdateRecipe()}
       {!successUpdt && errorUpdt && showErrorForUpdateRecipe()}
-      <div style = {{ fontSize: 25 }}>
+      <div style = {{ fontSize: 20 }}>
         <center className = 'adminPageTitle'>
           Admin Profile
         </center>
         <center style = {{marginTop: '1rem'}}>
-          Admin Id: <div style = {{ color:'red' }}>{user._id}</div>
+          Admin Id: <div style = {{ color:'red'}}>{user._id}</div>
         </center>
         <center style = {{marginTop: '1rem'}}>
-          Admin Name: <div style = {{ color:'red' }}>{user.name}</div>
+          Admin Name: <div style = {{ color:'red'}}>{user.name}</div>
         </center>
         <center style = {{marginTop: '1rem'}}>
-          Admin Email: <div style = {{ color:'red' }}>{user.email}</div>
+          Admin Email: <div style = {{ color:'red'}}>{user.email}</div>
         </center>
       </div>
       <center style = {{marginTop: '1rem'}}>
