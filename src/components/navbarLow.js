@@ -110,7 +110,6 @@ const HideAppBar = (props) => {
       <div className="appbar">
         <AppBar style={{background:"#000000"}}>
           <Toolbar>
-            {userInfo || user ? (
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -119,9 +118,6 @@ const HideAppBar = (props) => {
                >
                 <MenuIcon />
               </IconButton>
-            ) : (
-              null
-            )}
             <ul className = "navigation">
               <li className = 'title'><img src = {logo} alt = 'logo'/></li>
             </ul>
@@ -156,8 +152,9 @@ const HideAppBar = (props) => {
                 <Divider/>
                 </ListItem>
                 <ListItem>
+                {userInfo || user ? (
                   <ul className="sideBar">
-                    <li><Link onClick ={handleDrawerClose} to = '/home'>Home</Link></li>
+                    <li><Link onClick ={handleDrawerClose} to = '/'>Home</Link></li>
                     <li><Link onClick ={handleDrawerClose} to = '/about'>About</Link></li>
                     {
                       user && user.role === 1 ? (
@@ -168,6 +165,20 @@ const HideAppBar = (props) => {
                     }
                     <li><Link onClick={handleLogout}><ExitToAppIcon/></Link></li>
                   </ul>
+                ) : (
+                  <ul className="sideBar">
+                    <li><Link onClick ={handleDrawerClose} to = '/'>Home</Link></li>
+                    <li><Link onClick ={handleDrawerClose} to = '/about'>About</Link></li>
+                    {
+                      user && user.role === 1 ? (
+                        <li><Link onClick ={handleDrawerClose} to = '/admin'>Admin</Link></li>
+                      ) : (
+                        null
+                      )
+                    }
+                    <li><Link onClick ={handleDrawerClose} to="/signin">Sign-In</Link></li>
+                  </ul>
+                )}
               </ListItem>
             </List>
             <div className = "drawerList">
