@@ -37,12 +37,12 @@ const App = () => {
       <br/>
       { showNavbarLow ? <NavbarLow/> : <Navbar/> }
       <Switch>
-         <LoggedInRoute path='/' exact={true} component={Signin}/>
-         <PrivateRoute path='/home' component={MainHome}/>
-         <PrivateRoute path='/recipes' component={AllRecipe}/>
+         <Route path='/' exact={true} component={MainHome}/>
+         <LoggedInRoute path='/signin' component={Signin}/>
+         <Route path='/recipes' component={AllRecipe}/>
          <LoggedInRoute path='/signup' component={Signup}/>
-         <PrivateRoute path='/about' component={About}/>
-         <PrivateRoute path='/detail/:id' component={RecipeDetails}/>
+         <Route path='/about' component={About}/>
+         <Route path='/detail/:id' component={RecipeDetails}/>
          <AdminRoute path='/admin' component={AdminPage}/>
          <Route component={Default}/>
       </Switch>

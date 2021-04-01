@@ -95,7 +95,7 @@ const HideAppBar = () => {
                     />
                   </form>
                 </div>
-                <li><Link to = '/home'>Home</Link></li>
+                <li><Link to = '/'>Home</Link></li>
                 <li><Link to = '/about'>About</Link></li>
                 {
                   user && user.role === 1 ? (
@@ -107,7 +107,26 @@ const HideAppBar = () => {
                 <li><Link onClick={handleLogout}><ExitToAppIcon/></Link></li>
               </>
             ) : (
-              null
+              <>
+                <div>
+                  <form onSubmit={submitHandler}>
+                    <TextField
+                     placeholder = 'Search for recipes?'
+                     className = 'searchBar'
+                     style = {{ marginTop: '3%' }}
+                     id="outlined-search"
+                     type="search"
+                     variant="outlined"
+                     name="searchKeyword"
+                     value={searchKeyword}
+                     onChange={(e) => setSearchKeyword(e.target.value)}
+                    />
+                  </form>
+                </div>
+                <li><Link to = '/'>Home</Link></li>
+                <li><Link to = '/about'>About</Link></li>
+                <li><Link to = '/signin'>Sign-In</Link></li>
+              </>
             )}
           </ul>
           </Toolbar>

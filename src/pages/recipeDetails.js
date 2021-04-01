@@ -244,8 +244,8 @@ const showSuccess = () => (
     </div>
   </>
   ) : (
-   <div>
-     Please <Link to="/">Sign-in</Link> to write a reviews.
+   <div style={{fontSize: "1.5rem"}} className = 'reviews1'>
+     <Link to = "/signin">Please Sign-in to write a reviews.</Link>
    </div>
   )}
     <div className="reviews" >
