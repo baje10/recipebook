@@ -144,6 +144,6 @@ export const saveRecipeReview = (recipeId, review) => async (dispatch, getState)
     }
   } catch (error) {
     // report error
-    dispatch({ type: types.RECIPE_REVIEWS_ADD_FAIL, payload: error.message });
+    dispatch({ type: types.RECIPE_REVIEWS_ADD_FAIL, payload: error.response.data.error });
   }
 };

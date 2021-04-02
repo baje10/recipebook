@@ -111,7 +111,7 @@ const showSuccess = () => (
 );
 const showError = () => (
   <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBar} autoHideDuration={3000} onClose={handleClose}>
-    <Alert severity="error">Comment too long</Alert>
+    <Alert severity="error">{errorReview}</Alert>
   </Snackbar>
 );
 
@@ -251,7 +251,7 @@ const showError = () => (
   </>
   ) : (
    <div style={{fontSize: "1.5rem"}} className = 'reviews1'>
-     <Link to = "/signin">Please Sign-in to write a reviews.</Link>
+     <Link to = "/signin">Please Sign-in to write a review.</Link>
    </div>
   )}
     <div className="reviews" >
