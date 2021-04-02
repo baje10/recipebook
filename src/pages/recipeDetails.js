@@ -57,7 +57,7 @@ const RecipeDetails = (props) => {
 
   const { user } = useSelector((state) => state.userSignin);
   const { userInfo } = useSelector((state) => state.userRegister);
-  const { success: recipeReviewSave } = useSelector((state) => state.addReview);
+  const { errorReview, success: recipeReviewSave } = useSelector((state) => state.addReview);
 
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -109,6 +109,11 @@ const showSuccess = () => (
     <Alert severity="success">Comment added</Alert>
   </Snackbar>
 );
+const showError = () => (
+  <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBar} autoHideDuration={3000} onClose={handleClose}>
+    <Alert severity="error">Comment too long</Alert>
+  </Snackbar>
+);
 
   return (
     loading? <center className='loading1' ><CircularProgress color = 'inherit' /></center> : error? <div>{error}</div> :
@@ -116,6 +121,7 @@ const showSuccess = () => (
       <center className = 'recipeName'>{recipe.name}</center>
       <div className="details-container">
         {recipeReviewSave && showSuccess()}
+        {errorReview && showError()}
         {
         recipe.name === undefined ? (
           <div style = {{display: 'none'}}>loading</div>
