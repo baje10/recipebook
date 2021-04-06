@@ -192,6 +192,54 @@ const AdminPage = () => {
   const [pageDetails, setPageDetails] = useState(null);
   const [pageSize] = useState(7);
 
+  const [showIngredient4, setShowIngredient4] = useState(false);
+  const [showIngredient5, setShowIngredient5] = useState(false);
+  const [showIngredient6, setShowIngredient6] = useState(false);
+  const [showIngredient7, setShowIngredient7] = useState(false);
+  const [showIngredient8, setShowIngredient8] = useState(false);
+  const [showIngredient9, setShowIngredient9] = useState(false);
+  const [showIngredient10, setShowIngredient10] = useState(false);
+  const [showIngredient11, setShowIngredient11] = useState(false);
+  const [showIngredient12, setShowIngredient12] = useState(false);
+  const [showIngredient13, setShowIngredient13] = useState(false);
+  const [showIngredient14, setShowIngredient14] = useState(false);
+  const [showIngredient15, setShowIngredient15] = useState(false);
+  const [showIngredient16, setShowIngredient16] = useState(false);
+  const [showIngredient17, setShowIngredient17] = useState(false);
+  const [showIngredient18, setShowIngredient18] = useState(false);
+  const [showIngredient19, setShowIngredient19] = useState(false);
+  const [showIngredient20, setShowIngredient20] = useState(false);
+  const [showIngredient21, setShowIngredient21] = useState(false);
+  const [showIngredient22, setShowIngredient22] = useState(false);
+  const [showIngredient23, setShowIngredient23] = useState(false);
+  const [showIngredient24, setShowIngredient24] = useState(false);
+  const [showIngredient25, setShowIngredient25] = useState(false);
+  const [showIngredient26, setShowIngredient26] = useState(false);
+
+  const [showInstruction4, setShowInstruction4] = useState(false);
+  const [showInstruction5, setShowInstruction5] = useState(false);
+  const [showInstruction6, setShowInstruction6] = useState(false);
+  const [showInstruction7, setShowInstruction7] = useState(false);
+  const [showInstruction8, setShowInstruction8] = useState(false);
+  const [showInstruction9, setShowInstruction9] = useState(false);
+  const [showInstruction10, setShowInstruction10] = useState(false);
+  const [showInstruction11, setShowInstruction11] = useState(false);
+  const [showInstruction12, setShowInstruction12] = useState(false);
+  const [showInstruction13, setShowInstruction13] = useState(false);
+  const [showInstruction14, setShowInstruction14] = useState(false);
+  const [showInstruction15, setShowInstruction15] = useState(false);
+  const [showInstruction16, setShowInstruction16] = useState(false);
+  const [showInstruction17, setShowInstruction17] = useState(false);
+  const [showInstruction18, setShowInstruction18] = useState(false);
+  const [showInstruction19, setShowInstruction19] = useState(false);
+  const [showInstruction20, setShowInstruction20] = useState(false);
+  const [showInstruction21, setShowInstruction21] = useState(false);
+  const [showInstruction22, setShowInstruction22] = useState(false);
+  const [showInstruction23, setShowInstruction23] = useState(false);
+  const [showInstruction24, setShowInstruction24] = useState(false);
+  const [showInstruction25, setShowInstruction25] = useState(false);
+  const [showInstruction26, setShowInstruction26] = useState(false);
+
   const { loadingCatg, categoryAdd, errorCatg, success } = useSelector(state => state.addCategory);
   const { user } = useSelector((state) => state.userSignin);
   const { loadingAdd, recipe, errorAdd, successAdd } = useSelector(state => state.addRecipe);
@@ -605,6 +653,375 @@ const AdminPage = () => {
       <Alert severity="success">{recipeUpdt && recipeUpdt.name} updated!</Alert>
     </Snackbar>
   );
+
+  const handleShowIngredient4 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient4(false);
+    } else {
+      setShowIngredient4(true);
+    }
+  };
+
+  const handleShowIngredient5 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient5(false);
+    } else {
+      setShowIngredient5(true);
+    }
+  };
+
+  const handleShowIngredient6 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient6(false);
+    } else {
+      setShowIngredient6(true);
+    }
+  };
+
+  const handleShowIngredient7 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient7(false);
+    } else {
+      setShowIngredient7(true);
+    }
+  };
+
+  const handleShowIngredient8 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient8(false);
+    } else {
+      setShowIngredient8(true);
+    }
+  };
+
+  const handleShowIngredient9 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient9(false);
+    } else {
+      setShowIngredient9(true);
+    }
+  };
+
+  const handleShowIngredient10 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient10(false);
+    } else {
+      setShowIngredient10(true);
+    }
+  };
+
+  const handleShowIngredient11 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient11(false);
+    } else {
+      setShowIngredient11(true);
+    }
+  };
+
+  const handleShowIngredient12 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient12(false);
+    } else {
+      setShowIngredient12(true);
+    }
+  };
+
+  const handleShowIngredient13 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient13(false);
+    } else {
+      setShowIngredient13(true);
+    }
+  };
+
+  const handleShowIngredient14 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient14(false);
+    } else {
+      setShowIngredient14(true);
+    }
+  };
+
+  const handleShowIngredient15 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient15(false);
+    } else {
+      setShowIngredient15(true);
+    }
+  };
+
+  const handleShowIngredient16 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient16(false);
+    } else {
+      setShowIngredient16(true);
+    }
+  };
+
+  const handleShowIngredient17 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient17(false);
+    } else {
+      setShowIngredient17(true);
+    }
+  };
+
+  const handleShowIngredient18 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient18(false);
+    } else {
+      setShowIngredient18(true);
+    }
+  };
+
+  const handleShowIngredient19 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient19(false);
+    } else {
+      setShowIngredient19(true);
+    }
+  };
+
+  const handleShowIngredient20 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient20(false);
+    } else {
+      setShowIngredient20(true);
+    }
+  };
+
+  const handleShowIngredient21 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient21(false);
+    } else {
+      setShowIngredient21(true);
+    }
+  };
+
+  const handleShowIngredient22 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient22(false);
+    } else {
+      setShowIngredient22(true);
+    }
+  };
+
+  const handleShowIngredient23 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient23(false);
+    } else {
+      setShowIngredient23(true);
+    }
+  };
+
+  const handleShowIngredient24 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient24(false);
+    } else {
+      setShowIngredient24(true);
+    }
+  };
+
+  const handleShowIngredient25 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient25(false);
+    } else {
+      setShowIngredient25(true);
+    }
+  };
+
+  const handleShowIngredient26 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredient26(false);
+    } else {
+      setShowIngredient26(true);
+    }
+  };
+
+  const handleShowInstruction4 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction4(false);
+    } else {
+      setShowInstruction4(true);
+    }
+  };
+
+  const handleShowInstruction5 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction5(false);
+    } else {
+      setShowInstruction5(true);
+    }
+  };
+
+  const handleShowInstruction6 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction6(false);
+    } else {
+      setShowInstruction6(true);
+    }
+  };
+
+  const handleShowInstruction7 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction7(false);
+    } else {
+      setShowInstruction7(true);
+    }
+  };
+
+  const handleShowInstruction8 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction8(false);
+    } else {
+      setShowInstruction8(true);
+    }
+  };
+
+  const handleShowInstruction9 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction9(false);
+    } else {
+      setShowInstruction9(true);
+    }
+  };
+
+  const handleShowInstruction10 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction10(false);
+    } else {
+      setShowInstruction10(true);
+    }
+  };
+
+  const handleShowInstruction11 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction11(false);
+    } else {
+      setShowInstruction11(true);
+    }
+  };
+
+  const handleShowInstruction12 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction12(false);
+    } else {
+      setShowInstruction12(true);
+    }
+  };
+
+  const handleShowInstruction13 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction13(false);
+    } else {
+      setShowInstruction13(true);
+    }
+  };
+
+  const handleShowInstruction14 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction14(false);
+    } else {
+      setShowInstruction14(true);
+    }
+  };
+
+  const handleShowInstruction15 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction15(false);
+    } else {
+      setShowInstruction15(true);
+    }
+  };
+
+  const handleShowInstruction16 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction16(false);
+    } else {
+      setShowInstruction16(true);
+    }
+  };
+
+  const handleShowInstruction17 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction17(false);
+    } else {
+      setShowInstruction17(true);
+    }
+  };
+
+  const handleShowInstruction18 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction18(false);
+    } else {
+      setShowInstruction18(true);
+    }
+  };
+
+  const handleShowInstruction19 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction19(false);
+    } else {
+      setShowInstruction19(true);
+    }
+  };
+
+  const handleShowInstruction20 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction20(false);
+    } else {
+      setShowInstruction20(true);
+    }
+  };
+
+  const handleShowInstruction21 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction21(false);
+    } else {
+      setShowInstruction21(true);
+    }
+  };
+
+  const handleShowInstruction22 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction22(false);
+    } else {
+      setShowInstruction22(true);
+    }
+  };
+
+  const handleShowInstruction23 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction23(false);
+    } else {
+      setShowInstruction23(true);
+    }
+  };
+
+  const handleShowInstruction24 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction24(false);
+    } else {
+      setShowInstruction24(true);
+    }
+  };
+
+  const handleShowInstruction25 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction25(false);
+    } else {
+      setShowInstruction25(true);
+    }
+  };
+
+  const handleShowInstruction26 = (event) => {
+    if (event.target.value === '') {
+      setShowInstruction26(false);
+    } else {
+      setShowInstruction26(true);
+    }
+  };
+
 
   document.title = 'Recipebook | Adminpage';
 
@@ -1473,7 +1890,7 @@ const AdminPage = () => {
                   name = 'ingredients1'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient4} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 3 (required)</InputLabel>
                 <Input
                   type = "text"
@@ -1483,7 +1900,7 @@ const AdminPage = () => {
                   name = 'ingredients2'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient5} hidden={!showIngredient4} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 4 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1492,7 +1909,7 @@ const AdminPage = () => {
                   name = 'ingredients3'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient6} hidden={!showIngredient5} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 5 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1501,7 +1918,7 @@ const AdminPage = () => {
                   name = 'ingredients4'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient7} hidden={!showIngredient6} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 6 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1510,7 +1927,7 @@ const AdminPage = () => {
                   name = 'ingredients5'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient8} hidden={!showIngredient7} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 7 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1519,7 +1936,7 @@ const AdminPage = () => {
                   name = 'ingredients6'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient9} hidden={!showIngredient8} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 8 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1528,7 +1945,7 @@ const AdminPage = () => {
                   name = 'ingredients7'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient10} hidden={!showIngredient9} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 9 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1537,7 +1954,7 @@ const AdminPage = () => {
                   name = 'ingredients8'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient11} hidden={!showIngredient10} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 10 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1546,7 +1963,7 @@ const AdminPage = () => {
                   name = 'ingredients9'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient12} hidden={!showIngredient11} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 11 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1555,7 +1972,7 @@ const AdminPage = () => {
                   name = 'ingredients10'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient13} hidden={!showIngredient12} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 12 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1564,7 +1981,7 @@ const AdminPage = () => {
                   name = 'ingredients11'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient14} hidden={!showIngredient13} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 13 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1573,7 +1990,7 @@ const AdminPage = () => {
                   name = 'ingredients12'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient15} hidden={!showIngredient14} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 14 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1582,7 +1999,7 @@ const AdminPage = () => {
                   name = 'ingredients13'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient16} hidden={!showIngredient15} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 15 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1591,7 +2008,7 @@ const AdminPage = () => {
                   name = 'ingredients14'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient17} hidden={!showIngredient16} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 16 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1600,7 +2017,7 @@ const AdminPage = () => {
                   name = 'ingredients15'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient18} hidden={!showIngredient17} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 17 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1609,7 +2026,7 @@ const AdminPage = () => {
                   name = 'ingredients16'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient19} hidden={!showIngredient18} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 18 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1618,7 +2035,7 @@ const AdminPage = () => {
                   name = 'ingredients17'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient20} hidden={!showIngredient19} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 19 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1627,7 +2044,7 @@ const AdminPage = () => {
                   name = 'ingredients18'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient21} hidden={!showIngredient20} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 20 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1636,7 +2053,7 @@ const AdminPage = () => {
                   name = 'ingredients19'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient22} hidden={!showIngredient21} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 21 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1645,7 +2062,7 @@ const AdminPage = () => {
                   name = 'ingredients20'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient23} hidden={!showIngredient22} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 22 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1654,7 +2071,7 @@ const AdminPage = () => {
                   name = 'ingredients21'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient24} hidden={!showIngredient23} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 23 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1663,7 +2080,7 @@ const AdminPage = () => {
                   name = 'ingredients22'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient25} hidden={!showIngredient24} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 24 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1672,7 +2089,7 @@ const AdminPage = () => {
                   name = 'ingredients23'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowIngredient26} hidden={!showIngredient25} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 25 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1681,7 +2098,7 @@ const AdminPage = () => {
                   name = 'ingredients24'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl hidden={!showIngredient26} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 26 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1710,7 +2127,7 @@ const AdminPage = () => {
                   name = 'instruction1'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction4} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 3 (required)</InputLabel>
                 <Input
                   type = "text"
@@ -1720,7 +2137,7 @@ const AdminPage = () => {
                   name = 'instruction2'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction5} hidden={!showInstruction4} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 4 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1729,7 +2146,7 @@ const AdminPage = () => {
                   name = 'instruction3'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction6} hidden={!showInstruction5} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 5 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1738,7 +2155,7 @@ const AdminPage = () => {
                   name = 'instruction4'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction7} hidden={!showInstruction6} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 6 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1747,7 +2164,7 @@ const AdminPage = () => {
                   name = 'instruction5'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction8} hidden={!showInstruction7} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 7 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1756,7 +2173,7 @@ const AdminPage = () => {
                   name = 'instruction6'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction9} hidden={!showInstruction8} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 8 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1765,7 +2182,7 @@ const AdminPage = () => {
                   name = 'instruction7'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction10} hidden={!showInstruction9} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 9 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1774,7 +2191,7 @@ const AdminPage = () => {
                   name = 'instruction8'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction11} hidden={!showInstruction10} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 10 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1783,7 +2200,7 @@ const AdminPage = () => {
                   name = 'instruction9'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction12} hidden={!showInstruction11} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 11 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1792,7 +2209,7 @@ const AdminPage = () => {
                   name = 'instruction10'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction13} hidden={!showInstruction12} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 12 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1801,7 +2218,7 @@ const AdminPage = () => {
                   name = 'instruction11'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction14} hidden={!showInstruction13} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 13 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1810,7 +2227,7 @@ const AdminPage = () => {
                   name = 'instruction12'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction15} hidden={!showInstruction14} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 14 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1819,7 +2236,7 @@ const AdminPage = () => {
                   name = 'instruction13'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction16} hidden={!showInstruction15} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 15 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1828,7 +2245,7 @@ const AdminPage = () => {
                   name = 'instruction14'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction17} hidden={!showInstruction16} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 16 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1837,7 +2254,7 @@ const AdminPage = () => {
                   name = 'instruction15'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction18} hidden={!showInstruction17} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 17 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1846,7 +2263,7 @@ const AdminPage = () => {
                   name = 'instruction16'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction19} hidden={!showInstruction18} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 18 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1855,7 +2272,7 @@ const AdminPage = () => {
                   name = 'instruction17'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction20} hidden={!showInstruction19} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 19 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1864,7 +2281,7 @@ const AdminPage = () => {
                   name = 'instruction18'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction21} hidden={!showInstruction20} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 20 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1873,7 +2290,7 @@ const AdminPage = () => {
                   name = 'instruction19'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction22} hidden={!showInstruction21} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 21 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1882,7 +2299,7 @@ const AdminPage = () => {
                   name = 'instruction20'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction23} hidden={!showInstruction22} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 22 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1891,7 +2308,7 @@ const AdminPage = () => {
                   name = 'instruction21'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction24} hidden={!showInstruction23} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 23 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1900,7 +2317,7 @@ const AdminPage = () => {
                   name = 'instruction22'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction25} hidden={!showInstruction24} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 24 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1909,7 +2326,7 @@ const AdminPage = () => {
                   name = 'instruction23'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl onChange={handleShowInstruction26} hidden={!showInstruction25} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 25 (unneed)</InputLabel>
                 <Input
                   type = "text"
@@ -1918,7 +2335,7 @@ const AdminPage = () => {
                   name = 'instruction24'
                 />
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
+              <FormControl hidden={!showInstruction26} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 26 (unneed)</InputLabel>
                 <Input
                   type = "text"
