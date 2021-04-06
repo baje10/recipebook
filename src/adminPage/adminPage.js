@@ -137,6 +137,24 @@ const AdminPage = () => {
   const [ingredients8, setIngredients8] = useState('');
   const [ingredients9, setIngredients9] = useState('');
   const [ingredients10, setIngredients10] = useState('');
+
+  const [ingredients11, setIngredients11] = useState('');
+  const [ingredients12, setIngredients12] = useState('');
+  const [ingredients13, setIngredients13] = useState('');
+  const [ingredients14, setIngredients14] = useState('');
+  const [ingredients15, setIngredients15] = useState('');
+  const [ingredients16, setIngredients16] = useState('');
+  const [ingredients17, setIngredients17] = useState('');
+  const [ingredients18, setIngredients18] = useState('');
+  const [ingredients19, setIngredients19] = useState('');
+
+  const [ingredients20, setIngredients20] = useState('');
+  const [ingredients21, setIngredients21] = useState('');
+  const [ingredients22, setIngredients22] = useState('');
+  const [ingredients23, setIngredients23] = useState('');
+  const [ingredients24, setIngredients24] = useState('');
+  const [ingredients25, setIngredients25] = useState('');
+
   const [instruction, setInstruction] = useState('');
   const [instruction1, setInstruction1] = useState('');
   const [instruction2, setInstruction2] = useState('');
@@ -148,6 +166,24 @@ const AdminPage = () => {
   const [instruction8, setInstruction8] = useState('');
   const [instruction9, setInstruction9] = useState('');
   const [instruction10, setInstruction10] = useState('');
+
+  const [instruction11, setInstruction11] = useState('');
+  const [instruction12, setInstruction12] = useState('');
+  const [instruction13, setInstruction13] = useState('');
+  const [instruction14, setInstruction14] = useState('');
+  const [instruction15, setInstruction15] = useState('');
+  const [instruction16, setInstruction16] = useState('');
+  const [instruction17, setInstruction17] = useState('');
+  const [instruction18, setInstruction18] = useState('');
+  const [instruction19, setInstruction19] = useState('');
+
+  const [instruction20, setInstruction20] = useState('');
+  const [instruction21, setInstruction21] = useState('');
+  const [instruction22, setInstruction22] = useState('');
+  const [instruction23, setInstruction23] = useState('');
+  const [instruction24, setInstruction24] = useState('');
+  const [instruction25, setInstruction25] = useState('');
+
   const [photo, setPhoto] = useState('');
   const [photo1, setPhoto1] = useState('');
 
@@ -264,6 +300,21 @@ const AdminPage = () => {
       ingredients8,
       ingredients9,
       ingredients10,
+      ingredients11,
+      ingredients12,
+      ingredients13,
+      ingredients14,
+      ingredients15,
+      ingredients16,
+      ingredients17,
+      ingredients18,
+      ingredients19,
+      ingredients20,
+      ingredients21,
+      ingredients22,
+      ingredients23,
+      ingredients24,
+      ingredients25,
       instruction,
       instruction1,
       instruction2,
@@ -275,6 +326,21 @@ const AdminPage = () => {
       instruction8,
       instruction9,
       instruction10,
+      instruction11,
+      instruction12,
+      instruction13,
+      instruction14,
+      instruction15,
+      instruction16,
+      instruction17,
+      instruction18,
+      instruction19,
+      instruction20,
+      instruction21,
+      instruction22,
+      instruction23,
+      instruction24,
+      instruction25,
       photo,
       photo1
     }
@@ -306,6 +372,21 @@ const AdminPage = () => {
       ingredients8,
       ingredients9,
       ingredients10,
+      ingredients11,
+      ingredients12,
+      ingredients13,
+      ingredients14,
+      ingredients15,
+      ingredients16,
+      ingredients17,
+      ingredients18,
+      ingredients19,
+      ingredients20,
+      ingredients21,
+      ingredients22,
+      ingredients23,
+      ingredients24,
+      ingredients25,
       instruction,
       instruction1,
       instruction2,
@@ -317,6 +398,21 @@ const AdminPage = () => {
       instruction8,
       instruction9,
       instruction10,
+      instruction11,
+      instruction12,
+      instruction13,
+      instruction14,
+      instruction15,
+      instruction16,
+      instruction17,
+      instruction18,
+      instruction19,
+      instruction20,
+      instruction21,
+      instruction22,
+      instruction23,
+      instruction24,
+      instruction25,
       photo,
       photo1
     }
@@ -381,6 +477,21 @@ const AdminPage = () => {
     setIngredients8(recipe.ingredients8);
     setIngredients9(recipe.ingredients9);
     setIngredients10(recipe.ingredients10);
+    setIngredients11(recipe.ingredients11);
+    setIngredients12(recipe.ingredients12);
+    setIngredients13(recipe.ingredients13);
+    setIngredients14(recipe.ingredients14);
+    setIngredients15(recipe.ingredients15);
+    setIngredients16(recipe.ingredients16);
+    setIngredients17(recipe.ingredients17);
+    setIngredients18(recipe.ingredients18);
+    setIngredients19(recipe.ingredients19);
+    setIngredients20(recipe.ingredients20);
+    setIngredients21(recipe.ingredients21);
+    setIngredients22(recipe.ingredients22);
+    setIngredients23(recipe.ingredients23);
+    setIngredients24(recipe.ingredients24);
+    setIngredients25(recipe.ingredients25);
     setInstruction(recipe.instruction);
     setInstruction1(recipe.instruction1);
     setInstruction2(recipe.instruction2);
@@ -392,6 +503,21 @@ const AdminPage = () => {
     setInstruction8(recipe.instruction8);
     setInstruction9(recipe.instruction9);
     setInstruction10(recipe.instruction10);
+    setInstruction11(recipe.instruction11);
+    setInstruction12(recipe.instruction12);
+    setInstruction13(recipe.instruction13);
+    setInstruction14(recipe.instruction14);
+    setInstruction15(recipe.instruction15);
+    setInstruction16(recipe.instruction16);
+    setInstruction17(recipe.instruction17);
+    setInstruction18(recipe.instruction18);
+    setInstruction19(recipe.instruction18);
+    setInstruction20(recipe.instruction20);
+    setInstruction21(recipe.instruction21);
+    setInstruction22(recipe.instruction22);
+    setInstruction23(recipe.instruction23);
+    setInstruction24(recipe.instruction24);
+    setInstruction25(recipe.instruction25);
     setPhoto(recipe.photo);
     setPhoto1(recipe.photo1);
   };
@@ -816,6 +942,156 @@ const AdminPage = () => {
                      />
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 12 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients11}
+                       onChange={(e) => setIngredients11(e.target.value)}
+                       id = 'ingredients11'
+                       name = 'ingredients11'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 13 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients12}
+                       onChange={(e) => setIngredients12(e.target.value)}
+                       id = 'ingredients12'
+                       name = 'ingredients12'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 14 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients13}
+                       onChange={(e) => setIngredients13(e.target.value)}
+                       id = 'ingredients13'
+                       name = 'ingredients13'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 15 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients14}
+                       onChange={(e) => setIngredients14(e.target.value)}
+                       id = 'ingredients14'
+                       name = 'ingredients14'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 16 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients15}
+                       onChange={(e) => setIngredients15(e.target.value)}
+                       id = 'ingredients15'
+                       name = 'ingredients15'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 17 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients16}
+                       onChange={(e) => setIngredients16(e.target.value)}
+                       id = 'ingredients16'
+                       name = 'ingredients16'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 18 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients17}
+                       onChange={(e) => setIngredients17(e.target.value)}
+                       id = 'ingredients17'
+                       name = 'ingredients17'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 19 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients18}
+                       onChange={(e) => setIngredients18(e.target.value)}
+                       id = 'ingredients18'
+                       name = 'ingredients18'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 20 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients19}
+                       onChange={(e) => setIngredients19(e.target.value)}
+                       id = 'ingredients19'
+                       name = 'ingredients19'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 21 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients20}
+                       onChange={(e) => setIngredients20(e.target.value)}
+                       id = 'ingredients20'
+                       name = 'ingredients20'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 22 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients21}
+                       onChange={(e) => setIngredients21(e.target.value)}
+                       id = 'ingredients21'
+                       name = 'ingredients21'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 23 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients22}
+                       onChange={(e) => setIngredients22(e.target.value)}
+                       id = 'ingredients22'
+                       name = 'ingredients22'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 24 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients23}
+                       onChange={(e) => setIngredients23(e.target.value)}
+                       id = 'ingredients23'
+                       name = 'ingredients23'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 25 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients24}
+                       onChange={(e) => setIngredients24(e.target.value)}
+                       id = 'ingredients24'
+                       name = 'ingredients24'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 26 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients25}
+                       onChange={(e) => setIngredients25(e.target.value)}
+                       id = 'ingredients25'
+                       name = 'ingredients25'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
                      <InputLabel color="primary">Instruction 1 (required)</InputLabel>
                      <Input
                        type = "text"
@@ -928,6 +1204,156 @@ const AdminPage = () => {
                        name = 'instruction10'
                      />
                    </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 12 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction11}
+                       onChange={(e) => setInstruction11(e.target.value)}
+                       id = 'instruction11'
+                       name = 'instruction11'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 13 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction12}
+                       onChange={(e) => setInstruction12(e.target.value)}
+                       id = 'instruction12'
+                       name = 'instruction12'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 14 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction13}
+                       onChange={(e) => setInstruction13(e.target.value)}
+                       id = 'instruction13'
+                       name = 'instruction13'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 15 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction14}
+                       onChange={(e) => setInstruction14(e.target.value)}
+                       id = 'instruction14'
+                       name = 'instruction14'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 16 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction15}
+                       onChange={(e) => setInstruction15(e.target.value)}
+                       id = 'instruction15'
+                       name = 'instruction15'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 17 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction16}
+                       onChange={(e) => setInstruction16(e.target.value)}
+                       id = 'instruction16'
+                       name = 'instruction16'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 18 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction17}
+                       onChange={(e) => setInstruction17(e.target.value)}
+                       id = 'instruction17'
+                       name = 'instruction17'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 19 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction18}
+                       onChange={(e) => setInstruction18(e.target.value)}
+                       id = 'instruction18'
+                       name = 'instruction18'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 20 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction19}
+                       onChange={(e) => setInstruction19(e.target.value)}
+                       id = 'instruction19'
+                       name = 'instruction19'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 21 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction20}
+                       onChange={(e) => setInstruction20(e.target.value)}
+                       id = 'instruction20'
+                       name = 'instruction20'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 22 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction21}
+                       onChange={(e) => setInstruction21(e.target.value)}
+                       id = 'instruction21'
+                       name = 'instruction21'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 23 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction22}
+                       onChange={(e) => setInstruction22(e.target.value)}
+                       id = 'instruction22'
+                       name = 'instruction22'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 24 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction23}
+                       onChange={(e) => setInstruction23(e.target.value)}
+                       id = 'instruction23'
+                       name = 'instruction23'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 25 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction24}
+                       onChange={(e) => setInstruction24(e.target.value)}
+                       id = 'instruction24'
+                       name = 'instruction24'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 26 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction25}
+                       onChange={(e) => setInstruction25(e.target.value)}
+                       id = 'instruction25'
+                       name = 'instruction25'
+                     />
+                   </FormControl>
                    <div style={{marginTop: "1rem"}} className={classes.root}>
                      <input
                        accept="image/*"
@@ -952,7 +1378,7 @@ const AdminPage = () => {
                        required
                        type="file"
                        name = 'photo1'
-                       onChange={(e) =>  (e.target.files[0])}
+                       onChange={(e) => setPhoto1(e.target.files[0])}
                      />
                      <label className="addButtons" htmlFor="photo1">
                        <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
@@ -1130,6 +1556,141 @@ const AdminPage = () => {
                 />
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 12 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients11(e.target.value)}
+                  id = 'ingredients11'
+                  name = 'ingredients11'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 13 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients12(e.target.value)}
+                  id = 'ingredients12'
+                  name = 'ingredients12'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 14 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients13(e.target.value)}
+                  id = 'ingredients13'
+                  name = 'ingredients13'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 15 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients14(e.target.value)}
+                  id = 'ingredients14'
+                  name = 'ingredients14'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 16 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients15(e.target.value)}
+                  id = 'ingredients15'
+                  name = 'ingredients15'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 17 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients16(e.target.value)}
+                  id = 'ingredients16'
+                  name = 'ingredients16'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 18 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients17(e.target.value)}
+                  id = 'ingredients17'
+                  name = 'ingredients17'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 19 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients18(e.target.value)}
+                  id = 'ingredients18'
+                  name = 'ingredients18'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 20 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients19(e.target.value)}
+                  id = 'ingredients19'
+                  name = 'ingredients19'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 21 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients20(e.target.value)}
+                  id = 'ingredients20'
+                  name = 'ingredients20'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 22 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients21(e.target.value)}
+                  id = 'ingredients21'
+                  name = 'ingredients21'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 23 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients22(e.target.value)}
+                  id = 'ingredients22'
+                  name = 'ingredients22'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 24 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients23(e.target.value)}
+                  id = 'ingredients23'
+                  name = 'ingredients23'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 25 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients24(e.target.value)}
+                  id = 'ingredients24'
+                  name = 'ingredients24'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Ingredient 26 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredients25(e.target.value)}
+                  id = 'ingredients25'
+                  name = 'ingredients25'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Instruction 1 (required)</InputLabel>
                 <Input
                   type = "text"
@@ -1229,6 +1790,141 @@ const AdminPage = () => {
                   onChange={(e) => setInstruction10(e.target.value)}
                   id = 'instruction10'
                   name = 'instruction10'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 12 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction11(e.target.value)}
+                  id = 'instruction11'
+                  name = 'instruction11'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 13 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction12(e.target.value)}
+                  id = 'instruction12'
+                  name = 'instruction12'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 14 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction13(e.target.value)}
+                  id = 'instruction13'
+                  name = 'instruction13'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 15 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction14(e.target.value)}
+                  id = 'instruction14'
+                  name = 'instruction14'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 16 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction15(e.target.value)}
+                  id = 'instruction15'
+                  name = 'instruction15'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 17 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction16(e.target.value)}
+                  id = 'instruction16'
+                  name = 'instruction16'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 18 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction17(e.target.value)}
+                  id = 'instruction17'
+                  name = 'instruction17'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 19 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction18(e.target.value)}
+                  id = 'instruction18'
+                  name = 'instruction18'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 20 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction19(e.target.value)}
+                  id = 'instruction19'
+                  name = 'instruction19'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 21 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction20(e.target.value)}
+                  id = 'instruction20'
+                  name = 'instruction20'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 22 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction21(e.target.value)}
+                  id = 'instruction21'
+                  name = 'instruction21'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 23 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction22(e.target.value)}
+                  id = 'instruction22'
+                  name = 'instruction22'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 24 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction23(e.target.value)}
+                  id = 'instruction23'
+                  name = 'instruction23'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 25 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction24(e.target.value)}
+                  id = 'instruction24'
+                  name = 'instruction24'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel color="primary">Instruction 26 (unneed)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setInstruction25(e.target.value)}
+                  id = 'instruction25'
+                  name = 'instruction25'
                 />
               </FormControl>
               <div style={{marginTop: "1rem"}} className={classes.root}>
