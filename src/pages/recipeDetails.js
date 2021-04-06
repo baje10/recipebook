@@ -16,7 +16,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
-import CardMedia from '@material-ui/core/CardMedia';
 import CreateIcon from '@material-ui/icons/Create';
 import DescriptionIcon from '@material-ui/icons/Description';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
@@ -189,6 +188,21 @@ const showError = () => (
               <li style = {{ display: recipe.ingredients8 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients8}</i></li>
               <li style = {{ display: recipe.ingredients9 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients9}</i></li>
               <li style = {{ display: recipe.ingredients10 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients10}</i></li>
+              <li style = {{ display: recipe.ingredients11 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients11}</i></li>
+              <li style = {{ display: recipe.ingredients12 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients12}</i></li>
+              <li style = {{ display: recipe.ingredients13 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients13}</i></li>
+              <li style = {{ display: recipe.ingredients14 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients14}</i></li>
+              <li style = {{ display: recipe.ingredients15 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients15}</i></li>
+              <li style = {{ display: recipe.ingredients16 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients16}</i></li>
+              <li style = {{ display: recipe.ingredients17 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients17}</i></li>
+              <li style = {{ display: recipe.ingredients18 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients18}</i></li>
+              <li style = {{ display: recipe.ingredients19 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients19}</i></li>
+              <li style = {{ display: recipe.ingredients20 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients20}</i></li>
+              <li style = {{ display: recipe.ingredients21 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients21}</i></li>
+              <li style = {{ display: recipe.ingredients22 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients22}</i></li>
+              <li style = {{ display: recipe.ingredients23 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients23}</i></li>
+              <li style = {{ display: recipe.ingredients24 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients24}</i></li>
+              <li style = {{ display: recipe.ingredients25 ? '' : 'none' }} ><i className = 'instructions'>{recipe.ingredients25}</i></li>
             </div>
             <div className="listCont">
               <div style = {{ fontSize: '1.5rem', marginTop: "1.5rem" }} ><b><RestaurantIcon/> Instructions:</b></div>
@@ -203,6 +217,21 @@ const showError = () => (
               <li style = {{ display: recipe.instruction8 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction8}</i></li>
               <li style = {{ display: recipe.instruction9 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction9}</i></li>
               <li style = {{ display: recipe.instruction10 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction10}</i></li>
+              <li style = {{ display: recipe.instruction11 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction11}</i></li>
+              <li style = {{ display: recipe.instruction12 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction12}</i></li>
+              <li style = {{ display: recipe.instruction13 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction13}</i></li>
+              <li style = {{ display: recipe.instruction14 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction14}</i></li>
+              <li style = {{ display: recipe.instruction15 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction15}</i></li>
+              <li style = {{ display: recipe.instruction16 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction16}</i></li>
+              <li style = {{ display: recipe.instruction17 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction17}</i></li>
+              <li style = {{ display: recipe.instruction18 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction18}</i></li>
+              <li style = {{ display: recipe.instruction19 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction19}</i></li>
+              <li style = {{ display: recipe.instruction20 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction20}</i></li>
+              <li style = {{ display: recipe.instruction21 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction21}</i></li>
+              <li style = {{ display: recipe.instruction22 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction22}</i></li>
+              <li style = {{ display: recipe.instruction23 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction23}</i></li>
+              <li style = {{ display: recipe.instruction24 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction24}</i></li>
+              <li style = {{ display: recipe.instruction25 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction25}</i></li>
             </div>
             </div>
           </Box>
