@@ -280,7 +280,6 @@ const AdminPage = () => {
         .then((data) => {
           if (data) {
             setCategList(data);
-            console.log('CATEGORY DATA', data)
           }
         })
     },
@@ -325,7 +324,6 @@ const AdminPage = () => {
         handleCategoryList();
       }
     });
-    console.log('CATEGORY LIST', categList);
     setOpenSnackBar(true);
     setOpenModalCategory(false);
   }
@@ -648,7 +646,6 @@ const AdminPage = () => {
   );
 
   const showSuccessForUpdateRecipe = () => (
-    console.log('UPDATE SUCCESSSS'),
     <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBarForUpdt} autoHideDuration={2000} onClose={handleClose}>
       <Alert severity="success">{recipeUpdt && recipeUpdt.name} updated!</Alert>
     </Snackbar>

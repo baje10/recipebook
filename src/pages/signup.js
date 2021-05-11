@@ -182,7 +182,7 @@ const Signup = () => {
               />
           </FormControl>
           <Button style = {{marginTop: '5%'}} variant="contained" type="submit">Sign Up</Button>
-          <div style = {{marginTop: '5%', fontSize:20}}>Have an account? <Link style = {{color: 'gray', textDecoration:'none'}} to = '/'>Sign In</Link></div>
+          <div style = {{marginTop: '5%', fontSize:20}}>Have an account? <Link style = {{color: 'gray', textDecoration:'none'}} to = '/signin'>Sign In</Link></div>
         </form>
       </div>
     </>
