@@ -1,8 +1,16 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk'
-import { recipeListReducer, recipeDetailsReducer, recipeUpdateReducer, recipeAddReducer, recipeAddReviewsReducer, recipeListAllReducer, recipeListRateReducer, recipeDeleteReducer } from './reducers/recipeReducers';
+import { recipeListReducer, 
+  recipeDetailsReducer, 
+  recipeUpdateReducer, 
+  recipeAddReducer, 
+  recipeAddReviewsReducer, 
+  recipeListAllReducer, 
+  recipeListRateReducer, 
+  recipeDeleteReducer } from './reducers/recipeReducers';
 import { userRegisterReducer, userLoginReducer } from './reducers/userReducers';
-import { categoryAddReducer, categoryListReducer } from './reducers/categoryReducers'
+import { categoryAddReducer, categoryListReducer } from './reducers/categoryReducers';
+import { ingredientAddReducer, ingredientListReducer, ingredientDeleteReducer, ingredientUpdateReducer } from './reducers/ingredientReducer'
 import Cookie from 'js-cookie';
 
 const user = localStorage.getItem('jwt') && Cookie.getJSON('user');
@@ -22,10 +30,14 @@ const reducer = combineReducers({
   userSignin: userLoginReducer,
   recipeUpdate: recipeUpdateReducer,
   addCategory: categoryAddReducer,
+  addIngredient: ingredientAddReducer,
+  updateIngredient: ingredientUpdateReducer,
+  deleteIngredient: ingredientDeleteReducer,
+  listIngredients: ingredientListReducer,
   recipeDelete:recipeDeleteReducer,
   listCategories: categoryListReducer,
   addRecipe: recipeAddReducer,
-  addReview: recipeAddReviewsReducer
+  addReview: recipeAddReviewsReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

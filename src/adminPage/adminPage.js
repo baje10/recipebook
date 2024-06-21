@@ -89,10 +89,19 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     overflow: "scroll"
   },
+  paper3: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    width:'58rem',
+    height: "100%",
+    overflow: "scroll"
+  },
   tableCell: {
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
-    width: "100px",
+    width: "15rem",
     display: "block",
     overflow: "hidden"
   },
@@ -112,20 +121,60 @@ const AdminPage = () => {
   const [openModalCategory, setOpenModalCategory] = useState(false);
   const [openModalRecipe, setOpenModalRecipe] = useState(false);
   const [openModalRecipeList, setOpenModalRecipeList] = useState(false);
+  const [openModalIngredientsList, setOpenModalIngredientsList] = useState(false);
+  const [openModalIngredientAdd , setOpenModalIngredientAdd] = useState(false);
   const [openModalRecipeUpdate, setOpenModalRecipeUpdate] = useState(false);
+  const [openModalIngredientUpdate, setOpenModalIngredientUpdate] = useState(false);
 
   const [openSnackBar, setOpenSnackBar] = useState(false);
   const [openSnackBarForAdd, setOpenSnackBarForAdd] = useState(false);
   const [openSnackBarForDel, setOpenSnackBarForDel] = useState(false);
   const [openSnackBarForUpdt, setOpenSnackBarForUpdt] = useState(false);
+
+  const [openSnackBarForAddIng, setOpenSnackBarForAddIng] = useState(false);
+  const [openSnackBarForDelIng, setOpenSnackBarForDelIng] = useState(false);
+  const [openSnackBarForUpdtIng, setOpenSnackBarForUpdtIng] = useState(false);
+
   const [searchKeyword, setSearchKeyword] = useState('');
 
   const [categList, setCategList] = useState([]);
+  const [ingredientsList, setIngredientsList] = useState([]);
 
   const [id, setId] = useState('');
+  const [ingredientName, setIngredientName] = useState('');
+  const [ingredientPrice, setIngredientPrice] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
+  const [ingredientsPrice, setIngredientsPrice] = useState('');
+  const [ingredientsPrice1, setIngredientsPrice1] = useState('');
+  const [ingredientsPrice2, setIngredientsPrice2] = useState('');
+  const [ingredientsPrice3, setIngredientsPrice3] = useState('');
+  const [ingredientsPrice4, setIngredientsPrice4] = useState('');
+  const [ingredientsPrice5, setIngredientsPrice5] = useState('');
+  const [ingredientsPrice6, setIngredientsPrice6] = useState('');
+  const [ingredientsPrice7, setIngredientsPrice7] = useState('');
+  const [ingredientsPrice8, setIngredientsPrice8] = useState('');
+  const [ingredientsPrice9, setIngredientsPrice9] = useState('');
+  const [ingredientsPrice10, setIngredientsPrice10] = useState('');
+
+  const [ingredientsPrice11, setIngredientsPrice11] = useState('');
+  const [ingredientsPrice12, setIngredientsPrice12] = useState('');
+  const [ingredientsPrice13, setIngredientsPrice13] = useState('');
+  const [ingredientsPrice14, setIngredientsPrice14] = useState('');
+  const [ingredientsPrice15, setIngredientsPrice15] = useState('');
+  const [ingredientsPrice16, setIngredientsPrice16] = useState('');
+  const [ingredientsPrice17, setIngredientsPrice17] = useState('');
+  const [ingredientsPrice18, setIngredientsPrice18] = useState('');
+  const [ingredientsPrice19, setIngredientsPrice19] = useState('');
+
+  const [ingredientsPrice20, setIngredientsPrice20] = useState('');
+  const [ingredientsPrice21, setIngredientsPrice21] = useState('');
+  const [ingredientsPrice22, setIngredientsPrice22] = useState('');
+  const [ingredientsPrice23, setIngredientsPrice23] = useState('');
+  const [ingredientsPrice24, setIngredientsPrice24] = useState('');
+  const [ingredientsPrice25, setIngredientsPrice25] = useState('');
+
   const [ingredients, setIngredients] = useState('');
   const [ingredients1, setIngredients1] = useState('');
   const [ingredients2, setIngredients2] = useState('');
@@ -187,6 +236,8 @@ const AdminPage = () => {
   const [photo, setPhoto] = useState('');
   const [photo1, setPhoto1] = useState('');
 
+  const [ingredientId, setIngredientId] = useState('');
+
   //state for list Recipes
   const [recipeList, setRecipeList] = useState([]);
   const [pageDetails, setPageDetails] = useState(null);
@@ -216,6 +267,30 @@ const AdminPage = () => {
   const [showIngredient25, setShowIngredient25] = useState(false);
   const [showIngredient26, setShowIngredient26] = useState(false);
 
+  const [showIngredientPrice4, setShowIngredientPrice4] = useState(false);
+  const [showIngredientPrice5, setShowIngredientPrice5] = useState(false);
+  const [showIngredientPrice6, setShowIngredientPrice6] = useState(false);
+  const [showIngredientPrice7, setShowIngredientPrice7] = useState(false);
+  const [showIngredientPrice8, setShowIngredientPrice8] = useState(false);
+  const [showIngredientPrice9, setShowIngredientPrice9] = useState(false);
+  const [showIngredientPrice10, setShowIngredientPrice10] = useState(false);
+  const [showIngredientPrice11, setShowIngredientPrice11] = useState(false);
+  const [showIngredientPrice12, setShowIngredientPrice12] = useState(false);
+  const [showIngredientPrice13, setShowIngredientPrice13] = useState(false);
+  const [showIngredientPrice14, setShowIngredientPrice14] = useState(false);
+  const [showIngredientPrice15, setShowIngredientPrice15] = useState(false);
+  const [showIngredientPrice16, setShowIngredientPrice16] = useState(false);
+  const [showIngredientPrice17, setShowIngredientPrice17] = useState(false);
+  const [showIngredientPrice18, setShowIngredientPrice18] = useState(false);
+  const [showIngredientPrice19, setShowIngredientPrice19] = useState(false);
+  const [showIngredientPrice20, setShowIngredientPrice20] = useState(false);
+  const [showIngredientPrice21, setShowIngredientPrice21] = useState(false);
+  const [showIngredientPrice22, setShowIngredientPrice22] = useState(false);
+  const [showIngredientPrice23, setShowIngredientPrice23] = useState(false);
+  const [showIngredientPrice24, setShowIngredientPrice24] = useState(false);
+  const [showIngredientPrice25, setShowIngredientPrice25] = useState(false);
+  const [showIngredientPrice26, setShowIngredientPrice26] = useState(false);
+
   const [showInstruction4, setShowInstruction4] = useState(false);
   const [showInstruction5, setShowInstruction5] = useState(false);
   const [showInstruction6, setShowInstruction6] = useState(false);
@@ -241,10 +316,13 @@ const AdminPage = () => {
   const [showInstruction26, setShowInstruction26] = useState(false);
 
   const { loadingCatg, categoryAdd, errorCatg, success } = useSelector(state => state.addCategory);
+  const { loadingIngrd, ingredientAdd, errorIngrd, successAddIngrd } = useSelector(state => state.addIngredient);
   const { user } = useSelector((state) => state.userSignin);
   const { loadingAdd, recipe, errorAdd, successAdd } = useSelector(state => state.addRecipe);
   const { loadingUpdt, recipeUpdt, errorUpdt, successUpdt } = useSelector(state => state.recipeUpdate);
+  const { loadingUpdtIngrd, ingredientUpdt, errorUpdtIngrd, successUpdtIngrd } = useSelector(state => state.updateIngredient);
   const { loadingDel, errorDel, successDel } = useSelector(state => state.recipeDelete);
+  const { loadingDelIngrd, errorDelIngrd, successDelIngrd } = useSelector(state => state.deleteIngredient);
   const { loading, error } = useSelector(state => state.recipeListAll);
 
   const dispatch = useDispatch();
@@ -257,6 +335,24 @@ const AdminPage = () => {
         .then((data) => {
           if (data) {
             setRecipeList(data.docs);
+            setPageDetails({
+              pageIndex: data.page,
+              pageSize: data.limit,
+              totalPages: data.totalPages,
+              totalDocs: data.totalDocs
+            });
+          }
+        })
+    },
+    [dispatch, pageSize, searchKeyword],
+  );
+
+  const handleIngredientsList = useCallback(
+    (pageIndex = 1) => {
+      dispatch(rbook.ingredient.listAllIngredients(pageIndex, pageSize, searchKeyword))
+        .then((data) => {
+          if (data) {
+            setIngredientsList(data);
             setPageDetails({
               pageIndex: data.page,
               pageSize: data.limit,
@@ -296,6 +392,15 @@ const AdminPage = () => {
   }, [categoryAdd]);
 
   useEffect(() => {
+    if (ingredientAdd) {
+      //
+    }
+    return () => {
+      //
+    };
+  }, [ingredientAdd]);
+
+  useEffect(() => {
     if (recipe) {
       //
     }
@@ -312,8 +417,13 @@ const AdminPage = () => {
     handleRecipeList();
   }, [handleRecipeList]);
 
+  useEffect(() => {
+    handleIngredientsList();
+  }, [handleIngredientsList]);
+
   const handleChangePageIndex = (event, value) => {
     handleRecipeList(value);
+    handleIngredientsList(value);
   };
 
   const submitHandler = (event) => {
@@ -326,6 +436,20 @@ const AdminPage = () => {
     });
     setOpenSnackBar(true);
     setOpenModalCategory(false);
+  }
+
+  const submitHandlerIngredient = (event) => {
+    event.preventDefault();
+    const parsedIngredientPrice = parseInt(ingredientPrice);
+    const payload = { name: ingredientName, price: parsedIngredientPrice }
+    dispatch(rbook.ingredient.addIngredient(payload)).then((data) => {
+      if (data) {
+        console.log("SUCCESSORRRR")
+        handleIngredientsList();
+      }
+    });
+    setOpenSnackBarForAddIng(true);
+    setOpenModalIngredientsList(false);
   }
 
   const submitHandlerForRecipe = (event) => {
@@ -361,6 +485,32 @@ const AdminPage = () => {
       ingredients23,
       ingredients24,
       ingredients25,
+      ingredientsPrice,
+      ingredientsPrice1,
+      ingredientsPrice2,
+      ingredientsPrice3,
+      ingredientsPrice4,
+      ingredientsPrice5,
+      ingredientsPrice6,
+      ingredientsPrice7,
+      ingredientsPrice8,
+      ingredientsPrice9,
+      ingredientsPrice10,
+      ingredientsPrice11,
+      ingredientsPrice12,
+      ingredientsPrice13,
+      ingredientsPrice14,
+      ingredientsPrice15,
+      ingredientsPrice16,
+      ingredientsPrice17,
+      ingredientsPrice18,
+      ingredientsPrice19,
+      ingredientsPrice20,
+      ingredientsPrice21,
+      ingredientsPrice22,
+      ingredientsPrice23,
+      ingredientsPrice24,
+      ingredientsPrice25,
       instruction,
       instruction1,
       instruction2,
@@ -471,6 +621,22 @@ const AdminPage = () => {
     setOpenModalRecipeUpdate(false);
   }
 
+  const submitHandlerForIngredientUpdate = (event) => {
+    event.preventDefault();
+    const payload = {
+      id: ingredientId,
+      name: ingredientName,
+      price: ingredientPrice,
+    }
+    dispatch(rbook.ingredient.updateIngredient(payload)).then((data) => {
+      if (data) {
+        handleIngredientsList();
+      }
+    });
+    setOpenSnackBarForUpdtIng(true);
+    setOpenModalIngredientUpdate(false);
+  }
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -479,6 +645,9 @@ const AdminPage = () => {
     setOpenSnackBarForDel(false);
     setOpenSnackBarForAdd(false);
     setOpenSnackBarForUpdt(false);
+    setOpenSnackBarForAddIng(false);
+    setOpenSnackBarForDelIng(false);
+    setOpenSnackBarForUpdtIng(false);
   };
 
 
@@ -503,6 +672,15 @@ const AdminPage = () => {
   //modal for recipeList
   const handleOpenModalRecipeList = () => {
     setOpenModalRecipeList(true);
+  };
+
+  //modal for ingredientList
+  const handleOpenModalIngredientsList = () => {
+    setOpenModalIngredientsList(true);
+  };
+
+  const handleOpenModalIngredientAdd = () => {
+    setOpenModalIngredientAdd(true);
   };
 
   //modal for recipe edit Modal
@@ -568,13 +746,34 @@ const AdminPage = () => {
     setPhoto1(recipe.photo1);
   };
 
+  const handleOpenModalIngredientUpdate = (ingredient) => {
+    console.log('Ingredient_Id', ingredient);
+    setOpenModalIngredientUpdate(true);
+    setIngredientName(ingredient.name)
+    setIngredientPrice(ingredient.price)
+    setIngredientId(ingredient._id);
+  };
+
   const handleCloseModalRecipeUpdate = () => {
     setOpenModalRecipeUpdate(false);
   };
 
+  const handleCloseModalIngredientUpdate = () => {
+    setOpenModalIngredientUpdate(false);
+  };
+
+
   const handleCloseModalRecipeList = () => {
     setOpenModalRecipeList(false);
     setSearchKeyword('');
+  };
+
+  const handleCloseModalIngredientsList = () => {
+    setOpenModalIngredientsList(false);
+  };
+
+  const handleCloseModalIngredientAdd = () => {
+    setOpenModalIngredientAdd(false);
   };
 
   const handleDelete = (recipe) => {
@@ -584,6 +783,15 @@ const AdminPage = () => {
       }
     });
     setOpenSnackBarForDel(true);
+  }
+
+  const handleDeleteIngrd = (ingredient) => {
+    dispatch(rbook.ingredient.deleteIngredient(ingredient._id)).then((data) => {
+      if (data) {
+        handleIngredientsList();
+      }
+    });
+    setOpenSnackBarForDelIng(true);
   }
 
   const createBanana = (recipe, idx) => {
@@ -607,6 +815,28 @@ const AdminPage = () => {
       );
     }
 
+  };
+
+  const createPotato = (ingredient, idx) => {
+    if ( lowReso ) {
+      return (
+        <TableBody style = {{ display: loading || loadingDel && 'none'}} key={idx}>
+          <TableCell onClick={() => handleOpenModalIngredientUpdate(ingredient)} ><div className={classes.tableCell1}>{ingredient.name}</div></TableCell>
+          <TableCell><div className={classes.tableCell1}><DeleteIcon onClick={() => handleDeleteIngrd(ingredient)} color="secondary"/></div></TableCell>
+        </TableBody>
+      );
+    } else {
+      return (
+        <TableBody style = {{ display: loading || loadingDel && 'none'}} key={idx}>
+          <TableCell><div className={classes.tableCell}>{ingredient._id}</div></TableCell>
+          <TableCell><div className={classes.tableCell}>{ingredient.name}</div></TableCell>
+          <TableCell><div className={classes.tableCell}>₱{parseFloat(ingredient.price).toFixed(2)}</div></TableCell>
+          <TableCell><EditIcon onClick={() => handleOpenModalIngredientUpdate(ingredient)} color="primary"/></TableCell>
+          <TableCell><DeleteIcon onClick={() => handleDeleteIngrd(ingredient)} color="secondary"/></TableCell>
+        </TableBody>
+      );
+    }
+  
   };
 
   const showError = () => (
@@ -648,6 +878,36 @@ const AdminPage = () => {
   const showSuccessForUpdateRecipe = () => (
     <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBarForUpdt} autoHideDuration={2000} onClose={handleClose}>
       <Alert severity="success">{recipeUpdt && recipeUpdt.name} updated!</Alert>
+    </Snackbar>
+  );
+
+  const showErrorForUpdateIngredient = () => (
+    <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBarForUpdt} autoHideDuration={2000} onClose={handleClose}>
+      <Alert severity="error">{errorUpdtIngrd}</Alert>
+    </Snackbar>
+  );
+
+  const showSuccessForUpdateIngredient = () => (
+    <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBarForUpdtIng} autoHideDuration={2000} onClose={handleClose}>
+      <Alert severity="success">{ingredientUpdt && ingredientUpdt.name} updated!</Alert>
+    </Snackbar>
+  );
+
+  const showErrorForAddIngredient = () => (
+    <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBarForUpdtIng} autoHideDuration={2000} onClose={handleClose}>
+      <Alert severity="error">{errorIngrd}</Alert>
+    </Snackbar>
+  );
+
+  const showSuccessDeleteIngrd = () => (
+    <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBarForDelIng} autoHideDuration={2000} onClose={handleClose}>
+      <Alert severity="success">Ingredient Deleted!</Alert>
+    </Snackbar>
+  );
+
+  const showSuccessForAddIngredient = () => (
+    <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBarForAddIng} autoHideDuration={2000} onClose={handleClose}>
+      <Alert severity="success">{ingredientAdd && ingredientAdd.name} added in ingredients!</Alert>
     </Snackbar>
   );
 
@@ -832,6 +1092,190 @@ const AdminPage = () => {
       setShowIngredient26(false);
     } else {
       setShowIngredient26(true);
+    }
+  };
+
+  const handleShowIngredientPrice4 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice4(false);
+    } else {
+      setShowIngredientPrice4(true);
+    }
+  };
+  
+  const handleShowIngredientPrice5 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice5(false);
+    } else {
+      setShowIngredientPrice5(true);
+    }
+  };
+  
+  const handleShowIngredientPrice6 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice6(false);
+    } else {
+      setShowIngredientPrice6(true);
+    }
+  };
+  
+  const handleShowIngredientPrice7 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice7(false);
+    } else {
+      setShowIngredientPrice7(true);
+    }
+  };
+  
+  const handleShowIngredientPrice8 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice8(false);
+    } else {
+      setShowIngredientPrice8(true);
+    }
+  };
+  
+  const handleShowIngredientPrice9 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice9(false);
+    } else {
+      setShowIngredientPrice9(true);
+    }
+  };
+  
+  const handleShowIngredientPrice10 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice10(false);
+    } else {
+      setShowIngredientPrice10(true);
+    }
+  };
+  
+  const handleShowIngredientPrice11 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice11(false);
+    } else {
+      setShowIngredientPrice11(true);
+    }
+  };
+  
+  const handleShowIngredientPrice12 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice12(false);
+    } else {
+      setShowIngredientPrice12(true);
+    }
+  };
+  
+  const handleShowIngredientPrice13 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice13(false);
+    } else {
+      setShowIngredientPrice13(true);
+    }
+  };
+  
+  const handleShowIngredientPrice14 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice14(false);
+    } else {
+      setShowIngredientPrice14(true);
+    }
+  };
+  
+  const handleShowIngredientPrice15 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice15(false);
+    } else {
+      setShowIngredientPrice15(true);
+    }
+  };
+  
+  const handleShowIngredientPrice16 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice16(false);
+    } else {
+      setShowIngredientPrice16(true);
+    }
+  };
+  
+  const handleShowIngredientPrice17 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice17(false);
+    } else {
+      setShowIngredientPrice17(true);
+    }
+  };
+  
+  const handleShowIngredientPrice18 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice18(false);
+    } else {
+      setShowIngredientPrice18(true);
+    }
+  };
+  
+  const handleShowIngredientPrice19 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice19(false);
+    } else {
+      setShowIngredientPrice19(true);
+    }
+  };
+  
+  const handleShowIngredientPrice20 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice20(false);
+    } else {
+      setShowIngredientPrice20(true);
+    }
+  };
+  
+  const handleShowIngredientPrice21 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice21(false);
+    } else {
+      setShowIngredientPrice21(true);
+    }
+  };
+  
+  const handleShowIngredientPrice22 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice22(false);
+    } else {
+      setShowIngredientPrice22(true);
+    }
+  };
+  
+  const handleShowIngredientPrice23 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice23(false);
+    } else {
+      setShowIngredientPrice23(true);
+    }
+  };
+  
+  const handleShowIngredientPrice24 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice24(false);
+    } else {
+      setShowIngredientPrice24(true);
+    }
+  };
+  
+  const handleShowIngredientPrice25 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice25(false);
+    } else {
+      setShowIngredientPrice25(true);
+    }
+  };
+  
+  const handleShowIngredientPrice26 = (event) => {
+    if (event.target.value === '') {
+      setShowIngredientPrice26(false);
+    } else {
+      setShowIngredientPrice26(true);
     }
   };
 
@@ -1023,7 +1467,7 @@ const AdminPage = () => {
   document.title = 'Recipebook | Adminpage';
 
   return (
-    loadingUpdt || loadingDel || loadingCatg || loadingAdd ? <center className='loading1' ><CircularProgress color = 'inherit' /></center> :
+    loadingUpdt || loadingDel || loadingCatg || loadingIngrd || loadingAdd || loadingUpdtIngrd || loadingDelIngrd ? <center className='loading1' ><CircularProgress color = 'inherit' /></center> :
     <>
       {successDel && !errorDel && showSuccessDelete()}
       {success && !errorCatg && showSuccess()}
@@ -1031,7 +1475,13 @@ const AdminPage = () => {
       {successAdd && !errorAdd && showSuccessForAddRecipe()}
       {!successAdd && errorAdd && showErrorForAddRecipe()}
       {successUpdt && !errorUpdt && showSuccessForUpdateRecipe()}
+      {successAddIngrd && !errorIngrd && showSuccessForAddIngredient()}
+      {!successAddIngrd && errorIngrd && showErrorForAddIngredient()}
+      {successDelIngrd && !errorDelIngrd && showSuccessDeleteIngrd()}
+      {successUpdtIngrd && !errorUpdtIngrd && showSuccessForUpdateIngredient()}
+      {!successUpdtIngrd && errorUpdtIngrd && showErrorForUpdateIngredient()}
       {!successUpdt && errorUpdt && showErrorForUpdateRecipe()}
+
       <div style = {{ fontSize: 20 }}>
         <center className = 'adminPageTitle'>
           Admin Profile
@@ -1053,7 +1503,13 @@ const AdminPage = () => {
         <Button onClick={handleOpenModalRecipe} startIcon={<AddIcon/>} variant="contained" type="submit">Add Recipe</Button>
       </center>
       <center style = {{marginTop: '1rem'}}>
+        <Button onClick={handleOpenModalIngredientAdd} startIcon={<AddIcon/>} variant="contained" type="submit">Add Ingredient</Button>
+      </center>
+      <center style = {{marginTop: '1rem'}}>
         <Button onClick={handleOpenModalRecipeList} startIcon={<ListIcon/>} variant="contained" type="submit">Recipe List</Button>
+      </center>
+      <center style = {{marginTop: '1rem'}}>
+        <Button onClick={handleOpenModalIngredientsList} startIcon={<ListIcon/>} variant="contained" type="submit">Ingredients List</Button>
       </center>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -1101,6 +1557,102 @@ const AdminPage = () => {
                </div>
                <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Category</Button>
                <Button onClick={handleCloseModalCategory} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
+             </form>
+           </div>
+         </div>
+       </Fade>
+     </Modal>
+     <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={openModalIngredientUpdate}
+        onClose={handleCloseModalIngredientUpdate}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+     >
+       <Fade in={openModalIngredientUpdate}>
+         <div className={classes.paper}>
+           <div  className = 'container'>
+             <form onSubmit = {submitHandlerForIngredientUpdate} className = 'form-container'>
+               <FormControl className={(classes.margin, classes.textField)}>
+                 <InputLabel>Name of ingredient</InputLabel>
+                 <Input
+                   type = "text"
+                   value={ingredientName}
+                   onChange={(e) => setIngredientName(e.target.value)}
+                   style = {{width: '100%'}}
+                   required
+                   label="ingredient"
+                   id = 'ingredientName'
+                   name = 'ingredientName'
+                 />
+               </FormControl>
+               <FormControl className={(classes.margin, classes.textField)}>
+                 <InputLabel>Price of ingredient</InputLabel>
+                 <Input
+                   type = "text"
+                   value={ingredientPrice}
+                   onChange={(e) => setIngredientPrice(e.target.value)}
+                   style = {{width: '100%'}}
+                   required
+                   label="ingredient"
+                   id = 'ingredientName'
+                   name = 'ingredientName'
+                 />
+               </FormControl>
+               <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Ingredient</Button>
+               <Button onClick={handleCloseModalIngredientUpdate} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
+             </form>
+           </div>
+         </div>
+       </Fade>
+     </Modal>
+     <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={openModalIngredientAdd}
+        onClose={handleCloseModalIngredientAdd}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+     >
+       <Fade in={openModalIngredientAdd}>
+         <div className={classes.paper}>
+           <div  className = 'container'>
+             <form onSubmit = {submitHandlerIngredient} className = 'form-container'>
+               <FormControl className={(classes.margin, classes.textField)}>
+                 <InputLabel>Name of ingredient</InputLabel>
+                 <Input
+                   type = "text"
+                   onChange={(e) => setIngredientName(e.target.value)}
+                   style = {{width: '100%'}}
+                   required
+                   label="name"
+                   id = 'ingredientName'
+                   name = 'ingredientPrice'
+                 />
+               </FormControl>
+               <FormControl className={(classes.margin, classes.textField)}>
+                 <InputLabel>Price of ingredient</InputLabel>
+                 <Input
+                   type = "text"
+                   onChange={(e) => setIngredientPrice(e.target.value)}
+                   style = {{width: '100%'}}
+                   required
+                   label="price"
+                   id = 'ingredientPrice'
+                   name = 'ingredientPrice'
+                 />
+               </FormControl>
+               <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Ingredient</Button>
+               <Button onClick={handleCloseModalIngredientAdd} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
              </form>
            </div>
          </div>
@@ -1811,6 +2363,710 @@ const AdminPage = () => {
         </div>
       </Fade>
     </Modal>
+    <Modal
+       aria-labelledby="transition-modal-title"
+       aria-describedby="transition-modal-description"
+       className={classes.modal}
+       open={openModalIngredientsList}
+       onClose={handleCloseModalIngredientsList}
+       closeAfterTransition
+       BackdropComponent={Backdrop}
+       BackdropProps={{
+         timeout: 500,
+       }}
+    >
+      <Fade in={openModalIngredientsList}>
+        <div className={ lowReso? classes.paper2LowReso : classes.paper2 }>
+          <div>
+          {loadingIngrd && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
+          {loadingDel && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
+          {error && <div>{error}</div>}
+          <ClearIcon onClick={handleCloseModalIngredientsList} />
+          <form style = {{ marginTop: '3%', marginBottom: '3%' }} onSubmit={submitHandlerForSearch}>
+            <TextField
+              placeholder = 'Search for recipes?'
+              className = 'searchBar'
+              id="outlined-search"
+              style = {{ display: loadingUpdt && 'none' }}
+              type="search"
+              variant="outlined"
+              name="searchKeyword"
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+            />
+          </form>
+          {lowReso ?
+            <TableContainer style = {{ display: loading && 'none' }} component={Paper}>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow style={{ marginTop:"1rem" }} >
+                    <TableCell><div className={classes.tableCell1}>Name</div></TableCell>
+                    <TableCell><div className={classes.tableCell1}>Delete</div></TableCell>
+                  </TableRow>
+                </TableHead>
+                {ingredientsList.map((ingredient, index) => (
+                  createPotato(ingredient, index)
+                ))}
+              </Table>
+            </TableContainer>
+          :
+          <TableContainer style = {{ display: loading && 'none' }} component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow style={{ marginTop:"1rem" }} >
+                  <TableCell>ID</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Price</TableCell>
+                  <TableCell>Edit</TableCell>
+                  <TableCell>Delete</TableCell>
+                </TableRow>
+              </TableHead>
+              {ingredientsList.map((ingredient, index) => (
+                createPotato(ingredient, index)
+              ))}
+            </Table>
+          </TableContainer>
+          }
+
+          <Pagination
+            style = {{ display: loading && 'none', marginTop: "1rem" }}
+            count={pageDetails && pageDetails.totalPages}
+            page={pageDetails && pageDetails.pageIndex}
+            defaultPage={1}
+            color="primary"
+            size="large"
+            onChange={handleChangePageIndex}
+            classes={{ ul: classes.paginator }}
+          />
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className={classes.modal}
+            open={openModalRecipeUpdate}
+            onClose={handleCloseModalRecipeUpdate}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+         >
+           <Fade in={openModalRecipeUpdate}>
+             <div className={classes.paper1}>
+               <div className = 'container'>
+                 <form onSubmit = {submitHandlerForRecipeUpdate} className = 'form-container'>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Name of the recipe</InputLabel>
+                     <Input
+                       type = "text"
+                       value={name}
+                       onChange={(e) => setName(e.target.value)}
+                       required
+                       id = 'name'
+                       name = 'name'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <TextField
+                       id="description"
+                       label="Description"
+                       value={description}
+                       multiline
+                       name="description"
+                       onChange={(e) => setDescription(e.target.value)}
+                       variant="outlined"
+                       rows={4}
+                     />
+                   </FormControl>
+                   <FormControl required className={(classes.margin, classes.textField)}>
+                     <Select
+                       native
+                       required
+                       variant="outlined"
+                       onChange={(e) => setCategory(e.target.value)}
+                       value={category}
+                       inputProps={{
+                         name: 'category',
+                         id: 'category',
+                       }}
+                     >
+                       <option value = "">Select Category</option>
+                       {
+                        categList.map((c, i) => (
+                          <option key={i} value={c._id}>
+                              {c.name}
+                          </option>
+                       ))}
+                     </Select>
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 1 (required)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients}
+                       onChange={(e) => setIngredients(e.target.value)}
+                       required
+                       id = 'ingredients'
+                       name = 'ingredients'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 2 (required)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients1}
+                       onChange={(e) => setIngredients1(e.target.value)}
+                       required
+                       id = 'ingredients1'
+                       name = 'ingredients1'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 3 (required)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients2}
+                       onChange={(e) => setIngredients2(e.target.value)}
+                       required
+                       id = 'ingredients2'
+                       name = 'ingredients2'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 4 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients3}
+                       onChange={(e) => setIngredients3(e.target.value)}
+                       id = 'ingredients3'
+                       name = 'ingredients3'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 5 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients4}
+                       onChange={(e) => setIngredients4(e.target.value)}
+                       id = 'ingredients4'
+                       name = 'ingredients4'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 6 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients5}
+                       onChange={(e) => setIngredients5(e.target.value)}
+                       id = 'ingredients5'
+                       name = 'ingredients5'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 7 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients6}
+                       onChange={(e) => setIngredients6(e.target.value)}
+                       id = 'ingredients6'
+                       name = 'ingredients6'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 8 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients7}
+                       onChange={(e) => setIngredients7(e.target.value)}
+                       id = 'ingredients7'
+                       name = 'ingredients7'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 9 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients8}
+                       onChange={(e) => setIngredients8(e.target.value)}
+                       id = 'ingredients8'
+                       name = 'ingredients8'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 10 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients9}
+                       onChange={(e) => setIngredients9(e.target.value)}
+                       id = 'ingredients9'
+                       name = 'ingredients9'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 11 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients10}
+                       onChange={(e) => setIngredients10(e.target.value)}
+                       id = 'ingredients10'
+                       name = 'ingredients10'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 12 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients11}
+                       onChange={(e) => setIngredients11(e.target.value)}
+                       id = 'ingredients11'
+                       name = 'ingredients11'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 13 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients12}
+                       onChange={(e) => setIngredients12(e.target.value)}
+                       id = 'ingredients12'
+                       name = 'ingredients12'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 14 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients13}
+                       onChange={(e) => setIngredients13(e.target.value)}
+                       id = 'ingredients13'
+                       name = 'ingredients13'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 15 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients14}
+                       onChange={(e) => setIngredients14(e.target.value)}
+                       id = 'ingredients14'
+                       name = 'ingredients14'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 16 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients15}
+                       onChange={(e) => setIngredients15(e.target.value)}
+                       id = 'ingredients15'
+                       name = 'ingredients15'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 17 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients16}
+                       onChange={(e) => setIngredients16(e.target.value)}
+                       id = 'ingredients16'
+                       name = 'ingredients16'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 18 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients17}
+                       onChange={(e) => setIngredients17(e.target.value)}
+                       id = 'ingredients17'
+                       name = 'ingredients17'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 19 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients18}
+                       onChange={(e) => setIngredients18(e.target.value)}
+                       id = 'ingredients18'
+                       name = 'ingredients18'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 20 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients19}
+                       onChange={(e) => setIngredients19(e.target.value)}
+                       id = 'ingredients19'
+                       name = 'ingredients19'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 21 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients20}
+                       onChange={(e) => setIngredients20(e.target.value)}
+                       id = 'ingredients20'
+                       name = 'ingredients20'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 22 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients21}
+                       onChange={(e) => setIngredients21(e.target.value)}
+                       id = 'ingredients21'
+                       name = 'ingredients21'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 23 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients22}
+                       onChange={(e) => setIngredients22(e.target.value)}
+                       id = 'ingredients22'
+                       name = 'ingredients22'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 24 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients23}
+                       onChange={(e) => setIngredients23(e.target.value)}
+                       id = 'ingredients23'
+                       name = 'ingredients23'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 25 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients24}
+                       onChange={(e) => setIngredients24(e.target.value)}
+                       id = 'ingredients24'
+                       name = 'ingredients24'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Ingredient 26 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={ingredients25}
+                       onChange={(e) => setIngredients25(e.target.value)}
+                       id = 'ingredients25'
+                       name = 'ingredients25'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 1 (required)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction}
+                       onChange={(e) => setInstruction(e.target.value)}
+                       required
+                       id = 'instruction'
+                       name = 'instruction'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 2 (required)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction1}
+                       onChange={(e) => setInstruction1(e.target.value)}
+                       required
+                       id = 'instruction1'
+                       name = 'instruction1'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 3 (required)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction2}
+                       onChange={(e) => setInstruction2(e.target.value)}
+                       required
+                       id = 'instruction2'
+                       name = 'instruction2'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 4 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction3}
+                       onChange={(e) => setInstruction3(e.target.value)}
+                       id = 'instruction3'
+                       name = 'instruction3'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 5 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction4}
+                       onChange={(e) => setInstruction4(e.target.value)}
+                       id = 'instruction4'
+                       name = 'instruction4'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 6 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction5}
+                       onChange={(e) => setInstruction5(e.target.value)}
+                       id = 'instruction5'
+                       name = 'instruction5'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 7 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction6}
+                       onChange={(e) => setInstruction6(e.target.value)}
+                       id = 'instruction6'
+                       name = 'instruction6'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 8 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction7}
+                       onChange={(e) => setInstruction7(e.target.value)}
+                       id = 'instruction7'
+                       name = 'instruction7'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 9 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction8}
+                       onChange={(e) => setInstruction8(e.target.value)}
+                       id = 'instruction8'
+                       name = 'instruction8'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 10 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction9}
+                       onChange={(e) => setInstruction9(e.target.value)}
+                       id = 'instruction9'
+                       name = 'instruction9'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 11 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction10}
+                       onChange={(e) => setInstruction10(e.target.value)}
+                       id = 'instruction10'
+                       name = 'instruction10'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 12 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction11}
+                       onChange={(e) => setInstruction11(e.target.value)}
+                       id = 'instruction11'
+                       name = 'instruction11'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 13 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction12}
+                       onChange={(e) => setInstruction12(e.target.value)}
+                       id = 'instruction12'
+                       name = 'instruction12'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 14 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction13}
+                       onChange={(e) => setInstruction13(e.target.value)}
+                       id = 'instruction13'
+                       name = 'instruction13'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 15 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction14}
+                       onChange={(e) => setInstruction14(e.target.value)}
+                       id = 'instruction14'
+                       name = 'instruction14'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 16 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction15}
+                       onChange={(e) => setInstruction15(e.target.value)}
+                       id = 'instruction15'
+                       name = 'instruction15'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 17 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction16}
+                       onChange={(e) => setInstruction16(e.target.value)}
+                       id = 'instruction16'
+                       name = 'instruction16'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 18 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction17}
+                       onChange={(e) => setInstruction17(e.target.value)}
+                       id = 'instruction17'
+                       name = 'instruction17'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 19 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction18}
+                       onChange={(e) => setInstruction18(e.target.value)}
+                       id = 'instruction18'
+                       name = 'instruction18'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 20 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction19}
+                       onChange={(e) => setInstruction19(e.target.value)}
+                       id = 'instruction19'
+                       name = 'instruction19'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 21 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction20}
+                       onChange={(e) => setInstruction20(e.target.value)}
+                       id = 'instruction20'
+                       name = 'instruction20'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 22 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction21}
+                       onChange={(e) => setInstruction21(e.target.value)}
+                       id = 'instruction21'
+                       name = 'instruction21'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 23 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction22}
+                       onChange={(e) => setInstruction22(e.target.value)}
+                       id = 'instruction22'
+                       name = 'instruction22'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 24 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction23}
+                       onChange={(e) => setInstruction23(e.target.value)}
+                       id = 'instruction23'
+                       name = 'instruction23'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 25 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction24}
+                       onChange={(e) => setInstruction24(e.target.value)}
+                       id = 'instruction24'
+                       name = 'instruction24'
+                     />
+                   </FormControl>
+                   <FormControl className={(classes.margin, classes.textField)}>
+                     <InputLabel color="primary">Instruction 26 (unneed)</InputLabel>
+                     <Input
+                       type = "text"
+                       value={instruction25}
+                       onChange={(e) => setInstruction25(e.target.value)}
+                       id = 'instruction25'
+                       name = 'instruction25'
+                     />
+                   </FormControl>
+                   <div style={{marginTop: "1rem"}} className={classes.root}>
+                     <input
+                       accept="image/*"
+                       className={classes.input}
+                       id="photo"
+                       required
+                       type="file"
+                       name = 'photo'
+                       onChange={(e) => setPhoto(e.target.files[0])}
+                     />
+                     <label className="addButtons" htmlFor="photo">
+                       <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
+                         Upload Recipe Photo
+                       </Button>
+                     </label>
+                   </div>
+                   <div style={{marginTop: "1rem"}} className={classes.root}>
+                     <input
+                       accept="image/*"
+                       className={classes.input}
+                       id="photo1"
+                       required
+                       type="file"
+                       name = 'photo1'
+                       onChange={(e) => setPhoto1(e.target.files[0])}
+                     />
+                     <label className="addButtons" htmlFor="photo1">
+                       <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
+                         Upload Details Photo
+                       </Button>
+                     </label>
+                   </div>
+                   <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Recipe</Button>
+                   <Button onClick={handleCloseModalRecipeUpdate} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
+                 </form>
+               </div>
+             </div>
+           </Fade>
+         </Modal>
+          </div>
+        </div>
+      </Fade>
+    </Modal>
      <Modal
        aria-labelledby="transition-modal-title"
        aria-describedby="transition-modal-description"
@@ -1867,15 +3123,24 @@ const AdminPage = () => {
                   ))}
                 </Select>
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 1 (required)</InputLabel>
-                <Input
-                  type = "text"
+              <FormControl required className={(classes.margin, classes.textField)}>
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients(e.target.value)}
-                  required
-                  id = 'ingredients'
-                  name = 'ingredients'
-                />
+                  inputProps={{
+                    name: 'ingredients',
+                    id: 'ingredients',
+                  }}
+                >
+                  <option value = "">Select Ingredient 1 (Required)</option>
+                  {
+                   ingredientsList.map((ing, indx) => (
+                     <option key={indx} value={ing._id}>
+                         {ing.name}
+                     </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 2 (required)</InputLabel>

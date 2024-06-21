@@ -115,6 +115,7 @@ export const detailsRecipe = (recipeById) => async (dispatch) => {
     dispatch({type: types.RECIPE_DETAIL_REQUEST, payload: recipeById});
     const {data} = await axios.get('/api/recipe/get/' + recipeById);
     dispatch({type: types.RECIPE_DETAIL_SUCCESS, payload: data});
+    return data
   }
   catch(error){
     dispatch({type: types.RECIPE_DETAIL_FAIL, payload: error.message});
