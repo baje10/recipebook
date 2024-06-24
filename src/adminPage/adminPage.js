@@ -2499,17 +2499,6 @@ const AdminPage = () => {
                      </Select>
                    </FormControl>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Ingredient 1 (required)</InputLabel>
-                     <Input
-                       type = "text"
-                       value={ingredients}
-                       onChange={(e) => setIngredients(e.target.value)}
-                       required
-                       id = 'ingredients'
-                       name = 'ingredients'
-                     />
-                   </FormControl>
-                   <FormControl className={(classes.margin, classes.textField)}>
                      <InputLabel color="primary">Ingredient 2 (required)</InputLabel>
                      <Input
                        type = "text"
@@ -3135,230 +3124,487 @@ const AdminPage = () => {
                 >
                   <option value = "">Select Ingredient 1 (Required)</option>
                   {
-                   ingredientsList.map((ing, indx) => (
-                     <option key={indx} value={ing._id}>
-                         {ing.name}
-                     </option>
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
                   ))}
                 </Select>
               </FormControl>
-              <FormControl className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 2 (required)</InputLabel>
-                <Input
-                  type = "text"
+              <FormControl required className={(classes.margin, classes.textField)}>
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients1(e.target.value)}
-                  required
-                  id = 'ingredients1'
-                  name = 'ingredients1'
-                />
+                  inputProps={{
+                    name: 'ingredients1',
+                    id: 'ingredients1',
+                  }}
+                >
+                  <option value = "">Select Ingredient 2 (Required)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient4} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 3 (required)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients2(e.target.value)}
-                  required
-                  id = 'ingredients2'
-                  name = 'ingredients2'
-                />
+                  inputProps={{
+                    name: 'ingredients2',
+                    id: 'ingredients2',
+                  }}
+                >
+                  <option value = "">Select Ingredient 3 (Required)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient5} hidden={!showIngredient4} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 4 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients3(e.target.value)}
-                  id = 'ingredients3'
-                  name = 'ingredients3'
-                />
+                  inputProps={{
+                    name: 'ingredients3',
+                    id: 'ingredients3',
+                  }}
+                >
+                  <option value = "">Select Ingredient 4 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient6} hidden={!showIngredient5} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 5 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients4(e.target.value)}
-                  id = 'ingredients4'
-                  name = 'ingredients4'
-                />
+                  inputProps={{
+                    name: 'ingredients4',
+                    id: 'ingredients4',
+                  }}
+                >
+                  <option value = "">Select Ingredient 5 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient7} hidden={!showIngredient6} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 6 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients5(e.target.value)}
-                  id = 'ingredients5'
-                  name = 'ingredients5'
-                />
+                  inputProps={{
+                    name: 'ingredients5',
+                    id: 'ingredients5',
+                  }}
+                >
+                  <option value = "">Select Ingredient 6 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient8} hidden={!showIngredient7} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 7 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients6(e.target.value)}
-                  id = 'ingredients6'
-                  name = 'ingredients6'
-                />
+                  inputProps={{
+                    name: 'ingredients6',
+                    id: 'ingredients6',
+                  }}
+                >
+                  <option value = "">Select Ingredient 7 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient9} hidden={!showIngredient8} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 8 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients7(e.target.value)}
-                  id = 'ingredients7'
-                  name = 'ingredients7'
-                />
+                  inputProps={{
+                    name: 'ingredients7',
+                    id: 'ingredients7',
+                  }}
+                >
+                  <option value = "">Select Ingredient 8 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient10} hidden={!showIngredient9} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 9 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients8(e.target.value)}
-                  id = 'ingredients8'
-                  name = 'ingredients8'
-                />
+                  inputProps={{
+                    name: 'ingredients8',
+                    id: 'ingredients8',
+                  }}
+                >
+                  <option value = "">Select Ingredient 9 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient11} hidden={!showIngredient10} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 10 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients9(e.target.value)}
-                  id = 'ingredients9'
-                  name = 'ingredients9'
-                />
+                  inputProps={{
+                    name: 'ingredients9',
+                    id: 'ingredients9',
+                  }}
+                >
+                  <option value = "">Select Ingredient 10 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient12} hidden={!showIngredient11} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 11 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients10(e.target.value)}
-                  id = 'ingredients10'
-                  name = 'ingredients10'
-                />
+                  inputProps={{
+                    name: 'ingredients10',
+                    id: 'ingredients10',
+                  }}
+                >
+                  <option value = "">Select Ingredient 11 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient13} hidden={!showIngredient12} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 12 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients11(e.target.value)}
-                  id = 'ingredients11'
-                  name = 'ingredients11'
-                />
+                  inputProps={{
+                    name: 'ingredients11',
+                    id: 'ingredients11',
+                  }}
+                >
+                  <option value = "">Select Ingredient 12 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient14} hidden={!showIngredient13} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 13 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients12(e.target.value)}
-                  id = 'ingredients12'
-                  name = 'ingredients12'
-                />
+                  inputProps={{
+                    name: 'ingredients12',
+                    id: 'ingredients12',
+                  }}
+                >
+                  <option value = "">Select Ingredient 13 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient15} hidden={!showIngredient14} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 14 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients13(e.target.value)}
-                  id = 'ingredients13'
-                  name = 'ingredients13'
-                />
+                  inputProps={{
+                    name: 'ingredients13',
+                    id: 'ingredients13',
+                  }}
+                >
+                  <option value = "">Select Ingredient 14 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
-              <FormControl onChange={handleShowIngredient16} hidden={!showIngredient15} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 15 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+              <FormControl onChange={handleShowIngredient16} hidden={!showIngredient17} className={(classes.margin, classes.textField)}>
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients14(e.target.value)}
-                  id = 'ingredients14'
-                  name = 'ingredients14'
-                />
+                  inputProps={{
+                    name: 'ingredients14',
+                    id: 'ingredients14',
+                  }}
+                >
+                  <option value = "">Select Ingredient 15 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient17} hidden={!showIngredient16} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 16 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients15(e.target.value)}
-                  id = 'ingredients15'
-                  name = 'ingredients15'
-                />
+                  inputProps={{
+                    name: 'ingredients15',
+                    id: 'ingredients15',
+                  }}
+                >
+                  <option value = "">Select Ingredient 16 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient18} hidden={!showIngredient17} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 17 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients16(e.target.value)}
-                  id = 'ingredients16'
-                  name = 'ingredients16'
-                />
+                  inputProps={{
+                    name: 'ingredients16',
+                    id: 'ingredients16',
+                  }}
+                >
+                  <option value = "">Select Ingredient 17 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient19} hidden={!showIngredient18} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 18 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients17(e.target.value)}
-                  id = 'ingredients17'
-                  name = 'ingredients17'
-                />
+                  inputProps={{
+                    name: 'ingredients17',
+                    id: 'ingredients17',
+                  }}
+                >
+                  <option value = "">Select Ingredient 18 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient20} hidden={!showIngredient19} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 19 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients18(e.target.value)}
-                  id = 'ingredients18'
-                  name = 'ingredients18'
-                />
+                  inputProps={{
+                    name: 'ingredients18',
+                    id: 'ingredients18',
+                  }}
+                >
+                  <option value = "">Select Ingredient 19 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient21} hidden={!showIngredient20} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 20 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients19(e.target.value)}
-                  id = 'ingredients19'
-                  name = 'ingredients19'
-                />
+                  inputProps={{
+                    name: 'ingredients19',
+                    id: 'ingredients19',
+                  }}
+                >
+                  <option value = "">Select Ingredient 20 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient22} hidden={!showIngredient21} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 21 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients20(e.target.value)}
-                  id = 'ingredients20'
-                  name = 'ingredients20'
-                />
+                  inputProps={{
+                    name: 'ingredients20',
+                    id: 'ingredients20',
+                  }}
+                >
+                  <option value = "">Select Ingredient 21 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient23} hidden={!showIngredient22} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 22 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients21(e.target.value)}
-                  id = 'ingredients21'
-                  name = 'ingredients21'
-                />
+                  inputProps={{
+                    name: 'ingredients21',
+                    id: 'ingredients21',
+                  }}
+                >
+                  <option value = "">Select Ingredient 22 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient24} hidden={!showIngredient23} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 23 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients22(e.target.value)}
-                  id = 'ingredients22'
-                  name = 'ingredients22'
-                />
+                  inputProps={{
+                    name: 'ingredients22',
+                    id: 'ingredients22',
+                  }}
+                >
+                  <option value = "">Select Ingredient 23 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient25} hidden={!showIngredient24} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 24 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients23(e.target.value)}
-                  id = 'ingredients23'
-                  name = 'ingredients23'
-                />
+                  inputProps={{
+                    name: 'ingredients23',
+                    id: 'ingredients23',
+                  }}
+                >
+                  <option value = "">Select Ingredient 24 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl onChange={handleShowIngredient26} hidden={!showIngredient25} className={(classes.margin, classes.textField)}>
-                <InputLabel color="primary">Ingredient 25 (unneed)</InputLabel>
-                <Input
-                  type = "text"
+                <Select
+                  native
+                  variant="outlined"
                   onChange={(e) => setIngredients24(e.target.value)}
-                  id = 'ingredients24'
-                  name = 'ingredients24'
-                />
+                  inputProps={{
+                    name: 'ingredients24',
+                    id: 'ingredients24',
+                  }}
+                >
+                  <option value = "">Select Ingredient 25 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl hidden={!showIngredient26} className={(classes.margin, classes.textField)}>
+                <Select
+                  native
+                  variant="outlined"
+                  onChange={(e) => setIngredients25(e.target.value)}
+                  inputProps={{
+                    name: 'ingredients25',
+                    id: 'ingredients25',
+                  }}
+                >
+                  <option value = "">Select Ingredient 26 (Unneed)</option>
+                  {
+                  ingredientsList.map((ing, indx) => (
+                    <option key={indx} value={ing._id}>
+                        {ing.name}
+                    </option>
+                  ))}
+                </Select>
               </FormControl>
               <FormControl hidden={!showIngredient26} className={(classes.margin, classes.textField)}>
                 <InputLabel color="primary">Ingredient 26 (unneed)</InputLabel>
