@@ -50,6 +50,20 @@ export const listAllIngredients = () => async (dispatch) => {
   }
 }
 
+export const listAllIngredientsPaginate = (pageIndex = 1, pageSize = 5, search= '') => async (dispatch) => {
+  try{
+    dispatch({type: types.INGREDIENT_LIST_REQUEST});
+    const { data } = await axios.get(
+    '/api/ingredient/listpaginate?pageIndex=' + pageIndex + '&pageSize=' + pageSize + '&name=' + search
+     );
+    dispatch({type: types.INGREDIENT_LIST_SUCCESS, payload: data});
+    return data
+  }
+  catch(error){
+    dispatch({type: types.INGREDIENT_LIST_FAIL, payload: error.message})
+  }
+}
+
 export const updateIngredient = (payload) => async (dispatch, getState) => {
   try {
     dispatch({ type: types.INGREDIENT_UPDATE_REQUEST, payload: { payload } });

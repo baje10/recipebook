@@ -249,6 +249,54 @@ text-decoration: none;
   font-size: 2rem;
 }
 
+.adminDashboardCont {
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+
+.adminDashboardLeftContent {
+  font-size: 1.5rem;
+  width: 30rem;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #f9f9f9; /* Light background color */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition effects */
+  margin: 1rem;
+}
+
+.adminDashboardLeftContent:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.adminDashboardRightContent {
+  font-size: 1.5rem;
+  display: flex;
+  gap: 20px;
+  width: 30rem;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #f9f9f9; /* Light background color */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition effects */
+  margin: 1rem;
+}
+
+.adminDashboardRightContent:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+
 .adminLinks{
   color: red;
   text-decoration: none;
@@ -330,5 +378,9 @@ text-decoration: none;
     height: auto;
     width: 100%;
     object-fit: cover;
+  }
+
+  .adminDashboardLeftContent {
+    font-size: 1rem;
   }
 }

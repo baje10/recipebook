@@ -135,10 +135,12 @@ const AdminPage = () => {
   const [openSnackBarForDelIng, setOpenSnackBarForDelIng] = useState(false);
   const [openSnackBarForUpdtIng, setOpenSnackBarForUpdtIng] = useState(false);
 
+  const [searchKeywordIng, setSearchKeywordIng] = useState('');
   const [searchKeyword, setSearchKeyword] = useState('');
 
   const [categList, setCategList] = useState([]);
   const [ingredientsList, setIngredientsList] = useState([]);
+  const [ingredientsListPaginate, setIngredientsListPaginate] = useState([]);
 
   const [id, setId] = useState('');
   const [ingredientName, setIngredientName] = useState('');
@@ -146,34 +148,6 @@ const AdminPage = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [ingredientsPrice, setIngredientsPrice] = useState('');
-  const [ingredientsPrice1, setIngredientsPrice1] = useState('');
-  const [ingredientsPrice2, setIngredientsPrice2] = useState('');
-  const [ingredientsPrice3, setIngredientsPrice3] = useState('');
-  const [ingredientsPrice4, setIngredientsPrice4] = useState('');
-  const [ingredientsPrice5, setIngredientsPrice5] = useState('');
-  const [ingredientsPrice6, setIngredientsPrice6] = useState('');
-  const [ingredientsPrice7, setIngredientsPrice7] = useState('');
-  const [ingredientsPrice8, setIngredientsPrice8] = useState('');
-  const [ingredientsPrice9, setIngredientsPrice9] = useState('');
-  const [ingredientsPrice10, setIngredientsPrice10] = useState('');
-
-  const [ingredientsPrice11, setIngredientsPrice11] = useState('');
-  const [ingredientsPrice12, setIngredientsPrice12] = useState('');
-  const [ingredientsPrice13, setIngredientsPrice13] = useState('');
-  const [ingredientsPrice14, setIngredientsPrice14] = useState('');
-  const [ingredientsPrice15, setIngredientsPrice15] = useState('');
-  const [ingredientsPrice16, setIngredientsPrice16] = useState('');
-  const [ingredientsPrice17, setIngredientsPrice17] = useState('');
-  const [ingredientsPrice18, setIngredientsPrice18] = useState('');
-  const [ingredientsPrice19, setIngredientsPrice19] = useState('');
-
-  const [ingredientsPrice20, setIngredientsPrice20] = useState('');
-  const [ingredientsPrice21, setIngredientsPrice21] = useState('');
-  const [ingredientsPrice22, setIngredientsPrice22] = useState('');
-  const [ingredientsPrice23, setIngredientsPrice23] = useState('');
-  const [ingredientsPrice24, setIngredientsPrice24] = useState('');
-  const [ingredientsPrice25, setIngredientsPrice25] = useState('');
 
   const [ingredients, setIngredients] = useState('');
   const [ingredients1, setIngredients1] = useState('');
@@ -241,6 +215,7 @@ const AdminPage = () => {
   //state for list Recipes
   const [recipeList, setRecipeList] = useState([]);
   const [pageDetails, setPageDetails] = useState(null);
+  const [pageDetailsIng, setPageDetailsIng] = useState(null);
   const [pageSize] = useState(7);
 
   const [showIngredient4, setShowIngredient4] = useState(false);
@@ -266,30 +241,6 @@ const AdminPage = () => {
   const [showIngredient24, setShowIngredient24] = useState(false);
   const [showIngredient25, setShowIngredient25] = useState(false);
   const [showIngredient26, setShowIngredient26] = useState(false);
-
-  const [showIngredientPrice4, setShowIngredientPrice4] = useState(false);
-  const [showIngredientPrice5, setShowIngredientPrice5] = useState(false);
-  const [showIngredientPrice6, setShowIngredientPrice6] = useState(false);
-  const [showIngredientPrice7, setShowIngredientPrice7] = useState(false);
-  const [showIngredientPrice8, setShowIngredientPrice8] = useState(false);
-  const [showIngredientPrice9, setShowIngredientPrice9] = useState(false);
-  const [showIngredientPrice10, setShowIngredientPrice10] = useState(false);
-  const [showIngredientPrice11, setShowIngredientPrice11] = useState(false);
-  const [showIngredientPrice12, setShowIngredientPrice12] = useState(false);
-  const [showIngredientPrice13, setShowIngredientPrice13] = useState(false);
-  const [showIngredientPrice14, setShowIngredientPrice14] = useState(false);
-  const [showIngredientPrice15, setShowIngredientPrice15] = useState(false);
-  const [showIngredientPrice16, setShowIngredientPrice16] = useState(false);
-  const [showIngredientPrice17, setShowIngredientPrice17] = useState(false);
-  const [showIngredientPrice18, setShowIngredientPrice18] = useState(false);
-  const [showIngredientPrice19, setShowIngredientPrice19] = useState(false);
-  const [showIngredientPrice20, setShowIngredientPrice20] = useState(false);
-  const [showIngredientPrice21, setShowIngredientPrice21] = useState(false);
-  const [showIngredientPrice22, setShowIngredientPrice22] = useState(false);
-  const [showIngredientPrice23, setShowIngredientPrice23] = useState(false);
-  const [showIngredientPrice24, setShowIngredientPrice24] = useState(false);
-  const [showIngredientPrice25, setShowIngredientPrice25] = useState(false);
-  const [showIngredientPrice26, setShowIngredientPrice26] = useState(false);
 
   const [showInstruction4, setShowInstruction4] = useState(false);
   const [showInstruction5, setShowInstruction5] = useState(false);
@@ -329,8 +280,38 @@ const AdminPage = () => {
   const classes = useStyles();
   const recipeBy = user.name;
 
+  const handleIngredientsList = useCallback(() => {
+      dispatch(rbook.ingredient.listAllIngredients())
+        .then((data) => {
+          if (data) {
+            setIngredientsList(data);
+          }
+        })
+    },
+    [dispatch],
+  );
+
+  const handleIngredientsListPaginate = useCallback(
+    (pageIndex = 1, searchKeywordIng) => {
+      dispatch(rbook.ingredient.listAllIngredientsPaginate(pageIndex, pageSize, searchKeywordIng))
+        .then((data) => {
+          if (data) {
+            setIngredientsListPaginate(data.docs);
+            setPageDetailsIng({
+              pageIndex: data.page,
+              pageSize: data.limit,
+              totalPages: data.totalPages,
+              totalDocs: data.totalDocs
+            });
+          }
+        })
+    },
+    [dispatch, pageSize],
+  );
+
+
   const handleRecipeList = useCallback(
-    (pageIndex = 1) => {
+    (pageIndex = 1, searchKeyword) => {
       dispatch(rbook.recipe.listAllRecipes(pageIndex, pageSize, searchKeyword))
         .then((data) => {
           if (data) {
@@ -339,35 +320,23 @@ const AdminPage = () => {
               pageIndex: data.page,
               pageSize: data.limit,
               totalPages: data.totalPages,
-              totalDocs: data.totalDocs
+              totalDocs: data.totalDocs,
             });
           }
-        })
+        });
     },
-    [dispatch, pageSize, searchKeyword],
+    [dispatch, pageSize],
   );
 
-  const handleIngredientsList = useCallback(
-    (pageIndex = 1) => {
-      dispatch(rbook.ingredient.listAllIngredients(pageIndex, pageSize, searchKeyword))
-        .then((data) => {
-          if (data) {
-            setIngredientsList(data);
-            setPageDetails({
-              pageIndex: data.page,
-              pageSize: data.limit,
-              totalPages: data.totalPages,
-              totalDocs: data.totalDocs
-            });
-          }
-        })
-    },
-    [dispatch, pageSize, searchKeyword],
-  );
+  const submitHandlerForSearch = (event) => {
+    event.preventDefault();
+    handleRecipeList(1, searchKeyword);
+  };
 
-  const submitHandlerForSearch = (e) => {
-    e.preventDefault();
-    dispatch(rbook.recipe.listAllRecipes(searchKeyword));
+  const submitHandlerForSearchIng = (event) => {
+    event.preventDefault();
+    console.log('SearchKeywordIng', searchKeywordIng)
+    handleIngredientsListPaginate(1, searchKeywordIng);
   };
 
   const handleCategoryList = useCallback(
@@ -421,9 +390,17 @@ const AdminPage = () => {
     handleIngredientsList();
   }, [handleIngredientsList]);
 
+  useEffect(() => {
+    handleIngredientsListPaginate();
+  }, [handleIngredientsListPaginate]);
+
   const handleChangePageIndex = (event, value) => {
     handleRecipeList(value);
-    handleIngredientsList(value);
+  };
+
+  const handleChangePageIndexIng = (event, value) => {
+    console.log('VALYU', value)
+    handleIngredientsListPaginate(value);
   };
 
   const submitHandler = (event) => {
@@ -485,32 +462,6 @@ const AdminPage = () => {
       ingredients23,
       ingredients24,
       ingredients25,
-      ingredientsPrice,
-      ingredientsPrice1,
-      ingredientsPrice2,
-      ingredientsPrice3,
-      ingredientsPrice4,
-      ingredientsPrice5,
-      ingredientsPrice6,
-      ingredientsPrice7,
-      ingredientsPrice8,
-      ingredientsPrice9,
-      ingredientsPrice10,
-      ingredientsPrice11,
-      ingredientsPrice12,
-      ingredientsPrice13,
-      ingredientsPrice14,
-      ingredientsPrice15,
-      ingredientsPrice16,
-      ingredientsPrice17,
-      ingredientsPrice18,
-      ingredientsPrice19,
-      ingredientsPrice20,
-      ingredientsPrice21,
-      ingredientsPrice22,
-      ingredientsPrice23,
-      ingredientsPrice24,
-      ingredientsPrice25,
       instruction,
       instruction1,
       instruction2,
@@ -1095,190 +1046,6 @@ const AdminPage = () => {
     }
   };
 
-  const handleShowIngredientPrice4 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice4(false);
-    } else {
-      setShowIngredientPrice4(true);
-    }
-  };
-
-  const handleShowIngredientPrice5 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice5(false);
-    } else {
-      setShowIngredientPrice5(true);
-    }
-  };
-
-  const handleShowIngredientPrice6 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice6(false);
-    } else {
-      setShowIngredientPrice6(true);
-    }
-  };
-
-  const handleShowIngredientPrice7 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice7(false);
-    } else {
-      setShowIngredientPrice7(true);
-    }
-  };
-
-  const handleShowIngredientPrice8 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice8(false);
-    } else {
-      setShowIngredientPrice8(true);
-    }
-  };
-
-  const handleShowIngredientPrice9 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice9(false);
-    } else {
-      setShowIngredientPrice9(true);
-    }
-  };
-
-  const handleShowIngredientPrice10 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice10(false);
-    } else {
-      setShowIngredientPrice10(true);
-    }
-  };
-
-  const handleShowIngredientPrice11 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice11(false);
-    } else {
-      setShowIngredientPrice11(true);
-    }
-  };
-
-  const handleShowIngredientPrice12 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice12(false);
-    } else {
-      setShowIngredientPrice12(true);
-    }
-  };
-
-  const handleShowIngredientPrice13 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice13(false);
-    } else {
-      setShowIngredientPrice13(true);
-    }
-  };
-
-  const handleShowIngredientPrice14 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice14(false);
-    } else {
-      setShowIngredientPrice14(true);
-    }
-  };
-
-  const handleShowIngredientPrice15 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice15(false);
-    } else {
-      setShowIngredientPrice15(true);
-    }
-  };
-
-  const handleShowIngredientPrice16 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice16(false);
-    } else {
-      setShowIngredientPrice16(true);
-    }
-  };
-
-  const handleShowIngredientPrice17 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice17(false);
-    } else {
-      setShowIngredientPrice17(true);
-    }
-  };
-
-  const handleShowIngredientPrice18 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice18(false);
-    } else {
-      setShowIngredientPrice18(true);
-    }
-  };
-
-  const handleShowIngredientPrice19 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice19(false);
-    } else {
-      setShowIngredientPrice19(true);
-    }
-  };
-
-  const handleShowIngredientPrice20 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice20(false);
-    } else {
-      setShowIngredientPrice20(true);
-    }
-  };
-
-  const handleShowIngredientPrice21 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice21(false);
-    } else {
-      setShowIngredientPrice21(true);
-    }
-  };
-
-  const handleShowIngredientPrice22 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice22(false);
-    } else {
-      setShowIngredientPrice22(true);
-    }
-  };
-
-  const handleShowIngredientPrice23 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice23(false);
-    } else {
-      setShowIngredientPrice23(true);
-    }
-  };
-
-  const handleShowIngredientPrice24 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice24(false);
-    } else {
-      setShowIngredientPrice24(true);
-    }
-  };
-
-  const handleShowIngredientPrice25 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice25(false);
-    } else {
-      setShowIngredientPrice25(true);
-    }
-  };
-
-  const handleShowIngredientPrice26 = (event) => {
-    if (event.target.value === '') {
-      setShowIngredientPrice26(false);
-    } else {
-      setShowIngredientPrice26(true);
-    }
-  };
-
   const handleShowInstruction4 = (event) => {
     if (event.target.value === '') {
       setShowInstruction4(false);
@@ -1482,35 +1249,35 @@ const AdminPage = () => {
       {!successUpdtIngrd && errorUpdtIngrd && showErrorForUpdateIngredient()}
       {!successUpdt && errorUpdt && showErrorForUpdateRecipe()}
 
-      <div style = {{ fontSize: 20 }}>
-        <center className = 'adminPageTitle'>
-          Admin Profile
-        </center>
-        <center style = {{marginTop: '1rem'}}>
-          Admin Id: <div style = {{ color:'red'}}>{user._id}</div>
-        </center>
-        <center style = {{marginTop: '1rem'}}>
-          Admin Name: <div style = {{ color:'red'}}>{user.name}</div>
-        </center>
-        <center style = {{marginTop: '1rem'}}>
-          Admin Email: <div style = {{ color:'red'}}>{user.email}</div>
-        </center>
+      <center className = 'adminPageTitle'>
+        Admin Profile
+      </center>
+
+      <div className="adminDashboardCont">
+        <div className="adminDashboardLeftContent">
+          <div>
+            <div>Admin Id:</div> 
+            <div style = {{ color:'red'}}>{user._id}</div>
+          </div>
+          <div style = {{marginTop: '1rem'}}>
+            <div>Admin Name:</div> 
+            <div style = {{ color:'red'}}>{user.name}</div>
+          </div>
+          <div style = {{marginTop: '1rem'}}>
+            <div>Admin Email:</div> 
+            <div style = {{ color:'red'}}>{user.email}</div>
+          </div>
+        </div>
+
+        <div className="adminDashboardRightContent">
+            <Button className="dashboardBtn" onClick={handleOpenModalCategory} startIcon={<AddIcon/>} variant="contained" type="submit">Add Category</Button>
+            <Button className="dashboardBtn" onClick={handleOpenModalRecipe} startIcon={<AddIcon/>} variant="contained" type="submit">Add Recipe</Button>
+            <Button className="dashboardBtn" onClick={handleOpenModalIngredientAdd} startIcon={<AddIcon/>} variant="contained" type="submit">Add Ingredient</Button>
+            <Button className="dashboardBtn" onClick={handleOpenModalRecipeList} startIcon={<ListIcon/>} variant="contained" type="submit">Recipe List</Button>
+            <Button className="dashboardBtn" onClick={handleOpenModalIngredientsList} startIcon={<ListIcon/>} variant="contained" type="submit">Ingredients List</Button>
+        </div>
       </div>
-      <center style = {{marginTop: '1rem'}}>
-        <Button onClick={handleOpenModalCategory} startIcon={<AddIcon/>} variant="contained" type="submit">Add Category</Button>
-      </center>
-      <center style = {{marginTop: '1rem'}}>
-        <Button onClick={handleOpenModalRecipe} startIcon={<AddIcon/>} variant="contained" type="submit">Add Recipe</Button>
-      </center>
-      <center style = {{marginTop: '1rem'}}>
-        <Button onClick={handleOpenModalIngredientAdd} startIcon={<AddIcon/>} variant="contained" type="submit">Add Ingredient</Button>
-      </center>
-      <center style = {{marginTop: '1rem'}}>
-        <Button onClick={handleOpenModalRecipeList} startIcon={<ListIcon/>} variant="contained" type="submit">Recipe List</Button>
-      </center>
-      <center style = {{marginTop: '1rem'}}>
-        <Button onClick={handleOpenModalIngredientsList} startIcon={<ListIcon/>} variant="contained" type="submit">Ingredients List</Button>
-      </center>
+      
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -1677,18 +1444,25 @@ const AdminPage = () => {
           {loadingDel && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
           {error && <div>{error}</div>}
           <ClearIcon onClick={handleCloseModalRecipeList} />
-          <form style = {{ marginTop: '3%', marginBottom: '3%' }} onSubmit={submitHandlerForSearch}>
+          <form style={{ marginTop: '3%', marginBottom: '3%' }} onSubmit={submitHandlerForSearch}>
             <TextField
-              placeholder = 'Search for recipes?'
-              className = 'searchBar'
+              placeholder='Search for recipes?'
+              className='searchBar'
               id="outlined-search"
-              style = {{ display: loadingUpdt && 'none' }}
+              style={{ display: loadingUpdt && 'none' }}
               type="search"
               variant="outlined"
               name="searchKeyword"
-              value={searchKeyword}
               onChange={(e) => setSearchKeyword(e.target.value)}
             />
+            <Button 
+              type="submit" 
+              variant="contained" 
+              color="primary"
+              style={{ marginLeft: '10px' }}
+            >
+              Search
+            </Button>
           </form>
           { lowReso ?
             <TableContainer style = {{ display: loading && 'none' }} component={Paper}>
@@ -2641,7 +2415,7 @@ const AdminPage = () => {
           {loadingDel && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
           {error && <div>{error}</div>}
           <ClearIcon onClick={handleCloseModalIngredientsList} />
-          <form style = {{ marginTop: '3%', marginBottom: '3%' }} onSubmit={submitHandlerForSearch}>
+          <form style = {{ marginTop: '3%', marginBottom: '3%' }} onSubmit={submitHandlerForSearchIng}>
             <TextField
               placeholder = 'Search for recipes?'
               className = 'searchBar'
@@ -2649,10 +2423,17 @@ const AdminPage = () => {
               style = {{ display: loadingUpdt && 'none' }}
               type="search"
               variant="outlined"
-              name="searchKeyword"
-              value={searchKeyword}
-              onChange={(e) => setSearchKeyword(e.target.value)}
+              name="searchKeywordIng"
+              onChange={(e) => setSearchKeywordIng(e.target.value)}
             />
+            <Button 
+              type="submit" 
+              variant="contained" 
+              color="primary"
+              style={{ marginLeft: '10px' }}
+            >
+              Search
+            </Button>
           </form>
           {lowReso ?
             <TableContainer style = {{ display: loading && 'none' }} component={Paper}>
@@ -2663,7 +2444,7 @@ const AdminPage = () => {
                     <TableCell><div className={classes.tableCell1}>Delete</div></TableCell>
                   </TableRow>
                 </TableHead>
-                {ingredientsList.map((ingredient, index) => (
+                {ingredientsListPaginate.map((ingredient, index) => (
                   createPotato(ingredient, index)
                 ))}
               </Table>
@@ -2680,7 +2461,7 @@ const AdminPage = () => {
                   <TableCell>Delete</TableCell>
                 </TableRow>
               </TableHead>
-              {ingredientsList.map((ingredient, index) => (
+              {ingredientsListPaginate.map((ingredient, index) => (
                 createPotato(ingredient, index)
               ))}
             </Table>
@@ -2689,12 +2470,12 @@ const AdminPage = () => {
 
           <Pagination
             style = {{ display: loading && 'none', marginTop: "1rem" }}
-            count={pageDetails && pageDetails.totalPages}
-            page={pageDetails && pageDetails.pageIndex}
+            count={pageDetailsIng && pageDetailsIng.totalPages}
+            page={pageDetailsIng && pageDetailsIng.pageIndex}
             defaultPage={1}
             color="primary"
             size="large"
-            onChange={handleChangePageIndex}
+            onChange={handleChangePageIndexIng}
             classes={{ ul: classes.paginator }}
           />
           <Modal

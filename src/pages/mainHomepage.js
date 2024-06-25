@@ -9,7 +9,7 @@ import CategsHome from './categsHome';
 const MainHome = () => {
   return (
     <>
-      <CategsHome/>
+      { /* <CategsHome/> */ }
       <Home/>
       <NewRecipes/>
     </>
