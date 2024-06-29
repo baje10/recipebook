@@ -97,6 +97,7 @@ const HideAppBar = () => {
                 </div>
                 <li><Link to = '/'>Home</Link></li>
                 <li><Link to = '/about'>About</Link></li>
+                <li><Link to = '/categories'>Categories</Link></li>
                 {
                   user && user.role === 1 ? (
                     <li><Link to = '/admin'>Admin</Link></li>

@@ -156,6 +156,7 @@ const HideAppBar = (props) => {
                   <ul className="sideBar">
                     <li><Link onClick ={handleDrawerClose} to = '/'>Home</Link></li>
                     <li><Link onClick ={handleDrawerClose} to = '/about'>About</Link></li>
+                    <li><Link onClick ={handleDrawerClose} to = '/categories'>Categories</Link></li>
                     {
                       user && user.role === 1 ? (
                         <li><Link onClick ={handleDrawerClose} to = '/admin'>Admin</Link></li>
@@ -169,6 +170,7 @@ const HideAppBar = (props) => {
                   <ul className="sideBar">
                     <li><Link onClick ={handleDrawerClose} to = '/'>Home</Link></li>
                     <li><Link onClick ={handleDrawerClose} to = '/about'>About</Link></li>
+                    <li><Link onClick ={handleDrawerClose} to = '/categories'>Categories</Link></li>
                     {
                       user && user.role === 1 ? (
                         <li><Link onClick ={handleDrawerClose} to = '/admin'>Admin</Link></li>

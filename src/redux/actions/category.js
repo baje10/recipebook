@@ -26,6 +26,20 @@ export const addCategory = (payload) => async (dispatch, getState) => {
   }
 }
 
+export const listAllCategorysPaginate = (pageIndex = 1, pageSize = 5, search= '') => async (dispatch) => {
+  try{
+    dispatch({type: types.CATEGORY_LIST_REQUEST});
+    const { data } = await axios.get(
+    '/api/category/listpaginate?pageIndex=' + pageIndex + '&pageSize=' + pageSize + '&name=' + search
+     );
+    dispatch({type: types.CATEGORY_LIST_SUCCESS, payload: data});
+    return data
+  }
+  catch(error){
+    dispatch({type: types.CATEGORY_LIST_FAIL, payload: error.message})
+  }
+}
+
 export const listCategories = () => async (dispatch) => {
   try{
     dispatch({type: types.CATEGORY_LIST_REQUEST});

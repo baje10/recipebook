@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 //redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,6 +21,11 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import { makeStyles } from '@material-ui/core/styles';
+
+
+//PDF downloader
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 //styling for material-ui
 const useStyles = makeStyles((theme) => ({
@@ -91,6 +96,7 @@ const RecipeDetails = (props) => {
 
   const dispatch = useDispatch();
   const classes = useStyles();
+  const detailsRef = useRef(null); // Using useRef to reference the element
 
   useEffect(() => {
     if (recipeReviewSave) {
@@ -293,6 +299,46 @@ const handleClose = (event, reason) => {
     setOpenSnackBar(false);
 };
 
+const downloadPDF = () => {
+  const input = detailsRef.current;
+  if (!input) {
+    console.error("Element not found");
+    return;
+  }
+
+  html2canvas(input)
+    .then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      
+      console.log('PDF WIDTH', pdfWidth)
+      console.log('PDF HEIGHT', pdfHeight);
+
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+      // Convert the PDF to a blob
+      const pdfBlob = pdf.output('blob');
+
+      // Create a download link for the blob
+      const url = URL.createObjectURL(pdfBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${recipe.name}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url); // Clean up the URL.createObjectURL reference
+    })
+    .catch((error) => {
+      console.error("Error capturing the canvas:", error);
+    });
+};
+
+
 const showSuccess = () => (
   <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBar} autoHideDuration={3000} onClose={handleClose}>
     <Alert severity="success">Comment added</Alert>
@@ -307,129 +353,134 @@ const showError = () => (
   return (
     loading? <center className='loading1' ><CircularProgress color = 'inherit' /></center> : error? <div>{error}</div> :
     <>
-      <center className = 'recipeName'>{recipe.name}</center>
-      <div className="details-container">
-        {recipeReviewSave && showSuccess()}
-        {errorReview && showError()}
-        {
-        recipe.name === undefined ? (
-          <div style = {{display: 'none'}}>loading</div>
-          ) : (
-          <div style = {{display: 'none'}}>{document.title=recipe.name}</div>
-         )
-        }
-        <div className="detailsCol">
-          <Box
-            boxShadow={0}
-            m={1}
-            p={1}
-          >
-            <img
-              alt={recipe.name}
-              src={`/api/recipe/photo1/${recipe._id}`}
-              title={recipe.name}
-            />
-          </Box>
-          <Box
-            boxShadow={0}
-            m={1}
-            p={1}
-          >
-            <img
-              alt={recipe.name}
-              src={`/api/recipe/photo/${recipe._id}`}
-              title={recipe.name}
-            />
-          </Box>
-        </div>
-        <div className="detailsCol1">
-          <Box
-            boxShadow={0}
-            m={0}
-            p={0}
-          >
-            <div style = {{ fontSize: '1.5rem', marginTop: '.5rem' }} ><b><CreateIcon/> Author:</b></div>
-            <div style = {{ fontSize: '1rem' }}>{recipe.recipeBy}</div>
-          </Box>
-          <Box
-            boxShadow={0}
-            m={0}
-            p={0}
-          >
-            <div style = {{ fontSize: '1.5rem', marginTop: "1.5rem" }} ><b><DescriptionIcon/> Description:</b></div>
-            <div style = {{ fontSize: '1rem' }}>{recipe.description}</div>
-          </Box>
-          <Box
-            boxShadow={0}
-            m={0}
-            p={0}
-          >
-            <div className="instruction-container">
-            <div className="listCont">
-            <div style = {{ fontSize: '1.5rem', marginTop: "1.5rem" }} ><b><FastfoodIcon/> Ingredients:</b></div>
-              <li style = {{ display: recipe.ingredients ? '' : 'none' }} ><i className = 'instructions'>{ingredients.name} - ₱{parseFloat(ingredients.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients1 ? '' : 'none' }} ><i className = 'instructions'>{ingredients1.name} - ₱{parseFloat(ingredients1.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients2 ? '' : 'none' }} ><i className = 'instructions'>{ingredients2.name} - ₱{parseFloat(ingredients2.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients3 ? '' : 'none' }} ><i className = 'instructions'>{ingredients3.name} - ₱{parseFloat(ingredients3.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients4 ? '' : 'none' }} ><i className = 'instructions'>{ingredients4.name} - ₱{parseFloat(ingredients4.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients5 ? '' : 'none' }} ><i className = 'instructions'>{ingredients5.name} - ₱{parseFloat(ingredients5.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients6 ? '' : 'none' }} ><i className = 'instructions'>{ingredients6.name} - ₱{parseFloat(ingredients6.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients7 ? '' : 'none' }} ><i className = 'instructions'>{ingredients7.name} - ₱{parseFloat(ingredients7.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients8 ? '' : 'none' }} ><i className = 'instructions'>{ingredients8.name} - ₱{parseFloat(ingredients8.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients9 ? '' : 'none' }} ><i className = 'instructions'>{ingredients9.name} - ₱{parseFloat(ingredients9.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients10 ? '' : 'none' }} ><i className = 'instructions'>{ingredients10.name} - ₱{parseFloat(ingredients10.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients11 ? '' : 'none' }} ><i className = 'instructions'>{ingredients11.name} - ₱{parseFloat(ingredients11.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients12 ? '' : 'none' }} ><i className = 'instructions'>{ingredients12.name} - ₱{parseFloat(ingredients12.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients13 ? '' : 'none' }} ><i className = 'instructions'>{ingredients13.name} - ₱{parseFloat(ingredients13.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients14 ? '' : 'none' }} ><i className = 'instructions'>{ingredients14.name} - ₱{parseFloat(ingredients14.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients15 ? '' : 'none' }} ><i className = 'instructions'>{ingredients15.name} - ₱{parseFloat(ingredients15.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients16 ? '' : 'none' }} ><i className = 'instructions'>{ingredients16.name} - ₱{parseFloat(ingredients16.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients17 ? '' : 'none' }} ><i className = 'instructions'>{ingredients17.name} - ₱{parseFloat(ingredients17.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients18 ? '' : 'none' }} ><i className = 'instructions'>{ingredients18.name} - ₱{parseFloat(ingredients18.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients19 ? '' : 'none' }} ><i className = 'instructions'>{ingredients19.name} - ₱{parseFloat(ingredients19.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients20 ? '' : 'none' }} ><i className = 'instructions'>{ingredients20.name} - ₱{parseFloat(ingredients20.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients21 ? '' : 'none' }} ><i className = 'instructions'>{ingredients21.name} - ₱{parseFloat(ingredients21.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients22 ? '' : 'none' }} ><i className = 'instructions'>{ingredients22.name} - ₱{parseFloat(ingredients22.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients23 ? '' : 'none' }} ><i className = 'instructions'>{ingredients23.name} - ₱{parseFloat(ingredients23.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients24 ? '' : 'none' }} ><i className = 'instructions'>{ingredients24.name} - ₱{parseFloat(ingredients24.price).toFixed(2)}</i></li>
-              <li style = {{ display: recipe.ingredients25 ? '' : 'none' }} ><i className = 'instructions'>{ingredients25.name} - ₱{parseFloat(ingredients25.price).toFixed(2)}</i></li>
-            </div>
+      <div ref={detailsRef}> 
+        <center className = 'recipeName'>{recipe.name}</center>
+        <div className="details-container">
+          {recipeReviewSave && showSuccess()}
+          {errorReview && showError()}
+          {
+          recipe.name === undefined ? (
+            <div style = {{display: 'none'}}>loading</div>
+            ) : (
+            <div style = {{display: 'none'}}>{document.title=recipe.name}</div>
+          )
+          }
+          <div className="detailsCol">
+            <Box
+              boxShadow={0}
+              m={1}
+              p={1}
+            >
+              <img
+                alt={recipe.name}
+                src={`/api/recipe/photo1/${recipe._id}`}
+                title={recipe.name}
+              />
+            </Box>
+            <Box
+              boxShadow={0}
+              m={1}
+              p={1}
+            >
+              <img
+                alt={recipe.name}
+                src={`/api/recipe/photo/${recipe._id}`}
+                title={recipe.name}
+              />
+            </Box>
+          </div>
+          <div className="detailsCol1">
+            <Box
+              boxShadow={0}
+              m={0}
+              p={0}
+            >
+              <div style = {{ fontSize: '1.5rem', marginTop: '.5rem' }} ><b><CreateIcon/> Author:</b></div>
+              <div style = {{ fontSize: '1rem' }}>{recipe.recipeBy}</div>
+            </Box>
+            <Box
+              boxShadow={0}
+              m={0}
+              p={0}
+            >
+              <div style = {{ fontSize: '1.5rem', marginTop: "1.5rem" }} ><b><DescriptionIcon/> Description:</b></div>
+              <div style = {{ fontSize: '1rem' }}>{recipe.description}</div>
+            </Box>
+            <Box
+              boxShadow={0}
+              m={0}
+              p={0}
+            >
+              <div className="instruction-container">
+              <div className="listCont">
+              <div style = {{ fontSize: '1.5rem', marginTop: "1.5rem" }} ><b><FastfoodIcon/> Ingredients:</b></div>
+                <li style = {{ display: recipe.ingredients ? '' : 'none' }} ><i className = 'instructions'>{ingredients.name} - ₱{parseFloat(ingredients.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients1 ? '' : 'none' }} ><i className = 'instructions'>{ingredients1.name} - ₱{parseFloat(ingredients1.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients2 ? '' : 'none' }} ><i className = 'instructions'>{ingredients2.name} - ₱{parseFloat(ingredients2.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients3 ? '' : 'none' }} ><i className = 'instructions'>{ingredients3.name} - ₱{parseFloat(ingredients3.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients4 ? '' : 'none' }} ><i className = 'instructions'>{ingredients4.name} - ₱{parseFloat(ingredients4.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients5 ? '' : 'none' }} ><i className = 'instructions'>{ingredients5.name} - ₱{parseFloat(ingredients5.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients6 ? '' : 'none' }} ><i className = 'instructions'>{ingredients6.name} - ₱{parseFloat(ingredients6.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients7 ? '' : 'none' }} ><i className = 'instructions'>{ingredients7.name} - ₱{parseFloat(ingredients7.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients8 ? '' : 'none' }} ><i className = 'instructions'>{ingredients8.name} - ₱{parseFloat(ingredients8.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients9 ? '' : 'none' }} ><i className = 'instructions'>{ingredients9.name} - ₱{parseFloat(ingredients9.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients10 ? '' : 'none' }} ><i className = 'instructions'>{ingredients10.name} - ₱{parseFloat(ingredients10.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients11 ? '' : 'none' }} ><i className = 'instructions'>{ingredients11.name} - ₱{parseFloat(ingredients11.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients12 ? '' : 'none' }} ><i className = 'instructions'>{ingredients12.name} - ₱{parseFloat(ingredients12.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients13 ? '' : 'none' }} ><i className = 'instructions'>{ingredients13.name} - ₱{parseFloat(ingredients13.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients14 ? '' : 'none' }} ><i className = 'instructions'>{ingredients14.name} - ₱{parseFloat(ingredients14.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients15 ? '' : 'none' }} ><i className = 'instructions'>{ingredients15.name} - ₱{parseFloat(ingredients15.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients16 ? '' : 'none' }} ><i className = 'instructions'>{ingredients16.name} - ₱{parseFloat(ingredients16.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients17 ? '' : 'none' }} ><i className = 'instructions'>{ingredients17.name} - ₱{parseFloat(ingredients17.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients18 ? '' : 'none' }} ><i className = 'instructions'>{ingredients18.name} - ₱{parseFloat(ingredients18.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients19 ? '' : 'none' }} ><i className = 'instructions'>{ingredients19.name} - ₱{parseFloat(ingredients19.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients20 ? '' : 'none' }} ><i className = 'instructions'>{ingredients20.name} - ₱{parseFloat(ingredients20.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients21 ? '' : 'none' }} ><i className = 'instructions'>{ingredients21.name} - ₱{parseFloat(ingredients21.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients22 ? '' : 'none' }} ><i className = 'instructions'>{ingredients22.name} - ₱{parseFloat(ingredients22.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients23 ? '' : 'none' }} ><i className = 'instructions'>{ingredients23.name} - ₱{parseFloat(ingredients23.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients24 ? '' : 'none' }} ><i className = 'instructions'>{ingredients24.name} - ₱{parseFloat(ingredients24.price).toFixed(2)}</i></li>
+                <li style = {{ display: recipe.ingredients25 ? '' : 'none' }} ><i className = 'instructions'>{ingredients25.name} - ₱{parseFloat(ingredients25.price).toFixed(2)}</i></li>
+              </div>
 
-            <div className="listCont">
-              <div style = {{ fontSize: '1.5rem', marginTop: "1.5rem" }} ><b><RestaurantIcon/> Instructions:</b></div>
-              <li style = {{ display: recipe.instruction ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction}</i></li>
-              <li style = {{ display: recipe.instruction1 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction1}</i></li>
-              <li style = {{ display: recipe.instruction2 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction2}</i></li>
-              <li style = {{ display: recipe.instruction3 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction3}</i></li>
-              <li style = {{ display: recipe.instruction4 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction4}</i></li>
-              <li style = {{ display: recipe.instruction5 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction5}</i></li>
-              <li style = {{ display: recipe.instruction6 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction6}</i></li>
-              <li style = {{ display: recipe.instruction7 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction7}</i></li>
-              <li style = {{ display: recipe.instruction8 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction8}</i></li>
-              <li style = {{ display: recipe.instruction9 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction9}</i></li>
-              <li style = {{ display: recipe.instruction10 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction10}</i></li>
-              <li style = {{ display: recipe.instruction11 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction11}</i></li>
-              <li style = {{ display: recipe.instruction12 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction12}</i></li>
-              <li style = {{ display: recipe.instruction13 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction13}</i></li>
-              <li style = {{ display: recipe.instruction14 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction14}</i></li>
-              <li style = {{ display: recipe.instruction15 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction15}</i></li>
-              <li style = {{ display: recipe.instruction16 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction16}</i></li>
-              <li style = {{ display: recipe.instruction17 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction17}</i></li>
-              <li style = {{ display: recipe.instruction18 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction18}</i></li>
-              <li style = {{ display: recipe.instruction19 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction19}</i></li>
-              <li style = {{ display: recipe.instruction20 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction20}</i></li>
-              <li style = {{ display: recipe.instruction21 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction21}</i></li>
-              <li style = {{ display: recipe.instruction22 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction22}</i></li>
-              <li style = {{ display: recipe.instruction23 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction23}</i></li>
-              <li style = {{ display: recipe.instruction24 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction24}</i></li>
-              <li style = {{ display: recipe.instruction25 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction25}</i></li>
-            </div>
-            </div>
-          </Box>
+              <div className="listCont">
+                <div style = {{ fontSize: '1.5rem', marginTop: "1.5rem" }} ><b><RestaurantIcon/> Instructions:</b></div>
+                <li style = {{ display: recipe.instruction ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction}</i></li>
+                <li style = {{ display: recipe.instruction1 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction1}</i></li>
+                <li style = {{ display: recipe.instruction2 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction2}</i></li>
+                <li style = {{ display: recipe.instruction3 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction3}</i></li>
+                <li style = {{ display: recipe.instruction4 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction4}</i></li>
+                <li style = {{ display: recipe.instruction5 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction5}</i></li>
+                <li style = {{ display: recipe.instruction6 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction6}</i></li>
+                <li style = {{ display: recipe.instruction7 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction7}</i></li>
+                <li style = {{ display: recipe.instruction8 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction8}</i></li>
+                <li style = {{ display: recipe.instruction9 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction9}</i></li>
+                <li style = {{ display: recipe.instruction10 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction10}</i></li>
+                <li style = {{ display: recipe.instruction11 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction11}</i></li>
+                <li style = {{ display: recipe.instruction12 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction12}</i></li>
+                <li style = {{ display: recipe.instruction13 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction13}</i></li>
+                <li style = {{ display: recipe.instruction14 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction14}</i></li>
+                <li style = {{ display: recipe.instruction15 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction15}</i></li>
+                <li style = {{ display: recipe.instruction16 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction16}</i></li>
+                <li style = {{ display: recipe.instruction17 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction17}</i></li>
+                <li style = {{ display: recipe.instruction18 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction18}</i></li>
+                <li style = {{ display: recipe.instruction19 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction19}</i></li>
+                <li style = {{ display: recipe.instruction20 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction20}</i></li>
+                <li style = {{ display: recipe.instruction21 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction21}</i></li>
+                <li style = {{ display: recipe.instruction22 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction22}</i></li>
+                <li style = {{ display: recipe.instruction23 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction23}</i></li>
+                <li style = {{ display: recipe.instruction24 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction24}</i></li>
+                <li style = {{ display: recipe.instruction25 ? '' : 'none' }} ><i className = 'instructions'>{recipe.instruction25}</i></li>
+              </div>
+              </div>
+            </Box>
+          </div>
         </div>
       </div>
       <hr/>
       <div className="reviews1">
+        <Button variant="contained" color="primary" onClick={downloadPDF}>
+          Download This Recipe (PDF)
+        </Button>
         <div className = 'reviewsTitle'>Rate this recipe</div>
         <Rating
           name="rating"

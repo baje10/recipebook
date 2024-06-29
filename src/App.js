@@ -16,6 +16,7 @@ import About from './pages/about';
 import Default from './pages/default';
 import RecipeDetails from './pages/recipeDetails';
 import AllRecipe from './pages/allRecipe';
+import Categories from './pages/categories';
 import MainHome from './pages/mainHomepage';
 
 //adminPage
@@ -40,6 +41,7 @@ const App = () => {
          <Route path='/' exact={true} component={MainHome}/>
          <LoggedInRoute path='/signin' component={Signin}/>
          <Route path='/recipes' component={AllRecipe}/>
+         <Route path='/categories' component={Categories}/>
          <LoggedInRoute path='/signup' component={Signup}/>
          <Route path='/about' component={About}/>
          <Route path='/detail/:id' component={RecipeDetails}/>
