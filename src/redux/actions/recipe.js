@@ -45,27 +45,33 @@ export const listAllRecipes = (pageIndex = 1, pageSize = 5, search= '', category
 export const addRecipe = (payload) => async (dispatch, getState) => {
   try {
     dispatch({ type: types.RECIPE_ADD_REQUEST, payload: { payload } });
-    const { userSignin: { user }, } = getState();
+    const { userSignin: { user } } = getState();
     const bodyFormData = new FormData();
 
-    Object.keys(payload).map(fld => {
-      bodyFormData.append(fld, payload[fld]);
-      return fld;
+    Object.keys(payload).forEach(fld => {
+      if (Array.isArray(payload[fld])) {
+        payload[fld].forEach(item => {
+          bodyFormData.append(fld, item);
+        });
+      } else {
+        bodyFormData.append(fld, payload[fld]);
+      }
     });
 
-    const { data } = await axios.post(`/api/recipe/create/${user._id}`,  bodyFormData, {
+    const { data } = await axios.post(`/api/recipe/create/${user._id}`, bodyFormData, {
       headers: {
         Authorization: `Bearer ${user.token}`,
         'Content-Type': 'multipart/form-data',
       },
     });
     dispatch({ type: types.RECIPE_ADD_SUCCESS, payload: data });
-    return data
+    return data;
   } catch (error) {
-    console.log(error)
-    dispatch({type: types.RECIPE_ADD_FAIL, payload: error.response.data.error });
+    console.log(error);
+    dispatch({ type: types.RECIPE_ADD_FAIL, payload: error.response.data.error });
   }
 };
+
 
 export const updateRecipe = (payload) => async (dispatch, getState) => {
   try {
@@ -73,9 +79,14 @@ export const updateRecipe = (payload) => async (dispatch, getState) => {
     const { userSignin: { user }, } = getState();
     const bodyFormData = new FormData();
 
-    Object.keys(payload).map(fld => {
-      bodyFormData.append(fld, payload[fld]);
-      return fld;
+    Object.keys(payload).forEach(fld => {
+      if (Array.isArray(payload[fld])) {
+        payload[fld].forEach(item => {
+          bodyFormData.append(fld, item);
+        });
+      } else {
+        bodyFormData.append(fld, payload[fld]);
+      }
     });
 
     const { data } = await axios.put(`/api/recipe/update/${payload.id}/${user._id}`,  bodyFormData, {
