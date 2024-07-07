@@ -41,6 +41,15 @@ const useStyles = makeStyles({
     justifyContent: "center",
     padding: "10px",
     marginTop:'1%',
+  },
+  viewAllBtn: {
+    marginTop: '2%',
+    color: '#8b664c',
+    border: '1px solid #8b664c',
+    '&:hover': {
+      borderColor: '#765742',
+      color: '#765742',
+    }
   }
 });
 
@@ -116,9 +125,7 @@ const Categories = () => {
            </CardContent>
            <CardActions>
              <Link to = {`/recipes?category=${category._id}`}>
-               <Button size="small" color="primary">
-                 Check it out!
-               </Button>
+               <Button className={classes.viewAllBtn} variant="outlined">Check it out</Button>
              </Link>
            </CardActions>
          </Card>
