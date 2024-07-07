@@ -84,24 +84,25 @@ export const updateRecipe = (payload) => async (dispatch, getState) => {
         payload[fld].forEach(item => {
           bodyFormData.append(fld, item);
         });
-      } else {
+      } else if (payload[fld] !== undefined && payload[fld] !== null) {
         bodyFormData.append(fld, payload[fld]);
       }
     });
 
-    const { data } = await axios.put(`/api/recipe/update/${payload.id}/${user._id}`,  bodyFormData, {
+    const { data } = await axios.put(`/api/recipe/update/${payload.id}/${user._id}`, bodyFormData, {
       headers: {
         Authorization: `Bearer ${user.token}`,
         'Content-Type': 'multipart/form-data',
       },
     });
     dispatch({ type: types.RECIPE_UPDATE_SUCCESS, payload: data });
-    return data
+    return data;
   } catch (error) {
-    console.log(error)
-    dispatch({type: types.RECIPE_UPDATE_FAIL, payload: error.response.data.error });
+    console.log(error);
+    dispatch({ type: types.RECIPE_UPDATE_FAIL, payload: error.response.data.error });
   }
 };
+
 
 export const deleteRecipe = (recipeById) => async (dispatch, getState) => {
   try {

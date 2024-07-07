@@ -51,7 +51,7 @@ const Categories = () => {
   const [pageSize] = useState(5);
   const [categListPaginate, setCategListPaginate] = useState([]);
 
-  document.title='Recipebook | Categories';
+  document.title='Peso Palate | Categories';
 
   const { loading, error } = useSelector(state => state.listCategories);
 

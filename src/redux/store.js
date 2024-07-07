@@ -9,7 +9,13 @@ import { recipeListReducer,
   recipeListRateReducer, 
   recipeDeleteReducer } from './reducers/recipeReducers';
 import { userRegisterReducer, userLoginReducer } from './reducers/userReducers';
-import { categoryAddReducer, categoryListReducer } from './reducers/categoryReducers';
+import { 
+  categoryAddReducer, 
+  categoryListReducer,
+  categoryListPaginateReducer, 
+  categoryUpdateReducer, 
+  categoryDeleteReducer 
+} from './reducers/categoryReducers';
 import { ingredientAddReducer, ingredientListReducer, ingredientDeleteReducer, ingredientUpdateReducer } from './reducers/ingredientReducer'
 import Cookie from 'js-cookie';
 
@@ -31,6 +37,9 @@ const reducer = combineReducers({
   recipeUpdate: recipeUpdateReducer,
   addCategory: categoryAddReducer,
   addIngredient: ingredientAddReducer,
+  categoryPaginate: categoryListPaginateReducer,
+  categoryUpdt: categoryUpdateReducer,
+  categoryDel: categoryDeleteReducer,
   updateIngredient: ingredientUpdateReducer,
   deleteIngredient: ingredientDeleteReducer,
   listIngredients: ingredientListReducer,

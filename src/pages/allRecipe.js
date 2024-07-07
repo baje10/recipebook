@@ -53,7 +53,7 @@ const AllRecipe = () => {
   const [categList, setCategList] = useState([]);
   const [category, setCategory] = useState('');
 
-  document.title='Recipebook | All Recipes';
+  document.title='Peso Palate | All Recipes';
 
   const { loading, error } = useSelector(state => state.recipeListAll);
 

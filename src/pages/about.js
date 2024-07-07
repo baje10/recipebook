@@ -3,13 +3,13 @@ import flag from '../images/flag2.png'
 
 const About = () => {
 
-  document.title='Recipebook | About';
+  document.title ='Peso Palate | About';
 
   return (
     <>
       <center className="welcomeTitle">What is Ph Recipebook?</center>
       <br/>
-      <center>
+      <center style={{ color: '#8b664c'}}>
         <h4>Ph Recipebook is a website that intends to help Filipinos who are just starting on cooking and want to cook different varieties of simple homemade food for their families and friends.</h4>
         <br/>
         <h4>Included in this website are recipes and procedures that would guide you in cooking without difficulty.</h4>

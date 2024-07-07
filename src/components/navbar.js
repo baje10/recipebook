@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
 //logo
-import logo from '../images/recipebook.jpg';
+import logo from '../images/newLogoNoBg.png';
 
 //material-ui
 import AppBar from '@material-ui/core/AppBar';
@@ -74,7 +74,7 @@ const HideAppBar = () => {
       <CssBaseline />
       <div  className='appbar1'>
       <HideOnScroll>
-        <AppBar  style={{ background: '#000000' }}>
+        <AppBar  style={{ background: '#fff' }}>
           <Toolbar>
             <ul className = "navigation">
               <li className = 'title'><img src = {logo} alt = 'logo'/></li>

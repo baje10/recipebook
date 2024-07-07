@@ -50,6 +50,15 @@ const useStyles = makeStyles((theme) => ({
         },
     },
   },
+  viewAllBtn: {
+    marginTop: '2%',
+    color: '#8b664c',
+    border: '1px solid #8b664c',
+    '&:hover': {
+      borderColor: '#765742',
+      color: '#765742',
+    }
+  }
 }));
 
 const RecipeDetails = (props) => {
@@ -479,8 +488,8 @@ const showError = () => (
       </div>
       <hr/>
       <div className="reviews1">
-        <Button variant="contained" color="primary" onClick={downloadPDF}>
-          Download This Recipe (PDF)
+        <Button className={classes.viewAllBtn} onClick={downloadPDF} variant="outlined">
+        Download This Recipe (PDF)
         </Button>
         <div className = 'reviewsTitle'>Rate this recipe</div>
         <Rating

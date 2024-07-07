@@ -35,6 +35,15 @@ const useStyles = makeStyles({
     marginLeft: '.7rem',
     whiteSpace: 'nowrap'
   },
+  viewAllBtn: {
+    marginTop: '2%',
+    color: '#8b664c',
+    border: '1px solid #8b664c',
+    '&:hover': {
+      borderColor: '#765742',
+      color: '#765742',
+    }
+  }
 });
 
 const NewRecipes = () => {
@@ -116,9 +125,7 @@ const NewRecipes = () => {
                   </CardContent>
                   <CardActions>
                     <Link to = {`/detail/${recipes._id}`}>
-                      <Button size="small" color="primary">
-                        Read more
-                      </Button>
+                      <Button className={classes.viewAllBtn} variant="outlined">Read more</Button>
                     </Link>
                   </CardActions>
                 </Card>
@@ -132,9 +139,7 @@ const NewRecipes = () => {
       ) }
       </div>
       <center>
-        <Button style = {{marginTop:'3%'}} variant="contained" color="primary" href="/recipes">
-          View All recipes
-        </Button>
+        <Button className={classes.viewAllBtn} href="/recipes" variant="outlined">View all recipes</Button>
       </center>
     </>
   )

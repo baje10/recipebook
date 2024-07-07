@@ -142,13 +142,13 @@ const Signin = () => {
              />
           </FormControl>
           <Button style = {{marginTop: '5%'}} variant="contained" type="submit">Sign In</Button>
-          <div style = {{marginTop: '5%', fontSize:20}}>Don't have an account? <Link style = {{color: 'gray', textDecoration:'none'}} to = '/signup'>Sign Up</Link></div>
+          <div style = {{marginTop: '5%', fontSize:20, color: '#8b664c'}}>Don't have an account? <Link style = {{color: 'gray', textDecoration:'none'}} to = '/signup'>Sign Up</Link></div>
         </form>
       </div>
     </>
   )
 
-  document.title='Recipebook';
+  document.title='Peso Palate';
 
   return (
       loading? <center className='loading1' ><CircularProgress color = 'inherit' /></center> :

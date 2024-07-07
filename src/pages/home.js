@@ -34,10 +34,19 @@ const useStyles = makeStyles({
     marginLeft: '.7rem',
     whiteSpace: 'nowrap'
   },
+  viewAllBtn: {
+    marginTop: '2%',
+    color: '#8b664c',
+    border: '1px solid #8b664c',
+    '&:hover': {
+      borderColor: '#765742',
+      color: '#765742',
+    }
+  }
 });
 
 const Home = () => {
-  document.title='Recipebook | Home';
+  document.title='Peso Palate | Home';
 
   const lowReso = useMediaQuery('(max-width: 519px)');
 
@@ -118,9 +127,7 @@ const Home = () => {
                   </CardContent>
                   <CardActions>
                     <Link to = {`/detail/${recipes._id}`}>
-                      <Button size="small" color="primary">
-                        Read more
-                      </Button>
+                      <Button className={classes.viewAllBtn} variant="outlined">Read more</Button>
                     </Link>
                   </CardActions>
                 </Card>

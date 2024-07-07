@@ -42,7 +42,7 @@ const breakPoints = [
 const CategsHome = () => {
   const { loading, error } = useSelector(state => state.listCategories);
 
-  document.title='Recipebook | Home';
+  document.title='Peso Palate | Home';
 
   const [categList, setCategList] = useState([]);
 

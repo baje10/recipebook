@@ -145,9 +145,11 @@ const AdminPage = () => {
   const [openModalRecipe, setOpenModalRecipe] = useState(false);
   const [openModalRecipeList, setOpenModalRecipeList] = useState(false);
   const [openModalIngredientsList, setOpenModalIngredientsList] = useState(false);
+  const [openModalCategoryList, setOpenModalCategoryList] = useState(false);
   const [openModalIngredientAdd , setOpenModalIngredientAdd] = useState(false);
   const [openModalRecipeUpdate, setOpenModalRecipeUpdate] = useState(false);
   const [openModalIngredientUpdate, setOpenModalIngredientUpdate] = useState(false);
+  const [openModalCategoryUpdate, setOpenModalCategoryUpdate] = useState(false);
 
   const [openSnackBar, setOpenSnackBar] = useState(false);
   const [openSnackBarForAdd, setOpenSnackBarForAdd] = useState(false);
@@ -160,8 +162,10 @@ const AdminPage = () => {
 
   const [searchKeywordIng, setSearchKeywordIng] = useState('');
   const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchKeywordCat, setSearchKeywordCat] = useState('');
 
   const [categList, setCategList] = useState([]);
+  const [categListPaginate, setCategListPaginate] = useState([]);
   const [ingredientsList, setIngredientsList] = useState([]);
   const [ingredientsListPaginate, setIngredientsListPaginate] = useState([]);
 
@@ -265,10 +269,13 @@ const AdminPage = () => {
   const [photo1, setPhoto1] = useState('');
 
   const [ingredientId, setIngredientId] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+
 
   //state for list Recipes
   const [recipeList, setRecipeList] = useState([]);
   const [pageDetails, setPageDetails] = useState(null);
+  const [pageDetailsCat, setPageDetailsCat] = useState(null);
   const [pageDetailsIng, setPageDetailsIng] = useState(null);
   const [pageSize] = useState(7);
 
@@ -321,6 +328,9 @@ const AdminPage = () => {
   const [showInstruction26, setShowInstruction26] = useState(false);
 
   const { loadingCatg, categoryAdd, errorCatg, success } = useSelector(state => state.addCategory);
+  const { loadingCategPag, errorCategPag } = useSelector(state => state.categoryPaginate);
+  const { loadingCategUpdt, categoryUpdt, errorCategUpdt, successCategUpdt } = useSelector(state => state.categoryUpdt);
+  const { loadingDelCateg, errorCategDel, successCategDel } = useSelector(state => state.categoryDel);
   const { loadingIngrd, ingredientAdd, errorIngrd, successAddIngrd } = useSelector(state => state.addIngredient);
   const { user } = useSelector((state) => state.userSignin);
   const { loadingAdd, recipe, errorAdd, successAdd } = useSelector(state => state.addRecipe);
@@ -382,6 +392,24 @@ const AdminPage = () => {
     [dispatch, pageSize],
   );
 
+  const handleCategoryListPaginate = useCallback(
+    (pageIndex = 1, searchKeywordCat) => {
+      dispatch(rbook.category.listAllCategorysPaginate(pageIndex, pageSize, searchKeywordCat))
+        .then((data) => {
+          if (data) {
+            setCategListPaginate(data.docs);
+            setPageDetailsCat({
+              pageIndex: data.page,
+              pageSize: data.limit,
+              totalPages: data.totalPages,
+              totalDocs: data.totalDocs,
+            });
+          }
+        });
+    },
+    [dispatch, pageSize],
+  );
+
   const submitHandlerForSearch = (event) => {
     event.preventDefault();
     handleRecipeList(1, searchKeyword);
@@ -392,6 +420,12 @@ const AdminPage = () => {
     console.log('SearchKeywordIng', searchKeywordIng)
     handleIngredientsListPaginate(1, searchKeywordIng);
   };
+
+  const submitHandlerForSearchCat = (event) => {
+    event.preventDefault();
+    handleCategoryListPaginate(1, searchKeywordCat);
+  };
+
 
   const handleCategoryList = useCallback(
     () => {
@@ -448,6 +482,10 @@ const AdminPage = () => {
     handleIngredientsListPaginate();
   }, [handleIngredientsListPaginate]);
 
+  useEffect(() => {
+    handleCategoryListPaginate();
+  }, [handleCategoryListPaginate]);
+
   const handleChangePageIndex = (event, value) => {
     handleRecipeList(value);
   };
@@ -457,12 +495,18 @@ const AdminPage = () => {
     handleIngredientsListPaginate(value);
   };
 
+  const handleChangePageIndexCat = (event, value) => {
+    console.log('VALYU', value)
+    handleCategoryListPaginate(value);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
     const payload = { name, photo }
     dispatch(rbook.category.addCategory(payload)).then((data) => {
       if (data) {
         handleCategoryList();
+        handleCategoryListPaginate();
       }
     });
     setOpenSnackBar(true);
@@ -481,6 +525,26 @@ const AdminPage = () => {
     });
     setOpenSnackBarForAddIng(true);
     setOpenModalIngredientsList(false);
+  }
+
+  const submitHandlerForCategoryUpdate = (event) => {
+    event.preventDefault();
+    const payload = {
+      id: categoryId,
+      name
+    }
+
+    if (photo) {
+      payload.photo = photo;
+    }
+
+    dispatch(rbook.category.updateCategory(payload)).then((data) => {
+      if (data) {
+        handleCategoryListPaginate();
+        handleCategoryList();
+      }
+    });
+    setOpenModalCategoryUpdate(false);
   }
 
   const handleChange = (event) => {
@@ -672,9 +736,19 @@ const AdminPage = () => {
       instruction23,
       instruction24,
       instruction25,
-      photo,
-      photo1
+      //photo,
+      //photo1
     }
+
+    if (photo) {
+      payload.photo = photo;
+    }
+  
+    if (photo1) {
+      payload.photo1 = photo1;
+    }
+
+
     dispatch(rbook.recipe.updateRecipe(payload)).then((data) => {
       if (data) {
         handleRecipeList();
@@ -695,6 +769,7 @@ const AdminPage = () => {
 
     dispatch(rbook.ingredient.updateIngredient(payload)).then((data) => {
       if (data) {
+        handleIngredientsList();
         handleIngredientsListPaginate();
       }
     });
@@ -720,6 +795,12 @@ const AdminPage = () => {
   const handleOpenModalCategory = () => {
     setOpenModalCategory(true);
   };
+
+  //modal for add category
+  const handleOpenModalCategoryList = () => {
+    setOpenModalCategoryList(true);
+  };
+
 
   const handleCloseModalCategory = () => {
     setOpenModalCategory(false);
@@ -833,8 +914,8 @@ const AdminPage = () => {
     setInstruction23(recipe.instruction23);
     setInstruction24(recipe.instruction24);
     setInstruction25(recipe.instruction25);
-    setPhoto(recipe.photo);
-    setPhoto1(recipe.photo1);
+    // setPhoto(recipe.photo);
+    // setPhoto1(recipe.photo1);
 
     console.log('RECIPE CATEGORIES UPDATE', recipe.category)
   };
@@ -848,12 +929,24 @@ const AdminPage = () => {
     setMeasurementCosting(ingredient.measurementCosting)
   };
 
+  const handleOpenModalCategoryUpdate = (category) => {
+    console.log('Category_Id', category);
+    setOpenModalCategoryUpdate(true);
+    setCategoryId(category._id);
+    setName(category.name)
+  };
+  
+
   const handleCloseModalRecipeUpdate = () => {
     setOpenModalRecipeUpdate(false);
   };
 
   const handleCloseModalIngredientUpdate = () => {
     setOpenModalIngredientUpdate(false);
+  };
+
+  const handleCloseModalCategoryUpdate = () => {
+    setOpenModalCategoryUpdate(false);
   };
 
 
@@ -864,6 +957,10 @@ const AdminPage = () => {
 
   const handleCloseModalIngredientsList = () => {
     setOpenModalIngredientsList(false);
+  };
+
+  const handleCloseModalCategoryList = () => {
+    setOpenModalCategoryList(false);
   };
 
   const handleCloseModalIngredientAdd = () => {
@@ -882,11 +979,23 @@ const AdminPage = () => {
   const handleDeleteIngrd = (ingredient) => {
     dispatch(rbook.ingredient.deleteIngredient(ingredient._id)).then((data) => {
       if (data) {
+        handleIngredientsList();
         handleIngredientsListPaginate();
       }
     });
     setOpenSnackBarForDelIng(true);
   }
+
+  const handleDeleteCateg = (ingredient) => {
+    dispatch(rbook.category.deleteCategory(ingredient._id)).then((data) => {
+      if (data) {
+        handleCategoryList();
+        handleCategoryListPaginate();
+      }
+    });
+    // setOpenSnackBarForDelIng(true);
+  }
+
 
   const createBanana = (recipe, idx) => {
     if ( lowReso ) {
@@ -932,6 +1041,26 @@ const AdminPage = () => {
       );
     }
 
+  };
+  
+  const createKiwi = (category, idx) => {
+    if ( lowReso ) {
+      return (
+        <TableBody style = {{ display: loading || loadingDel && 'none'}} key={idx}>
+          <TableCell onClick={() => handleOpenModalCategoryUpdate(category)} ><div className={classes.tableCell1}>{category.name}</div></TableCell>
+          <TableCell><div className={classes.tableCell1}><DeleteIcon onClick={() => handleDeleteCateg(category)} color="secondary"/></div></TableCell>
+        </TableBody>
+      );
+    } else {
+      return (
+        <TableBody style = {{ display: loading || loadingDel && 'none'}} key={idx}>
+          <TableCell><div className={classes.tableCell}>{category._id}</div></TableCell>
+          <TableCell><div className={classes.tableCell}>{category.name}</div></TableCell>
+          <TableCell><EditIcon onClick={() => handleOpenModalCategoryUpdate(category)} color="primary"/></TableCell>
+          <TableCell><DeleteIcon onClick={() => handleDeleteCateg(category)} color="secondary"/></TableCell>
+        </TableBody>
+      );
+    }
   };
 
   const showError = () => (
@@ -1375,10 +1504,10 @@ const AdminPage = () => {
   };
 
 
-  document.title = 'Recipebook | Adminpage';
+  document.title = 'Peso Palate | Adminpage';
 
   return (
-    loadingUpdt || loadingDel || loadingCatg || loadingIngrd || loadingAdd || loadingUpdtIngrd || loadingDelIngrd ? <center className='loading1' ><CircularProgress color = 'inherit' /></center> :
+    loadingUpdt || loadingDel || loadingCatg || loadingIngrd || loadingAdd || loadingUpdtIngrd || loadingDelIngrd || loadingCategPag || loadingCategUpdt || loadingDelCateg ? <center className='loading1' ><CircularProgress color = 'inherit' /></center> :
     <>
       {successDel && !errorDel && showSuccessDelete()}
       {success && !errorCatg && showSuccess()}
@@ -1419,6 +1548,7 @@ const AdminPage = () => {
             <Button className="dashboardBtn" onClick={handleOpenModalIngredientAdd} startIcon={<AddIcon/>} variant="contained" type="submit">Add Ingredient</Button>
             <Button className="dashboardBtn" onClick={handleOpenModalRecipeList} startIcon={<ListIcon/>} variant="contained" type="submit">Recipe List</Button>
             <Button className="dashboardBtn" onClick={handleOpenModalIngredientsList} startIcon={<ListIcon/>} variant="contained" type="submit">Ingredients List</Button>
+            <Button className="dashboardBtn" onClick={handleOpenModalCategoryList} startIcon={<ListIcon/>} variant="contained" type="submit">Category List</Button>
         </div>
       </div>
       
@@ -1535,65 +1665,118 @@ const AdminPage = () => {
          </div>
        </Fade>
      </Modal>
+
      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={openModalIngredientAdd}
-        onClose={handleCloseModalIngredientAdd}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-     >
-       <Fade in={openModalIngredientAdd}>
-         <div className={classes.paper}>
-           <div  className = 'container'>
-             <form onSubmit = {submitHandlerIngredient} className = 'form-container'>
-               <FormControl className={(classes.margin, classes.textField)}>
-                 <InputLabel>Name of ingredient</InputLabel>
-                 <Input
-                   type = "text"
-                   onChange={(e) => setIngredientName(e.target.value)}
-                   style = {{width: '100%'}}
-                   required
-                   label="name"
-                   id = 'ingredientName'
-                   name = 'ingredientPrice'
-                 />
-               </FormControl>
-               <FormControl className={(classes.margin, classes.textField)}>
-                 <InputLabel>Measurement of ingredient (Eg. KG, G, Teaspoon)</InputLabel>
-                 <Input
-                   type = "text"
-                   onChange={(e) => setMeasurementCosting(e.target.value)}
-                   style = {{width: '100%'}}
-                   required
-                   label="measurementCosting"
-                   id = 'measurementCosting'
-                   name = 'measurementCosting'
-                 />
-               </FormControl>
-               <FormControl className={(classes.margin, classes.textField)}>
-                 <InputLabel>Price of ingredient</InputLabel>
-                 <Input
-                   type = "text"
-                   onChange={(e) => setIngredientPrice(e.target.value)}
-                   style = {{width: '100%'}}
-                   required
-                   label="price"
-                   id = 'ingredientPrice'
-                   name = 'ingredientPrice'
-                 />
-               </FormControl>
-               <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Ingredient</Button>
-               <Button onClick={handleCloseModalIngredientAdd} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
-             </form>
-           </div>
-         </div>
-       </Fade>
-     </Modal>
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      className={classes.modal}
+      open={openModalIngredientAdd}
+      onClose={handleCloseModalIngredientAdd}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={openModalIngredientAdd}>
+        <div className={classes.paper}>
+          <div  className = 'container'>
+            <form onSubmit = {submitHandlerIngredient} className = 'form-container'>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel>Name of ingredient</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredientName(e.target.value)}
+                  style = {{width: '100%'}}
+                  required
+                  label="name"
+                  id = 'ingredientName'
+                  name = 'ingredientPrice'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel>Measurement of ingredient (Eg. KG, G, Teaspoon)</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setMeasurementCosting(e.target.value)}
+                  style = {{width: '100%'}}
+                  required
+                  label="measurementCosting"
+                  id = 'measurementCosting'
+                  name = 'measurementCosting'
+                />
+              </FormControl>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel>Price of ingredient</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setIngredientPrice(e.target.value)}
+                  style = {{width: '100%'}}
+                  required
+                  label="price"
+                  id = 'ingredientPrice'
+                  name = 'ingredientPrice'
+                />
+              </FormControl>
+              <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Ingredient</Button>
+              <Button onClick={handleCloseModalIngredientAdd} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
+            </form>
+          </div>
+        </div>
+      </Fade>
+    </Modal>
+
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      className={classes.modal}
+      open={openModalCategoryUpdate}
+      onClose={handleCloseModalCategoryUpdate}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={openModalCategoryUpdate}>
+        <div className={classes.paper}>
+          <div  className = 'container'>
+            <form onSubmit = {submitHandlerForCategoryUpdate} className = 'form-container'>
+              <FormControl className={(classes.margin, classes.textField)}>
+                <InputLabel>Name of category</InputLabel>
+                <Input
+                  type = "text"
+                  onChange={(e) => setName(e.target.value)}
+                  style = {{width: '100%'}}
+                  required
+                  value={name}
+                  label="category"
+                  id = 'name'
+                  name = 'name'
+                />
+              </FormControl>
+              <div className={classes.root}>
+                <input
+                  accept="image/*"
+                  className={classes.input}
+                  id="photo"
+                  type="file"
+                  name = 'photo'
+                  onChange={(e) => setPhoto(e.target.files[0])}
+                />
+                <label className="addButtons" htmlFor="photo">
+                  <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
+                    Upload Category Photo
+                  </Button>
+                </label>
+              </div>
+              <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Category</Button>
+              <Button onClick={handleCloseModalCategory} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
+            </form>
+          </div>
+        </div>
+      </Fade>
+    </Modal>
      <Modal
        aria-labelledby="transition-modal-title"
        aria-describedby="transition-modal-description"
@@ -2846,7 +3029,6 @@ const AdminPage = () => {
                        accept="image/*"
                        className={classes.input}
                        id="photo"
-                       required
                        type="file"
                        name = 'photo'
                        onChange={(e) => setPhoto(e.target.files[0])}
@@ -2862,14 +3044,13 @@ const AdminPage = () => {
                        accept="image/*"
                        className={classes.input}
                        id="photo1"
-                       required
                        type="file"
                        name = 'photo1'
                        onChange={(e) => setPhoto1(e.target.files[0])}
                      />
                      <label className="addButtons" htmlFor="photo1">
                        <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
-                         Upload Details Photo
+                         Upload Details Photo Test
                        </Button>
                      </label>
                    </div>
@@ -3610,6 +3791,94 @@ const AdminPage = () => {
         </div>
       </Fade>
     </Modal>
+
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      className={classes.modal}
+      open={openModalCategoryList}
+      onClose={handleCloseModalCategoryList}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={openModalCategoryList}>
+        <div className={ lowReso? classes.paper2LowReso : classes.paper2 }>
+          <div>
+          {loadingCategPag && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
+          {loadingDelCateg && <center><CircularProgress color='inherit' className = 'loading1' /></center>}
+          {errorCategPag && <div>{errorCategPag}</div>}
+          <ClearIcon onClick={handleCloseModalCategoryList} />
+          <form style = {{ marginTop: '3%', marginBottom: '3%' }} onSubmit={submitHandlerForSearchCat}>
+            <TextField
+              placeholder = 'Search for categories?'
+              className = 'searchBar'
+              id="outlined-search"
+              style = {{ display: loadingUpdt && 'none' }}
+              type="search"
+              variant="outlined"
+              name="searchKeywordCat"
+              onChange={(e) => setSearchKeywordCat(e.target.value)}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{ marginLeft: '10px' }}
+            >
+              Search
+            </Button>
+          </form>
+          {lowReso ?
+            <TableContainer style = {{ display: loadingCategPag && 'none' }} component={Paper}>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow style={{ marginTop:"1rem" }} >
+                    <TableCell><div className={classes.tableCell1}>Name</div></TableCell>
+                    <TableCell><div className={classes.tableCell1}>Delete</div></TableCell>
+                  </TableRow>
+                </TableHead>
+                {categListPaginate.map((categ, index) => (
+                  createKiwi(categ, index)
+                ))}
+              </Table>
+            </TableContainer>
+          :
+          <TableContainer style = {{ display: loadingCategPag && 'none' }} component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow style={{ marginTop:"1rem" }} >
+                  <TableCell>ID</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Edit</TableCell>
+                  <TableCell>Delete</TableCell>
+                </TableRow>
+              </TableHead>
+              {categListPaginate.map((categ, index) => (
+                createKiwi(categ, index)
+              ))}
+            </Table>
+          </TableContainer>
+          }
+
+          <Pagination
+            style = {{ display: loading && 'none', marginTop: "1rem" }}
+            count={pageDetailsCat && pageDetailsCat.totalPages}
+            page={pageDetailsCat && pageDetailsCat.pageIndex}
+            defaultPage={1}
+            color="primary"
+            size="large"
+            onChange={handleChangePageIndexCat}
+            classes={{ ul: classes.paginator }}
+          />
+          </div>
+        </div>
+      </Fade>
+    </Modal>
+
+    
      <Modal
        aria-labelledby="transition-modal-title"
        aria-describedby="transition-modal-description"

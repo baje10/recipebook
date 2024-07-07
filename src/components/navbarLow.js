@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 //logo
-import logo from '../images/recipebook.jpg';
+import logo from '../images/newLogoNoBg.png';
 
 //material-ui
 import AppBar from '@material-ui/core/AppBar';
@@ -108,7 +108,7 @@ const HideAppBar = (props) => {
     <React.Fragment>
       <CssBaseline />
       <div className="appbar">
-        <AppBar style={{background:"#000000"}}>
+        <AppBar style={{background:"#fff", color: "#8b664c"}}>
           <Toolbar>
               <IconButton
                 color="inherit"
