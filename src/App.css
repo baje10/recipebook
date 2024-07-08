@@ -118,6 +118,14 @@ text-decoration: none;
   color: #8b664c
 }
 
+.welcomeTitleHome {
+  font-Size: 2rem;
+  margin-top: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff
+}
+
 .reviewsTitle{
   font-Size: 1.5rem;
   margin-top: 1.5rem;
@@ -147,6 +155,26 @@ text-decoration: none;
   flex-wrap: wrap;
   align-items: stretch;
   align-content: center;
+}
+
+.homeSectionsContainer {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  flex-direction: column; /* If you want to stack the sections vertically */
+}
+
+.homeBgContainer {
+  background-image: url("images/woodBd.jpg");
+  height: 100%; 
+  width: 95rem;
+  margin-top: 3rem;
+  padding: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  border-radius: 1rem;
 }
 
 .container{

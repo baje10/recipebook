@@ -30,18 +30,19 @@ const useStyles = makeStyles({
   },
   root1: {
     maxHeight: "35rem",
-    maxWidth: "15rem",
+    width: "15rem",
     marginTop: '1rem',
     marginLeft: '.7rem',
     whiteSpace: 'nowrap'
   },
   viewAllBtn: {
     marginTop: '2%',
-    color: '#8b664c',
-    border: '1px solid #8b664c',
+    color: '#fff',
+    border: '1px solid #fff',
     '&:hover': {
       borderColor: '#765742',
       color: '#765742',
+      background: '#fff'
     }
   }
 });
@@ -64,7 +65,7 @@ const NewRecipes = () => {
   return (
     loading? <center className='loading' ><CircularProgress color = 'inherit' /></center> : error? <div>{error}</div> :
     <>
-      <center style={{marginTop:"2%"}} className = 'welcomeTitle'>New recipes for you</center>
+      <center className = 'welcomeTitleHome'>New recipes for you</center>
       <div className = 'home-container'>
       { recipes.length > 0 ? (
         <>

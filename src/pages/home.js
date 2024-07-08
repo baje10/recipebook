@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
   root1: {
     maxHeight: "35rem",
-    maxWidth: "15rem",
+    width: "15rem",
     marginTop: '1rem',
     marginLeft: '.7rem',
     whiteSpace: 'nowrap'
@@ -65,7 +65,7 @@ const Home = () => {
   return (
     loading? null : error? <div>{error}</div> :
     <>
-      <center className = 'welcomeTitle'>Popular recipes</center>
+      <center className = 'welcomeTitleHome'>Popular recipes</center>
       <div className = 'home-container'>
       { recipes.length > 0 ? (
         <>
