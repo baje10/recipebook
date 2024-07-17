@@ -1877,7 +1877,7 @@ const AdminPage = () => {
                <div className = 'container'>
                  <form onSubmit = {submitHandlerForRecipeUpdate} className = 'form-container'>
                    <FormControl className={(classes.margin, classes.textField)}>
-                     <InputLabel color="primary">Name of the recipe Test</InputLabel>
+                     <InputLabel color="primary">Name of the recipe</InputLabel>
                      <Input
                        type = "text"
                        value={name}
@@ -3050,7 +3050,7 @@ const AdminPage = () => {
                      />
                      <label className="addButtons" htmlFor="photo1">
                        <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
-                         Upload Details Photo Test
+                         Upload Details Photo
                        </Button>
                      </label>
                    </div>

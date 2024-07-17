@@ -37,6 +37,15 @@ const useStyles = makeStyles({
   },
   viewAllBtn: {
     marginTop: '2%',
+    color: '#8b664c',
+    border: '1px solid #8b664c',
+    '&:hover': {
+      borderColor: '#765742',
+      color: '#765742',
+    }
+  },
+  viewAllBtn1: {
+    marginTop: '2%',
     color: '#fff',
     border: '1px solid #fff',
     '&:hover': {
@@ -140,7 +149,7 @@ const NewRecipes = () => {
       ) }
       </div>
       <center>
-        <Button className={classes.viewAllBtn} href="/recipes" variant="outlined">View all recipes</Button>
+        <Button className={classes.viewAllBtn1} href="/recipes" variant="outlined">View all recipes</Button>
       </center>
     </>
   )

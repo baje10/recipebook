@@ -167,7 +167,7 @@ text-decoration: none;
 .homeBgContainer {
   background-image: url("images/woodBd.jpg");
   height: 100%; 
-  width: 95rem;
+  width: 75%;
   margin-top: 3rem;
   padding: 1rem;
   background-position: center;
@@ -347,7 +347,7 @@ text-decoration: none;
 
 .detailsCol1 {
   border: solid;
-  width: 40rem;
+  width: 35%;
   margin-top: 1.5rem;
   border: 1px solid #ddd; /* Light gray border */
   border-radius: 10px; /* Rounded corners */
