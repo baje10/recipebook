@@ -162,36 +162,40 @@ const Categories = () => {
 
   return (
     <>
-      <center className = 'welcomeTitle'>Categories</center>
-      <div className = 'home-container'>
+      <div className="homeSectionsContainer">
+        <div className="woodContainer"> 
+          <center className = 'welcomeTitleHome'>Categories</center>
+          <div className = 'home-container'>
 
-        {loading && <CircularProgress color='inherit' className = 'loading1' />}
-        {error && <div>{error}</div>}
+            {loading && <CircularProgress color='inherit' className = 'loading1' />}
+            {error && <div>{error}</div>}
 
-        {categListPaginate.length === 0 && !loading &&
-          <div style = {{fontSize: '4rem'}} >No categories found</div>
-        }
-        {categListPaginate.map((category, index) => (
-          createBanana(category, index)
-        ))}
+            {categListPaginate.length === 0 && !loading &&
+              <div style = {{fontSize: '4rem'}} >No categories found</div>
+            }
+            {categListPaginate.map((category, index) => (
+              createBanana(category, index)
+            ))}
+          </div>
+
+          {pageDetails && pageDetails.totalDocs <= pageDetails.pageSize ?
+            (
+            null
+            ) : (
+              <Pagination
+                style = {{ display: loading && 'none' }}
+                count={pageDetails && pageDetails.totalPages}
+                page={pageDetails && pageDetails.pageIndex}
+                defaultPage={1}
+                color="primary"
+                size="large"
+                onChange={handleChangePageIndex}
+                classes={{ ul: classes.paginator }}
+              />
+            )
+          }
+        </div>
       </div>
-
-      {pageDetails && pageDetails.totalDocs <= pageDetails.pageSize ?
-        (
-         null
-        ) : (
-          <Pagination
-            style = {{ display: loading && 'none' }}
-            count={pageDetails && pageDetails.totalPages}
-            page={pageDetails && pageDetails.pageIndex}
-            defaultPage={1}
-            color="primary"
-            size="large"
-            onChange={handleChangePageIndex}
-            classes={{ ul: classes.paginator }}
-          />
-        )
-      }
     </>
   )
 }

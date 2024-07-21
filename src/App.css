@@ -118,6 +118,14 @@ text-decoration: none;
   color: #8b664c
 }
 
+.welcomeTitle1{
+  font-Size: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  color: #fff
+}
+
+
 .welcomeTitleHome {
   font-Size: 2rem;
   margin-top: 2rem;
@@ -168,6 +176,23 @@ text-decoration: none;
   background-image: url("images/woodBd.jpg");
   height: 100%; 
   width: 75%;
+  margin-top: 3rem;
+  padding: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  border-radius: 1rem;
+}
+
+.flagBg {
+  background-color: #fff;
+}
+
+.woodContainer {
+  background-image: url("images/woodBd.jpg");
+  height: 100%; 
+  width: 60%;
   margin-top: 3rem;
   padding: 1rem;
   background-position: center;

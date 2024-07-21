@@ -41,6 +41,9 @@ const useStyles = makeStyles({
     justifyContent: "center",
     padding: "10px",
     marginTop:'1%',
+  },
+  slct: {
+    backgroundColor: "white"
   }
 });
 
@@ -188,58 +191,63 @@ const AllRecipe = () => {
 
   return (
     <>
-      <center className = 'welcomeTitle'>All recipes</center>
-      <center style={{ display: loading && 'none' }} >
-        <Select
-          style= {{width: "50%"}}
-          native
-          required
-          variant="outlined"
-          onChange={handleCategoryHandler}
-          value={categ}
-          inputProps={{
-            name: 'category',
-            id: 'category',
-          }}
-        >
-          <option value = "">Category Filter</option>
-          {
-           categList.map((c, i) => (
-             <option key={i} value={c._id}>
-                 {c.name}
-             </option>
-          ))}
-        </Select>
-      </center>
-      <div className = 'home-container'>
+      <div className="homeSectionsContainer">
+        <div className="woodContainer">
+          <center className = 'welcomeTitleHome'>All recipes</center>
+          <center style={{ display: loading && 'none' }} >
+            <Select
+              style= {{ width: "50%" }}
+              className={classes.slct}
+              native
+              required
+              variant="outlined"
+              onChange={handleCategoryHandler}
+              value={categ}
+              inputProps={{
+                name: 'category',
+                id: 'category',
+              }}
+            >
+              <option value = "">Category Filter</option>
+              {
+              categList.map((c, i) => (
+                <option key={i} value={c._id}>
+                    {c.name}
+                </option>
+              ))}
+            </Select>
+          </center>
+          <div className = 'home-container'>
 
-        {loading && <CircularProgress color='inherit' className = 'loading1' />}
-        {error && <div>{error}</div>}
+            {loading && <CircularProgress color='inherit' className = 'loading1' />}
+            {error && <div>{error}</div>}
 
-        {recipeList.length === 0 && !loading &&
-          <div style = {{fontSize: '4rem'}} >No recipes found</div>
-        }
-        {recipeList.map((recipe, index) => (
-          createBanana(recipe, index)
-        ))}
+            {recipeList.length === 0 && !loading &&
+              <div style = {{fontSize: '4rem'}} >No recipes found</div>
+            }
+            {recipeList.map((recipe, index) => (
+              createBanana(recipe, index)
+            ))}
+          </div>
+
+          {pageDetails && pageDetails.totalDocs <= pageDetails.pageSize ?
+            (
+            null
+            ) : (
+              <Pagination
+                style = {{ display: loading && 'none' }}
+                count={pageDetails && pageDetails.totalPages}
+                page={pageDetails && pageDetails.pageIndex}
+                defaultPage={1}
+                color="primary"
+                size="large"
+                onChange={handleChangePageIndex}
+                classes={{ ul: classes.paginator }}
+              />
+            )
+          }
+        </div> 
       </div>
-
-      {pageDetails && pageDetails.totalDocs <= pageDetails.pageSize ?
-        (
-         null
-        ) : (
-          <Pagination
-            style = {{ display: loading && 'none' }}
-            count={pageDetails && pageDetails.totalPages}
-            page={pageDetails && pageDetails.pageIndex}
-            defaultPage={1}
-            color="primary"
-            size="large"
-            onChange={handleChangePageIndex}
-            classes={{ ul: classes.paginator }}
-          />
-        )
-      }
     </>
   )
 }
