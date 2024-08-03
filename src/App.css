@@ -248,7 +248,7 @@ text-decoration: none;
 }
 
 .detailsCol img {
-  width: 80%;
+  width: 40rem;
   object-fit: cover;
 }
 
@@ -445,6 +445,10 @@ text-decoration: none;
     height: auto;
     width: 100%;
     object-fit: cover;
+  }
+
+  .detailsCol1 {
+    width: 95%;
   }
 
   .adminDashboardLeftContent {

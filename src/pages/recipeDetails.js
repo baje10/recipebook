@@ -382,17 +382,6 @@ const showError = () => (
             >
               <img
                 alt={recipe.name}
-                src={`/api/recipe/photo1/${recipe._id}`}
-                title={recipe.name}
-              />
-            </Box>
-            <Box
-              boxShadow={0}
-              m={1}
-              p={1}
-            >
-              <img
-                alt={recipe.name}
                 src={`/api/recipe/photo/${recipe._id}`}
                 title={recipe.name}
               />
@@ -424,33 +413,34 @@ const showError = () => (
               <div className="listCont">
                 <div style = {{ fontSize: '1.5rem', marginTop: "1.5rem" }} ><b><FastfoodIcon/> Ingredients:</b></div>
                 <div style = {{ fontSize: '1rem', color: "red", marginTop: "1rem", marginBottom: "1rem" }} ><b>Disclaimer :  Prices may vary depending on the establishment.</b></div>
-                <li style = {{ display: recipe.ingredients ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement} {ingredients.measurementCosting} {ingredients.name} - Estimated: ₱{parseFloat(ingredients.price)} per {ingredients.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients1 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement1} {ingredients1.measurementCosting} {ingredients1.name} - Estimated: ₱{parseFloat(ingredients1.price)} per {ingredients1.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients2 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement2} {ingredients2.measurementCosting} {ingredients2.name} - Estimated: ₱{parseFloat(ingredients2.price)} per {ingredients2.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients3 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement3} {ingredients3.measurementCosting} {ingredients3.name} - Estimated: ₱{parseFloat(ingredients3.price)} per {ingredients3.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients4 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement4} {ingredients4.measurementCosting} {ingredients4.name} - Estimated: ₱{parseFloat(ingredients4.price)} per {ingredients4.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients5 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement5} {ingredients5.measurementCosting} {ingredients5.name} - Estimated: ₱{parseFloat(ingredients5.price)} per {ingredients5.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients6 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement6} {ingredients6.measurementCosting} {ingredients6.name} - Estimated: ₱{parseFloat(ingredients6.price)} per {ingredients6.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients7 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement7} {ingredients7.measurementCosting} {ingredients7.name} - Estimated: ₱{parseFloat(ingredients7.price)} per {ingredients7.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients8 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement8} {ingredients8.measurementCosting} {ingredients8.name} - Estimated: ₱{parseFloat(ingredients8.price)} per {ingredients8.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients9 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement9} {ingredients9.measurementCosting} {ingredients9.name} - Estimated: ₱{parseFloat(ingredients9.price)} per {ingredients9.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients10 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement10} {ingredients10.measurementCosting} {ingredients10.name} - Estimated: ₱{parseFloat(ingredients10.price)} per {ingredients10.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients11 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement11} {ingredients11.measurementCosting} {ingredients11.name} - Estimated: ₱{parseFloat(ingredients11.price)} per {ingredients11.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients12 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement12} {ingredients12.measurementCosting} {ingredients12.name} - Estimated: ₱{parseFloat(ingredients12.price)} per {ingredients12.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients13 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement13} {ingredients13.measurementCosting} {ingredients13.name} - Estimated: ₱{parseFloat(ingredients13.price)} per {ingredients13.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients14 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement14} {ingredients14.measurementCosting} {ingredients14.name} - Estimated: ₱{parseFloat(ingredients14.price)} per {ingredients14.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients15 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement15} {ingredients15.measurementCosting} {ingredients15.name} - Estimated: ₱{parseFloat(ingredients15.price)} per {ingredients15.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients16 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement16} {ingredients16.measurementCosting} {ingredients16.name} - Estimated: ₱{parseFloat(ingredients16.price)} per {ingredients16.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients17 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement17} {ingredients17.measurementCosting} {ingredients17.name} - Estimated: ₱{parseFloat(ingredients17.price)} per {ingredients17.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients18 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement18} {ingredients18.measurementCosting} {ingredients18.name} - Estimated: ₱{parseFloat(ingredients18.price)} per {ingredients18.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients19 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement19} {ingredients19.measurementCosting} {ingredients19.name} - Estimated: ₱{parseFloat(ingredients19.price)} per {ingredients19.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients20 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement20} {ingredients20.measurementCosting} {ingredients20.name} - Estimated: ₱{parseFloat(ingredients20.price)} per {ingredients20.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients21 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement21} {ingredients21.measurementCosting} {ingredients21.name} - Estimated: ₱{parseFloat(ingredients21.price)} per {ingredients21.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients22 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement22} {ingredients22.measurementCosting} {ingredients22.name} - Estimated: ₱{parseFloat(ingredients22.price)} per {ingredients22.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients23 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement23} {ingredients23.measurementCosting} {ingredients23.name} - Estimated: ₱{parseFloat(ingredients23.price)} per {ingredients23.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients24 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement24} {ingredients24.measurementCosting} {ingredients24.name} - Estimated: ₱{parseFloat(ingredients24.price)} per {ingredients24.measurementCosting}</i></li>
-                <li style = {{ display: recipe.ingredients25 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement25} {ingredients25.measurementCosting} {ingredients25.name} - Estimated: ₱{parseFloat(ingredients25.price)} per {ingredients25.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement} {ingredients.name} - Estimated: ₱{parseFloat(ingredients.price)} per {ingredients.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients1 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement1}{ingredients1.name} - Estimated: ₱{parseFloat(ingredients1.price)} per {ingredients1.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients2 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement2} {ingredients2.name} - Estimated: ₱{parseFloat(ingredients2.price)} per {ingredients2.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients3 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement3} {ingredients3.name} - Estimated: ₱{parseFloat(ingredients3.price)} per {ingredients3.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients4 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement4} {ingredients4.name} - Estimated: ₱{parseFloat(ingredients4.price)} per {ingredients4.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients5 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement5} {ingredients5.name} - Estimated: ₱{parseFloat(ingredients5.price)} per {ingredients5.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients6 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement6} {ingredients6.name} - Estimated: ₱{parseFloat(ingredients6.price)} per {ingredients6.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients7 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement7} {ingredients7.name} - Estimated: ₱{parseFloat(ingredients7.price)} per {ingredients7.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients8 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement8} {ingredients8.name} - Estimated: ₱{parseFloat(ingredients8.price)} per {ingredients8.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients9 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement9} {ingredients9.name} - Estimated: ₱{parseFloat(ingredients9.price)} per {ingredients9.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients10 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement10} {ingredients10.name} - Estimated: ₱{parseFloat(ingredients10.price)} per {ingredients10.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients11 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement11} {ingredients11.name} - Estimated: ₱{parseFloat(ingredients11.price)} per {ingredients11.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients12 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement12} {ingredients12.name} - Estimated: ₱{parseFloat(ingredients12.price)} per {ingredients12.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients13 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement13} {ingredients13.name} - Estimated: ₱{parseFloat(ingredients13.price)} per {ingredients13.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients14 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement14} {ingredients14.name} - Estimated: ₱{parseFloat(ingredients14.price)} per {ingredients14.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients15 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement15} {ingredients15.name} - Estimated: ₱{parseFloat(ingredients15.price)} per {ingredients15.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients16 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement16} {ingredients16.name} - Estimated: ₱{parseFloat(ingredients16.price)} per {ingredients16.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients17 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement17} {ingredients17.name} - Estimated: ₱{parseFloat(ingredients17.price)} per {ingredients17.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients18 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement18} {ingredients18.name} - Estimated: ₱{parseFloat(ingredients18.price)} per {ingredients18.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients19 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement19} {ingredients19.name} - Estimated: ₱{parseFloat(ingredients19.price)} per {ingredients19.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients20 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement20} {ingredients20.name} - Estimated: ₱{parseFloat(ingredients20.price)} per {ingredients20.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients21 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement21} {ingredients21.name} - Estimated: ₱{parseFloat(ingredients21.price)} per {ingredients21.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients22 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement22} {ingredients22.name} - Estimated: ₱{parseFloat(ingredients22.price)} per {ingredients22.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients23 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement23} {ingredients23.name} - Estimated: ₱{parseFloat(ingredients23.price)} per {ingredients23.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients24 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement24} {ingredients24.name} - Estimated: ₱{parseFloat(ingredients24.price)} per {ingredients24.measurementCosting}</i></li>
+                <li style = {{ display: recipe.ingredients25 ? '' : 'none' }} ><i className = 'instructions'>{recipe.measurement25} {ingredients25.name} - Estimated: ₱{parseFloat(ingredients25.price)} per {ingredients25.measurementCosting}</i></li>
               </div>
+
 
 
               <div className="listCont">

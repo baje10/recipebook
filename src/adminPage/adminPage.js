@@ -3039,21 +3039,6 @@ const AdminPage = () => {
                        </Button>
                      </label>
                    </div>
-                   <div style={{marginTop: "1rem"}} className={classes.root}>
-                     <input
-                       accept="image/*"
-                       className={classes.input}
-                       id="photo1"
-                       type="file"
-                       name = 'photo1'
-                       onChange={(e) => setPhoto1(e.target.files[0])}
-                     />
-                     <label className="addButtons" htmlFor="photo1">
-                       <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
-                         Upload Details Photo
-                       </Button>
-                     </label>
-                   </div>
                    <Button style={{width:'100%', marginTop: "1rem"}} startIcon={<SaveIcon />} variant="contained" type="submit">Save Recipe</Button>
                    <Button onClick={handleCloseModalRecipeUpdate} style={{width:'100%', marginTop: "1rem"}} color="primary" startIcon={<ClearIcon/>} variant="contained">Cancel</Button>
                  </form>
@@ -3761,22 +3746,6 @@ const AdminPage = () => {
                      <label className="addButtons" htmlFor="photo">
                        <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
                          Upload Recipe Photo
-                       </Button>
-                     </label>
-                   </div>
-                   <div style={{marginTop: "1rem"}} className={classes.root}>
-                     <input
-                       accept="image/*"
-                       className={classes.input}
-                       id="photo1"
-                       required
-                       type="file"
-                       name = 'photo1'
-                       onChange={(e) => setPhoto1(e.target.files[0])}
-                     />
-                     <label className="addButtons" htmlFor="photo1">
-                       <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
-                         Upload Details Photo
                        </Button>
                      </label>
                    </div>
@@ -4992,22 +4961,6 @@ const AdminPage = () => {
                 <label className="addButtons" htmlFor="photo">
                   <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
                     Upload Recipe Photo
-                  </Button>
-                </label>
-              </div>
-              <div style={{marginTop: "1rem"}} className={classes.root}>
-                <input
-                accept="image/*"
-                required
-                className={classes.input}
-                id="photo1"
-                type="file"
-                name = 'photo1'
-                onChange={(e) => setPhoto1(e.target.files[0])}
-                />
-                <label className="addButtons" htmlFor="photo1">
-                  <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
-                    Upload Details Photo
                   </Button>
                 </label>
               </div>
